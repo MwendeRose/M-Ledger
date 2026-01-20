@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-Ledger AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <header class="header">
+        <h1>M-Ledger <span>AI</span></h1>
+        <p>Smart analysis of your M-PESA transactions</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Upload Statement -->
+        <section class="upload-card">
+            <form method="POST" enctype="multipart/form-data">
+                <label for="statement">Upload Official M-PESA Statement (PDF)</label>
+                <input type="file" id="statement" name="statement" accept=".pdf" required>
+                <button type="submit">Analyze Statement</button>
+            </form>
+        </section>
+
+        <!-- Summary Grid -->
+        <section class="summary-grid">
+            <div class="card income">
+                <h3>Total Income</h3>
+                <p>KES {{ income }}</p>
+            </div>
+
+            <div class="card expense">
+                <h3>Total Expenditure</h3>
+                <p>KES {{ expenses }}</p>
+            </div>
+
+            <div class="card balance">
+                <h3>Balance</h3>
+                <p>KES {{ balance }}</p>
+            </div>
+        </section>
+
+        <form method="GET" class="filter-bar">
+            <label for="transaction-filter" class="sr-only">Filter Transactions</label>
+            <select id="transaction-filter" name="filter" onchange="this.form.submit()">
+                <option value="" {% if selected_filter=='' %}selected{% endif %}>All Transactions</option>
+                <option value="income" {% if selected_filter=='income' %}selected{% endif %}>Income Only</option>
+                <option value="expense" {% if selected_filter=='expense' %}selected{% endif %}>Expenditure Only</option>
+            </select>
+        </form>
+        
+        <!-- Download PDF -->
+        <form method="POST" action="/download-pdf" class="filter-bar">
+            <input type="hidden" name="type" value="{{ selected_filter }}">
+            <input type="password" name="password" placeholder="Enter PDF password" required>
+            <button type="submit">Download PDF</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <p class="error">{{ messages[0] }}</p>
+          {% endif %}
+        {% endwith %}
+
+        <!-- Transactions Table -->
+        <section class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Paid In</th>
+                        <th>Paid Out</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in transactions %}
+                    <tr>
+                        <td>{{ t.date }}<br><span class="time">{{ t.time }}</span></td>
+                        <td>{{ t.details }}</td>
+                        <td>
+                            {% if t.paid_in > 0 %}
+                                <span class="tag income">Income</span>
+                            {% elif t.paid_out > 0 %}
+                                <span class="tag expense">Expenditure</span>
+                            {% endif %}
+                        </td>
+                        <td class="in">{% if t.paid_in > 0 %}{{ t.paid_in }}{% endif %}</td>
+                        <td class="out">{% if t.paid_out > 0 %}{{ t.paid_out }}{% endif %}</td>
+                        <td>{{ t.balance }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 M-Ledger AI · Secure · Private · Smart</p>
+    </footer>
+
+</div>
+</body>
+</html>

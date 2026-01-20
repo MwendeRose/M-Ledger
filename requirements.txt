@@ -1,0 +1,11 @@
+flask
+pdfplumber
+reportlab
+Flask==2.3.3
+Flask-Login==0.6.3
+pymongo==4.5.0
+python-dotenv==1.0.0
+google-auth==2.23.4
+google-auth-oauthlib==1.1.0
+oauthlib==3.2.2
+requests==2.31.0

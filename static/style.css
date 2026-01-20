@@ -1,0 +1,194 @@
+:root {
+    --bg-app: #020617;
+    --bg-panel: #020617;
+    --border: #1e293b;
+
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+
+    --primary: #22c55e;
+    --danger: #ef4444;
+    --info: #3b82f6;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FULL PAGE BACKGROUND */
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #020617 0%, #020617 60%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--text-main);
+}
+
+/* CENTERED APP */
+.app-shell {
+    width: 100%;
+    max-width: 1200px;
+    background: linear-gradient(180deg, #020617, #020617);
+    border-radius: 22px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.75);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+/* HEADER */
+.header {
+    padding: 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, #020617, #020617);
+}
+
+.header h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+}
+
+.header span {
+    color: var(--primary);
+}
+
+.header p {
+    margin-top: 10px;
+    color: var(--text-muted);
+}
+
+/* CONTENT */
+.container {
+    padding: 40px;
+}
+
+/* UPLOAD */
+.upload-card {
+    background: #020617;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.upload-card label {
+    display: block;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.upload-card input {
+    width: 100%;
+    max-width: 420px;
+    padding: 16px;
+    border-radius: 14px;
+    background: transparent;
+    border: 2px dashed var(--border);
+    color: var(--text-main);
+}
+
+.upload-card input:hover {
+    border-color: var(--primary);
+}
+
+.upload-card button {
+    margin-top: 22px;
+    padding: 16px 38px;
+    background: linear-gradient(135deg, var(--primary), #16a34a);
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #022c22;
+}
+
+.upload-card button:hover {
+    box-shadow: 0 0 0 6px rgba(34,197,94,0.15);
+}
+
+/* SUMMARY */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.card {
+    padding: 26px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: #020617;
+}
+
+.card h3 {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.card p {
+    margin-top: 14px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.card.income p { color: var(--primary); }
+.card.expense p { color: var(--danger); }
+.card.balance p { color: var(--info); }
+
+/* TABLE */
+.table-section h2 {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #020617;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background: rgba(34,197,94,0.06);
+}
+
+td.in { color: var(--primary); }
+td.out { color: var(--danger); }
+
+.time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* FOOTER */
+.footer {
+    padding: 26px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+/* ERROR */
+.error {
+    margin-top: 16px;
+    color: var(--danger);
+}
