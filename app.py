@@ -1,189 +1,217 @@
-from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from pymongo import MongoClient
-from werkzeug.security import generate_password_hash, check_password_hash
-import os
+from flask import Flask, render_template, request, jsonify
 from datetime import datetime
-from dotenv import load_dotenv
-import json
-from google.oauth2 import id_token
-from google.auth.transport import requests as google_requests
-
-# Load environment variables
-load_dotenv()
+from pdf_parser import parse_mpesa_pdf
+from analyzer import analyze
+from llm_explainer import explain
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.secret_key = "mledger_secret"
 
-# Initialize Flask-Login
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
+# Persistent server-side storage
+app.config["STORED_TRANSACTIONS"] = []
 
-# MongoDB Connection
-client = MongoClient(os.getenv('MONGODB_URI'))
-db = client[os.getenv('DATABASE_NAME')]
-users_collection = db['users']
 
-# Google OAuth Configuration
-GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
+# -------------------------------------------------
+# HOME ROUTE (UPLOAD + DASHBOARD)
+# -------------------------------------------------
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
+        file = request.files.get("statement")
+        password = request.form.get("pdf_password")
 
-class User(UserMixin):
-    def __init__(self, user_data):
-        self.id = str(user_data['_id'])
-        self.username = user_data.get('username')
-        self.email = user_data.get('email')
-        self.google_id = user_data.get('google_id')
-        self.created_at = user_data.get('created_at')
+        if file:
+            tx = parse_mpesa_pdf(file, password)
+            app.config["STORED_TRANSACTIONS"] = tx
 
-@login_manager.user_loader
-def load_user(user_id):
-    user_data = users_collection.find_one({'_id': user_id})
-    if user_data:
-        return User(user_data)
-    return None
+    stored_transactions = app.config["STORED_TRANSACTIONS"]
 
-@app.route('/')
-def index():
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
-    return redirect(url_for('login'))
+    sorted_transactions = sorted(
+        stored_transactions, key=lambda t: t["date"], reverse=True
+    )
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
-    
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
-        
-        user_data = users_collection.find_one({'email': email})
-        
-        if user_data and check_password_hash(user_data['password'], password):
-            user = User(user_data)
-            login_user(user)
-            return redirect(url_for('dashboard'))
-        else:
-            flash('Invalid email or password', 'error')
-    
-    return render_template('login.html')
+    summary = analyze(sorted_transactions)
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
-    
-    if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
-        confirm_password = request.form.get('confirm_password')
-        
-        # Validation
-        if password != confirm_password:
-            flash('Passwords do not match', 'error')
-            return render_template('signup.html')
-        
-        if users_collection.find_one({'email': email}):
-            flash('Email already exists', 'error')
-            return render_template('signup.html')
-        
-        if users_collection.find_one({'username': username}):
-            flash('Username already exists', 'error')
-            return render_template('signup.html')
-        
-        # Create new user
-        hashed_password = generate_password_hash(password)
-        user_data = {
-            'username': username,
-            'email': email,
-            'password': hashed_password,
-            'created_at': datetime.utcnow(),
-            'google_id': None
+    return render_template(
+        "index.html",
+        transactions=sorted_transactions[:10],
+        income=summary["total_income"],
+        expenses=summary["total_expense"],
+        charges=summary["total_charges"],
+        balance=summary["net"],
+        page=1,
+        total_pages=max(1, (len(sorted_transactions) - 1) // 10 + 1)
+    )
+
+
+# -------------------------------------------------
+# TRANSACTIONS API (FILTERS + PAGINATION)
+# -------------------------------------------------
+@app.route("/transactions")
+def transactions_endpoint():
+    tx_type = request.args.get("type", "all")
+    start = request.args.get("start_date")
+    end = request.args.get("end_date")
+    page = int(request.args.get("page", 1))
+    sort_order = request.args.get("sort_order", "desc")
+    per_page = 10
+
+    filtered = app.config["STORED_TRANSACTIONS"]
+
+    if start:
+        start_date = datetime.strptime(start, "%Y-%m-%d").date()
+        filtered = [t for t in filtered if t["date"] >= start_date]
+
+    if end:
+        end_date = datetime.strptime(end, "%Y-%m-%d").date()
+        filtered = [t for t in filtered if t["date"] <= end_date]
+
+    if tx_type == "income":
+        filtered = [t for t in filtered if t["category"] == "income"]
+    elif tx_type == "expense":
+        filtered = [t for t in filtered if t["category"] == "expense"]
+    elif tx_type == "charges":
+        filtered = [t for t in filtered if t["category"] == "charge"]
+
+    reverse_sort = sort_order == "desc"
+    filtered = sorted(filtered, key=lambda t: t["date"], reverse=reverse_sort)
+
+    total_pages = max(1, (len(filtered) - 1) // per_page + 1)
+    start_idx = (page - 1) * per_page
+    end_idx = start_idx + per_page
+    page_tx = filtered[start_idx:end_idx]
+
+    summary = analyze(filtered)
+
+    # Serialize dates for JSON
+    def serialize(tx):
+        tx = dict(tx)
+        tx["date"] = tx["date"].isoformat()
+        return tx
+
+    return jsonify({
+        "transactions": [serialize(t) for t in page_tx],
+        "income": summary["total_income"],
+        "expenses": summary["total_expense"],
+        "charges": summary["total_charges"],
+        "balance": summary["net"],
+        "page": page,
+        "total_pages": total_pages
+    })
+
+
+# -------------------------------------------------
+# AI EXPLANATION ROUTE (FINANCIALLY CORRECT)
+# -------------------------------------------------
+@app.route("/ai_action", methods=["POST"])
+def ai_action():
+    payload = request.get_json(silent=True) or request.form
+
+    action = payload.get("action")   # summarize | min | max | totals
+    metric = payload.get("metric")   # income | expense | tcost
+    start = payload.get("start_date")
+    end = payload.get("end_date")
+
+    all_tx = app.config["STORED_TRANSACTIONS"]
+
+    if not all_tx:
+        return jsonify({
+            "ai_explanation": "No transactions found. Please upload an M-PESA statement first."
+        })
+
+    filtered = all_tx
+
+    if start:
+        start_date = datetime.strptime(start, "%Y-%m-%d").date()
+        filtered = [t for t in filtered if t["date"] >= start_date]
+
+    if end:
+        end_date = datetime.strptime(end, "%Y-%m-%d").date()
+        filtered = [t for t in filtered if t["date"] <= end_date]
+
+    period_text = (
+        f"{start} to {end}" if start and end
+        else f"from {start}" if start
+        else f"up to {end}" if end
+        else "the entire statement"
+    )
+
+    # -------------------------------
+    # 1) SUMMARY (ALWAYS FULL STATEMENT)
+    # -------------------------------
+    if action == "summarize":
+        summary = analyze(all_tx)
+        data = {
+            "type": "summary",
+            "total_income": summary["total_income"],
+            "total_expense": summary["total_expense"],
+            "total_charges": summary["total_charges"],
+            "net": summary["net"],
+            "transaction_count": summary["transaction_count"],
+            "period": "entire statement"
         }
-        
-        result = users_collection.insert_one(user_data)
-        user = User({'_id': result.inserted_id, **user_data})
-        login_user(user)
-        
-        return redirect(url_for('dashboard'))
-    
-    return render_template('signup.html')
 
-@app.route('/login/google', methods=['POST'])
-def login_google():
-    try:
-        token = request.json.get('token')
-        
-        # Verify Google token
-        idinfo = id_token.verify_oauth2_token(
-            token, google_requests.Request(), GOOGLE_CLIENT_ID
+    # -------------------------------
+    # 2) MIN / MAX
+    # -------------------------------
+    elif action in ["min", "max"]:
+        category_map = {
+            "income": "income",
+            "expense": "expense",
+            "tcost": "charge"
+        }
+
+        values = [t for t in filtered if t["category"] == category_map.get(metric)]
+
+        tx = (
+            min(values, key=lambda x: x["amount"])
+            if action == "min" and values
+            else max(values, key=lambda x: x["amount"])
+            if values else None
         )
-        
-        if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
-            raise ValueError('Wrong issuer.')
-        
-        google_id = idinfo['sub']
-        email = idinfo['email']
-        name = idinfo.get('name', '').split()[0]  # Use first name as username
-        
-        # Check if user exists
-        user_data = users_collection.find_one({'email': email})
-        
-        if not user_data:
-            # Create new user
-            user_data = {
-                'username': name,
-                'email': email,
-                'password': None,
-                'google_id': google_id,
-                'created_at': datetime.utcnow()
-            }
-            result = users_collection.insert_one(user_data)
-            user_data['_id'] = result.inserted_id
-        else:
-            # Update google_id if not present
-            if not user_data.get('google_id'):
-                users_collection.update_one(
-                    {'_id': user_data['_id']},
-                    {'$set': {'google_id': google_id}}
-                )
-                user_data['google_id'] = google_id
-        
-        user = User(user_data)
-        login_user(user)
-        
-        return jsonify({'success': True, 'redirect': url_for('dashboard')})
-    
-    except ValueError as e:
-        return jsonify({'success': False, 'error': str(e)})
 
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    return render_template('dashboard.html', user=current_user)
+        data = {
+            "type": action,
+            "metric": metric,
+            "amount": tx["amount"] if tx else 0,
+            "date": tx["date"].isoformat() if tx else "N/A",
+            "details": tx.get("details", "") if tx else "",
+            "transaction_count": len(values),
+            "period": period_text
+        }
 
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
+    # -------------------------------
+    # 3) TOTALS
+    # -------------------------------
+    elif action == "totals":
+        category_map = {
+            "income": "income",
+            "expense": "expense",
+            "tcost": "charge"
+        }
 
-@app.route('/main')
-@login_required
-def main():
-    # Import and run main.py
-    import subprocess
-    import sys
-    
-    try:
-        # Run main.py as a separate process
-        subprocess.run([sys.executable, 'main.py'])
-        return redirect(url_for('dashboard'))
-    except Exception as e:
-        flash(f'Error starting main application: {str(e)}', 'error')
-        return redirect(url_for('dashboard'))
+        total = sum(
+            t["amount"] for t in filtered
+            if t["category"] == category_map.get(metric)
+        )
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+        data = {
+            "type": "total",
+            "metric": metric,
+            "amount": total,
+            "transaction_count": len(filtered),
+            "period": period_text
+        }
+
+    else:
+        return jsonify({"ai_explanation": "Invalid action"}), 400
+
+    explanation = explain(data)
+    return jsonify({"ai_explanation": explanation})
+
+
+# -------------------------------------------------
+# RUN APP (NO RELOADER BUG)
+# -------------------------------------------------
+if __name__ == "__main__":
+    app.run(debug=True, use_reloader=False)
