@@ -1,111 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M-Ledger AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M-Ledger AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div class="app-shell">
 
-    <header class="header">
-        <h1>M-Ledger <span>AI</span></h1>
-        <p>Smart analysis of your M-PESA transactions</p>
+<div class="container">
+    <!-- Header with Theme Toggle -->
+    <header>
+        <h1>
+            <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="6" fill="currentColor"/>
+                <text x="16" y="22" text-anchor="middle" fill="white" font-size="18" font-weight="bold">M</text>
+            </svg>
+            M-Ledger AI
+        </h1>
+        <button class="theme-toggle" id="theme_toggle" aria-label="Toggle theme">
+            <span class="sun-icon">☀️</span>
+            <span class="moon-icon">🌙</span>
+        </button>
     </header>
 
-    <main class="container">
-
-        <!-- Upload Statement -->
-        <section class="upload-card">
-            <form method="POST" enctype="multipart/form-data">
-                <label for="statement">Upload Official M-PESA Statement (PDF)</label>
-                <input type="file" id="statement" name="statement" accept=".pdf" required>
-                <button type="submit">Analyze Statement</button>
-            </form>
-        </section>
-
-        <!-- Summary Grid -->
-        <section class="summary-grid">
-            <div class="card income">
-                <h3>Total Income</h3>
-                <p>KES {{ income }}</p>
+    <!-- Upload Statement -->
+    <section class="upload-section">
+        <h2>Upload Statement</h2>
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            <div class="file-input-wrapper">
+                <input type="file" name="statement" id="statement" required>
+                <label for="statement" class="file-label">
+                    <span class="file-icon">📄</span>
+                    <span class="file-text">Choose File</span>
+                </label>
+                <input type="password" name="pdf_password" placeholder="Password (if any)" class="password-input">
             </div>
-
-            <div class="card expense">
-                <h3>Total Expenditure</h3>
-                <p>KES {{ expenses }}</p>
-            </div>
-
-            <div class="card balance">
-                <h3>Balance</h3>
-                <p>KES {{ balance }}</p>
-            </div>
-        </section>
-
-        <form method="GET" class="filter-bar">
-            <label for="transaction-filter" class="sr-only">Filter Transactions</label>
-            <select id="transaction-filter" name="filter" onchange="this.form.submit()">
-                <option value="" {% if selected_filter=='' %}selected{% endif %}>All Transactions</option>
-                <option value="income" {% if selected_filter=='income' %}selected{% endif %}>Income Only</option>
-                <option value="expense" {% if selected_filter=='expense' %}selected{% endif %}>Expenditure Only</option>
-            </select>
+            <button type="submit" class="btn btn-primary">
+                <span>Upload Statement</span>
+            </button>
         </form>
-        
-        <!-- Download PDF -->
-        <form method="POST" action="/download-pdf" class="filter-bar">
-            <input type="hidden" name="type" value="{{ selected_filter }}">
-            <input type="password" name="password" placeholder="Enter PDF password" required>
-            <button type="submit">Download PDF</button>
+    </section>
+
+    <!-- Summary -->
+    <section class="summary-section">
+        <h2>Financial Summary</h2>
+        <div class="summary-grid">
+            <div class="summary-card income-card">
+                <div class="summary-icon">📈</div>
+                <div class="summary-content">
+                    <p class="summary-label">Total Income</p>
+                    <p class="summary-value">KES <span id="income">{{ income|default(0) }}</span></p>
+                </div>
+            </div>
+            <div class="summary-card expense-card">
+                <div class="summary-icon">📉</div>
+                <div class="summary-content">
+                    <p class="summary-label">Total Expenses</p>
+                    <p class="summary-value">KES <span id="expenses">{{ expenses|default(0) }}</span></p>
+                </div>
+            </div>
+            <div class="summary-card charges-card">
+                <div class="summary-icon">💳</div>
+                <div class="summary-content">
+                    <p class="summary-label">Transaction Charges</p>
+                    <p class="summary-value">KES <span id="charges">{{ charges|default(0) }}</span></p>
+                </div>
+            </div>
+            <div class="summary-card balance-card">
+                <div class="summary-icon">💰</div>
+                <div class="summary-content">
+                    <p class="summary-label">Current Balance</p>
+                    <p class="summary-value">KES <span id="balance">{{ balance|default(0) }}</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Analysis -->
+    <section class="ai-section">
+        <h2>
+            <span class="ai-badge">AI</span>
+            Analysis
+        </h2>
+        <form id="ai_form" class="ai-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Action</label>
+                    <select name="action" class="form-select">
+                        <option value="summarize">Summarize</option>
+                        <option value="min">Minimum</option>
+                        <option value="max">Maximum</option>
+                        <option value="totals">Totals</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Metric</label>
+                    <select name="metric" class="form-select">
+                        <option value="income">Income</option>
+                        <option value="expense">Expenditure</option>
+                        <option value="tcost">Transaction Cost</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="date" name="start_date" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="date" name="end_date" class="form-input">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-ai">
+                <span class="btn-text">Analyze with AI</span>
+                <span class="btn-loading" style="display: none;">
+                    <span class="spinner"></span>
+                    Analyzing...
+                </span>
+            </button>
         </form>
+        <div id="ai_output" class="ai-output"></div>
+    </section>
 
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <p class="error">{{ messages[0] }}</p>
-          {% endif %}
-        {% endwith %}
+    <!-- Filters + Sort -->
+    <section class="filter-section">
+        <h2>Transaction History</h2>
+        <div class="filter-controls">
+            <div class="form-group">
+                <label>Type</label>
+                <select id="tx_type" class="form-select">
+                    <option value="all">All Transactions</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expenditure</option>
+                    <option value="charges">Transaction Charges</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" id="start_date_filter" class="form-input">
+            </div>
+            <div class="form-group">
+                <label>End Date</label>
+                <input type="date" id="end_date_filter" class="form-input">
+            </div>
+            <div class="form-group">
+                <label>Sort Order</label>
+                <select id="sort_order" class="form-select">
+                    <option value="desc">Newest First</option>
+                    <option value="asc">Oldest First</option>
+                </select>
+            </div>
+            <button id="filter_btn" class="btn btn-secondary">Apply Filters</button>
+        </div>
+    </section>
 
-        <!-- Transactions Table -->
-        <section class="table-section">
-            <table>
+    <!-- Transactions Table -->
+    <section class="table-section">
+        <div class="table-wrapper">
+            <table class="transactions-table">
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Description</th>
+                        <th>Details</th>
                         <th>Type</th>
                         <th>Paid In</th>
                         <th>Paid Out</th>
+                        <th>Charges</th>
                         <th>Balance</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tx_body">
                     {% for t in transactions %}
                     <tr>
-                        <td>{{ t.date }}<br><span class="time">{{ t.time }}</span></td>
-                        <td>{{ t.details }}</td>
+                        <td>{{ t.date }}</td>
+                        <td class="details-cell">{{ t.details }}</td>
                         <td>
-                            {% if t.paid_in > 0 %}
-                                <span class="tag income">Income</span>
-                            {% elif t.paid_out > 0 %}
-                                <span class="tag expense">Expenditure</span>
+                            {% if t.category == "charge" %}
+                            <span class="badge badge-charge">Charge</span>
+                            {% elif t.category == "income" %}
+                            <span class="badge badge-income">Income</span>
+                            {% elif t.category == "expense" %}
+                            <span class="badge badge-expense">Expense</span>
+                            {% else %}
+                            <span class="badge">-</span>
                             {% endif %}
                         </td>
-                        <td class="in">{% if t.paid_in > 0 %}{{ t.paid_in }}{% endif %}</td>
-                        <td class="out">{% if t.paid_out > 0 %}{{ t.paid_out }}{% endif %}</td>
-                        <td>{{ t.balance }}</td>
+                        <td class="amount-cell income">
+                            {% if t.category == "income" %}{{ t.amount }}{% else %}0{% endif %}
+                        </td>
+                        <td class="amount-cell expense">
+                            {% if t.category == "expense" %}{{ t.amount }}{% else %}0{% endif %}
+                        </td>
+                        <td class="amount-cell charge">
+                            {% if t.category == "charge" %}{{ t.amount }}{% else %}0{% endif %}
+                        </td>
+                        <td class="amount-cell">-</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-        </section>
+        </div>
 
-    </main>
-
-    <footer class="footer">
-        <p>© 2025 M-Ledger AI · Secure · Private · Smart</p>
-    </footer>
-
+        <!-- Pagination -->
+        <div class="pagination">
+            <button id="prev_page" class="pagination-btn">← Previous</button>
+            <span class="pagination-info">
+                Page <span id="current_page">{{ page|default(1) }}</span> of <span id="total_pages">{{ total_pages|default(1) }}</span>
+            </span>
+            <button id="next_page" class="pagination-btn">Next →</button>
+        </div>
+    </section>
 </div>
+
+<script>
+let current_page = 1;
+let total_pages = parseInt("{{ total_pages | default(1) }}") || 1;
+
+// Format number with commas
+function formatNumber(num) {
+    return parseFloat(num).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+// Load transactions via AJAX
+function load_transactions(page) {
+    page = page || 1;
+
+    $.get("/transactions", {
+        page: page,
+        type: $("#tx_type").val(),
+        start_date: $("#start_date_filter").val(),
+        end_date: $("#end_date_filter").val(),
+        sort_order: $("#sort_order").val()
+    }, function(data){
+        $("#tx_body").html("");
+
+        if(data.transactions && data.transactions.length > 0){
+            data.transactions.forEach(function(t){
+                let txType = "-";
+                let badgeClass = "";
+                if(t.category === "charge") {
+                    txType = "Charge";
+                    badgeClass = "badge-charge";
+                } else if(t.category === "income") {
+                    txType = "Income";
+                    badgeClass = "badge-income";
+                } else if(t.category === "expense") {
+                    txType = "Expense";
+                    badgeClass = "badge-expense";
+                }
+
+                let paidIn = t.category === "income" ? formatNumber(t.amount) : "0.00";
+                let paidOut = t.category === "expense" ? formatNumber(t.amount) : "0.00";
+                let charges = t.category === "charge" ? formatNumber(t.amount) : "0.00";
+
+                $("#tx_body").append(
+                    "<tr>" +
+                    "<td>" + t.date + "</td>" +
+                    "<td class='details-cell'>" + t.details + "</td>" +
+                    "<td><span class='badge " + badgeClass + "'>" + txType + "</span></td>" +
+                    "<td class='amount-cell income'>" + paidIn + "</td>" +
+                    "<td class='amount-cell expense'>" + paidOut + "</td>" +
+                    "<td class='amount-cell charge'>" + charges + "</td>" +
+                    "<td class='amount-cell'>-</td>" +
+                    "</tr>"
+                );
+            });
+        }
+
+        // Update summary with formatted numbers
+        $("#income").text(formatNumber(data.income || 0));
+        $("#expenses").text(formatNumber(data.expenses || 0));
+        $("#charges").text(formatNumber(data.charges || 0));
+        $("#balance").text(formatNumber(data.balance || 0));
+
+        // Update pagination
+        current_page = data.page || 1;
+        total_pages = data.total_pages || 1;
+        $("#current_page").text(current_page);
+        $("#total_pages").text(total_pages);
+    });
+}
+
+// Filter button
+$("#filter_btn").click(function(e){
+    e.preventDefault();
+    load_transactions(1);
+});
+
+// Pagination buttons
+$("#prev_page").click(function(){
+    if(current_page > 1) load_transactions(current_page - 1);
+});
+$("#next_page").click(function(){
+    if(current_page < total_pages) load_transactions(current_page + 1);
+});
+
+// AI Analysis form
+$("#ai_form").submit(function(e){
+    e.preventDefault();
+    
+    // Show loading state
+    $(this).find('.btn-text').hide();
+    $(this).find('.btn-loading').show();
+    $(this).find('button').prop('disabled', true);
+    $("#ai_output").html('<div class="ai-loading"><span class="spinner"></span> Analyzing your data...</div>');
+    
+    $.post("/ai_action", $(this).serialize(), function(data){
+        // Hide loading state
+        $("#ai_form").find('.btn-text').show();
+        $("#ai_form").find('.btn-loading').hide();
+        $("#ai_form").find('button').prop('disabled', false);
+        
+        // Show AI response
+        $("#ai_output").html('<div class="ai-response">' + (data.ai_explanation || "No response") + '</div>');
+    }).fail(function(){
+        $("#ai_form").find('.btn-text').show();
+        $("#ai_form").find('.btn-loading').hide();
+        $("#ai_form").find('button').prop('disabled', false);
+        $("#ai_output").html('<div class="ai-error">Failed to get AI response. Please try again.</div>');
+    });
+});
+
+// Theme toggle
+const themeToggle = document.getElementById('theme_toggle');
+const currentTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', currentTheme);
+
+themeToggle.addEventListener('click', function() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
+// File input display
+document.getElementById('statement').addEventListener('change', function(e) {
+    const fileName = e.target.files[0]?.name || 'Choose File';
+    document.querySelector('.file-text').textContent = fileName;
+});
+
+// Format initial numbers on page load
+$(document).ready(function() {
+    $("#income").text(formatNumber($("#income").text() || 0));
+    $("#expenses").text(formatNumber($("#expenses").text() || 0));
+    $("#charges").text(formatNumber($("#charges").text() || 0));
+    $("#balance").text(formatNumber($("#balance").text() || 0));
+    
+    // Format table amounts
+    $(".amount-cell").each(function() {
+        const val = $(this).text();
+        if (val !== '-' && val !== '0') {
+            $(this).text(formatNumber(val));
+        }
+    });
+});
+</script>
+
 </body>
 </html>
