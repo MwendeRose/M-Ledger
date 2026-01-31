@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M-Ledger AI</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-Ledger AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
 <div class="container">
-    <!-- Header with Theme Toggle -->
+
+    <!-- Header -->
     <header>
         <h1>
             <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -19,7 +20,7 @@
             </svg>
             M-Ledger AI
         </h1>
-        <button class="theme-toggle" id="theme_toggle" aria-label="Toggle theme">
+        <button class="theme-toggle" id="theme_toggle">
             <span class="sun-icon">☀️</span>
             <span class="moon-icon">🌙</span>
         </button>
@@ -28,135 +29,82 @@
     <!-- Upload Statement -->
     <section class="upload-section">
         <h2>Upload Statement</h2>
-        <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <form method="POST" enctype="multipart/form-data" action="/" id="upload_form" class="upload-form">
             <div class="file-input-wrapper">
-                <input type="file" name="statement" id="statement" required>
+                <input type="file" name="statement" id="statement" required accept=".pdf,.csv,.txt,.xlsx,.xls">
                 <label for="statement" class="file-label">
                     <span class="file-icon">📄</span>
-                    <span class="file-text">Choose File</span>
+                    <span class="file-text" id="file_text">Choose File</span>
                 </label>
                 <input type="password" name="pdf_password" placeholder="Password (if any)" class="password-input">
             </div>
-            <button type="submit" class="btn btn-primary">
-                <span>Upload Statement</span>
-            </button>
+            <button type="submit" class="btn btn-primary">Upload Statement</button>
         </form>
     </section>
 
-    <!-- Summary -->
+    <!-- Financial Summary -->
     <section class="summary-section">
         <h2>Financial Summary</h2>
         <div class="summary-grid">
             <div class="summary-card income-card">
-                <div class="summary-icon">📈</div>
-                <div class="summary-content">
-                    <p class="summary-label">Total Income</p>
-                    <p class="summary-value">KES <span id="income">{{ income|default(0) }}</span></p>
-                </div>
+                <p class="summary-label">Total Income</p>
+                <p class="summary-value">KES <span id="income">{{ income|default(0)|format_number }}</span></p>
             </div>
             <div class="summary-card expense-card">
-                <div class="summary-icon">📉</div>
-                <div class="summary-content">
-                    <p class="summary-label">Total Expenses</p>
-                    <p class="summary-value">KES <span id="expenses">{{ expenses|default(0) }}</span></p>
-                </div>
+                <p class="summary-label">Total Expenses</p>
+                <p class="summary-value">KES <span id="expenses">{{ expenses|default(0)|format_number }}</span></p>
             </div>
             <div class="summary-card charges-card">
-                <div class="summary-icon">💳</div>
-                <div class="summary-content">
-                    <p class="summary-label">Transaction Charges</p>
-                    <p class="summary-value">KES <span id="charges">{{ charges|default(0) }}</span></p>
-                </div>
+                <p class="summary-label">Transaction Charges</p>
+                <p class="summary-value">KES <span id="charges">{{ charges|default(0)|format_number }}</span></p>
             </div>
             <div class="summary-card balance-card">
-                <div class="summary-icon">💰</div>
-                <div class="summary-content">
-                    <p class="summary-label">Current Balance</p>
-                    <p class="summary-value">KES <span id="balance">{{ balance|default(0) }}</span></p>
-                </div>
+                <p class="summary-label">Current Balance</p>
+                <p class="summary-value">KES <span id="balance">{{ balance|default(0)|format_number }}</span></p>
             </div>
         </div>
     </section>
 
-    <!-- AI Analysis -->
-    <section class="ai-section">
-        <h2>
-            <span class="ai-badge">AI</span>
-            Analysis
-        </h2>
-        <form id="ai_form" class="ai-form">
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Action</label>
-                    <select name="action" class="form-select">
-                        <option value="summarize">Summarize</option>
-                        <option value="min">Minimum</option>
-                        <option value="max">Maximum</option>
-                        <option value="totals">Totals</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Metric</label>
-                    <select name="metric" class="form-select">
-                        <option value="income">Income</option>
-                        <option value="expense">Expenditure</option>
-                        <option value="tcost">Transaction Cost</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Start Date</label>
-                    <input type="date" name="start_date" class="form-input">
-                </div>
-                <div class="form-group">
-                    <label>End Date</label>
-                    <input type="date" name="end_date" class="form-input">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-ai">
-                <span class="btn-text">Analyze with AI</span>
-                <span class="btn-loading" style="display: none;">
-                    <span class="spinner"></span>
-                    Analyzing...
-                </span>
-            </button>
-        </form>
-        <div id="ai_output" class="ai-output"></div>
-    </section>
-
-    <!-- Filters + Sort -->
+    <!-- Transaction Filters -->
     <section class="filter-section">
-        <h2>Transaction History</h2>
+        <h2>Filter Transactions</h2>
         <div class="filter-controls">
             <div class="form-group">
-                <label>Type</label>
-                <select id="tx_type" class="form-select">
-                    <option value="all">All Transactions</option>
-                    <option value="income">Income</option>
-                    <option value="expense">Expenditure</option>
-                    <option value="charges">Transaction Charges</option>
+                <label for="type_filter">Transaction Type</label>
+                <select id="type_filter" class="form-select">
+                    <option value="all">All</option>
+                    <option value="income">Income Only</option>
+                    <option value="expense">Expense Only</option>
+                    <option value="charge">Charges Only</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Start Date</label>
-                <input type="date" id="start_date_filter" class="form-input">
-            </div>
-            <div class="form-group">
-                <label>End Date</label>
-                <input type="date" id="end_date_filter" class="form-input">
-            </div>
-            <div class="form-group">
-                <label>Sort Order</label>
-                <select id="sort_order" class="form-select">
-                    <option value="desc">Newest First</option>
-                    <option value="asc">Oldest First</option>
+                <label for="amount_filter">Amount Filter</label>
+                <select id="amount_filter" class="form-select">
+                    <option value="none">None</option>
+                    <option value="max">Maximum</option>
+                    <option value="min">Minimum</option>
                 </select>
             </div>
-            <button id="filter_btn" class="btn btn-secondary">Apply Filters</button>
+            <div class="form-group">
+                <label for="timeline_filter">Timeline</label>
+                <div>
+                    <input type="date" id="start_date" class="form-input" placeholder="Start Date">
+                    <input type="date" id="end_date" class="form-input" placeholder="End Date">
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" id="apply_filters">Apply Filters</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary" id="download_pdf">Download PDF</button>
+            </div>
         </div>
     </section>
 
     <!-- Transactions Table -->
     <section class="table-section">
+        <h2>Transaction History</h2>
         <div class="table-wrapper">
             <table class="transactions-table">
                 <thead>
@@ -171,189 +119,234 @@
                     </tr>
                 </thead>
                 <tbody id="tx_body">
-                    {% for t in transactions %}
-                    <tr>
-                        <td>{{ t.date }}</td>
-                        <td class="details-cell">{{ t.details }}</td>
-                        <td>
-                            {% if t.category == "charge" %}
-                            <span class="badge badge-charge">Charge</span>
-                            {% elif t.category == "income" %}
-                            <span class="badge badge-income">Income</span>
-                            {% elif t.category == "expense" %}
-                            <span class="badge badge-expense">Expense</span>
-                            {% else %}
-                            <span class="badge">-</span>
-                            {% endif %}
-                        </td>
-                        <td class="amount-cell income">
-                            {% if t.category == "income" %}{{ t.amount }}{% else %}0{% endif %}
-                        </td>
-                        <td class="amount-cell expense">
-                            {% if t.category == "expense" %}{{ t.amount }}{% else %}0{% endif %}
-                        </td>
-                        <td class="amount-cell charge">
-                            {% if t.category == "charge" %}{{ t.amount }}{% else %}0{% endif %}
-                        </td>
-                        <td class="amount-cell">-</td>
-                    </tr>
-                    {% endfor %}
+                    {% if transactions %}
+                        {% for t in transactions %}
+                        <tr>
+                            <td>{{ t.date }}</td>
+                            <td>{{ t.details }}</td>
+                            <td>
+                                {% if t.category == "charge" %}<span class="badge badge-charge">Charge</span>
+                                {% elif t.category == "income" %}<span class="badge badge-income">Income</span>
+                                {% elif t.category == "expense" %}<span class="badge badge-expense">Expense</span>
+                                {% else %}<span class="badge">-</span>{% endif %}
+                            </td>
+                            <td>{% if t.category == "income" %}{{ t.amount|format_number }}{% else %}0{% endif %}</td>
+                            <td>{% if t.category == "expense" %}{{ t.amount|format_number }}{% else %}0{% endif %}</td>
+                            <td>{% if t.category == "charge" %}{{ t.amount|format_number }}{% else %}0{% endif %}</td>
+                            <td>{{ t.balance|format_number if t.balance else '-' }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr id="no_transactions">
+                            <td colspan="7" style="text-align: center; padding: 40px;">
+                                No transactions to display. Upload an M-Pesa statement to get started.
+                            </td>
+                        </tr>
+                    {% endif %}
                 </tbody>
             </table>
         </div>
-
-        <!-- Pagination -->
         <div class="pagination">
-            <button id="prev_page" class="pagination-btn">← Previous</button>
-            <span class="pagination-info">
-                Page <span id="current_page">{{ page|default(1) }}</span> of <span id="total_pages">{{ total_pages|default(1) }}</span>
-            </span>
-            <button id="next_page" class="pagination-btn">Next →</button>
+            <button class="pagination-btn" id="prev_page" disabled>Previous</button>
+            <span class="pagination-info" id="page_info">Page 1 of 1</span>
+            <button class="pagination-btn" id="next_page" disabled>Next</button>
         </div>
     </section>
+
+    <!-- AI Chat Section -->
+    <section class="ai-chat-section">
+        <h2>Ask AI about your finances</h2>
+        <div class="ai-chat-messages" id="ai_chat_messages">
+            <div class="ai-chat-message bot">Hello! I'm your M-Ledger AI assistant. Upload a statement and ask me questions about your finances.</div>
+        </div>
+        <form id="ai_chat_form" class="ai-chat-form">
+            <input type="text" id="ai_chat_input" placeholder="Type your question...">
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
 </div>
 
 <script>
-let current_page = 1;
-let total_pages = parseInt("{{ total_pages | default(1) }}") || 1;
-
-// Format number with commas
-function formatNumber(num) {
-    return parseFloat(num).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-}
-
-// Load transactions via AJAX
-function load_transactions(page) {
-    page = page || 1;
-
-    $.get("/transactions", {
-        page: page,
-        type: $("#tx_type").val(),
-        start_date: $("#start_date_filter").val(),
-        end_date: $("#end_date_filter").val(),
-        sort_order: $("#sort_order").val()
-    }, function(data){
-        $("#tx_body").html("");
-
-        if(data.transactions && data.transactions.length > 0){
-            data.transactions.forEach(function(t){
-                let txType = "-";
-                let badgeClass = "";
-                if(t.category === "charge") {
-                    txType = "Charge";
-                    badgeClass = "badge-charge";
-                } else if(t.category === "income") {
-                    txType = "Income";
-                    badgeClass = "badge-income";
-                } else if(t.category === "expense") {
-                    txType = "Expense";
-                    badgeClass = "badge-expense";
-                }
-
-                let paidIn = t.category === "income" ? formatNumber(t.amount) : "0.00";
-                let paidOut = t.category === "expense" ? formatNumber(t.amount) : "0.00";
-                let charges = t.category === "charge" ? formatNumber(t.amount) : "0.00";
-
-                $("#tx_body").append(
-                    "<tr>" +
-                    "<td>" + t.date + "</td>" +
-                    "<td class='details-cell'>" + t.details + "</td>" +
-                    "<td><span class='badge " + badgeClass + "'>" + txType + "</span></td>" +
-                    "<td class='amount-cell income'>" + paidIn + "</td>" +
-                    "<td class='amount-cell expense'>" + paidOut + "</td>" +
-                    "<td class='amount-cell charge'>" + charges + "</td>" +
-                    "<td class='amount-cell'>-</td>" +
-                    "</tr>"
-                );
-            });
-        }
-
-        // Update summary with formatted numbers
-        $("#income").text(formatNumber(data.income || 0));
-        $("#expenses").text(formatNumber(data.expenses || 0));
-        $("#charges").text(formatNumber(data.charges || 0));
-        $("#balance").text(formatNumber(data.balance || 0));
-
-        // Update pagination
-        current_page = data.page || 1;
-        total_pages = data.total_pages || 1;
-        $("#current_page").text(current_page);
-        $("#total_pages").text(total_pages);
-    });
-}
-
-// Filter button
-$("#filter_btn").click(function(e){
-    e.preventDefault();
-    load_transactions(1);
-});
-
-// Pagination buttons
-$("#prev_page").click(function(){
-    if(current_page > 1) load_transactions(current_page - 1);
-});
-$("#next_page").click(function(){
-    if(current_page < total_pages) load_transactions(current_page + 1);
-});
-
-// AI Analysis form
-$("#ai_form").submit(function(e){
-    e.preventDefault();
-    
-    // Show loading state
-    $(this).find('.btn-text').hide();
-    $(this).find('.btn-loading').show();
-    $(this).find('button').prop('disabled', true);
-    $("#ai_output").html('<div class="ai-loading"><span class="spinner"></span> Analyzing your data...</div>');
-    
-    $.post("/ai_action", $(this).serialize(), function(data){
-        // Hide loading state
-        $("#ai_form").find('.btn-text').show();
-        $("#ai_form").find('.btn-loading').hide();
-        $("#ai_form").find('button').prop('disabled', false);
-        
-        // Show AI response
-        $("#ai_output").html('<div class="ai-response">' + (data.ai_explanation || "No response") + '</div>');
-    }).fail(function(){
-        $("#ai_form").find('.btn-text').show();
-        $("#ai_form").find('.btn-loading').hide();
-        $("#ai_form").find('button').prop('disabled', false);
-        $("#ai_output").html('<div class="ai-error">Failed to get AI response. Please try again.</div>');
-    });
-});
-
+// -----------------------------
 // Theme toggle
+// -----------------------------
 const themeToggle = document.getElementById('theme_toggle');
-const currentTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', currentTheme);
-
-themeToggle.addEventListener('click', function() {
-    const theme = document.documentElement.getAttribute('data-theme');
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
+themeToggle.addEventListener('click', () => {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 });
 
-// File input display
-document.getElementById('statement').addEventListener('change', function(e) {
-    const fileName = e.target.files[0]?.name || 'Choose File';
-    document.querySelector('.file-text').textContent = fileName;
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Update file name display
+    document.getElementById('statement').addEventListener('change', function(e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'Choose File';
+        document.getElementById('file_text').textContent = fileName;
+    });
 });
 
-// Format initial numbers on page load
-$(document).ready(function() {
-    $("#income").text(formatNumber($("#income").text() || 0));
-    $("#expenses").text(formatNumber($("#expenses").text() || 0));
-    $("#charges").text(formatNumber($("#charges").text() || 0));
-    $("#balance").text(formatNumber($("#balance").text() || 0));
+// -----------------------------
+// AI Chat functionality
+// -----------------------------
+$('#ai_chat_form').submit(function(e){
+    e.preventDefault();
+    const msg = $('#ai_chat_input').val().trim();
+    if(!msg) return;
     
-    // Format table amounts
-    $(".amount-cell").each(function() {
-        const val = $(this).text();
-        if (val !== '-' && val !== '0') {
-            $(this).text(formatNumber(val));
+    // Add user message
+    $('#ai_chat_messages').append('<div class="ai-chat-message user">' + msg + '</div>');
+    $('#ai_chat_input').val('');
+    
+    // Add loading indicator
+    $('#ai_chat_messages').append('<div class="ai-chat-message bot loading">Thinking...</div>');
+    
+    // Scroll to bottom
+    $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+    
+    $.post("/ai_chat", { question: msg }, function(data){
+        $('.ai-chat-message.bot.loading').last().remove();
+        $('#ai_chat_messages').append('<div class="ai-chat-message bot">' + (data.answer || "No response from AI") + '</div>');
+        $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+    }).fail(function(){
+        $('.ai-chat-message.bot.loading').last().remove();
+        $('#ai_chat_messages').append('<div class="ai-chat-message bot">Failed to get AI response. Please try again.</div>');
+        $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+    });
+});
+
+// -----------------------------
+// Apply Filters functionality
+// -----------------------------
+$('#apply_filters').click(function(){
+    const type_filter = $('#type_filter').val();
+    const amount_filter = $('#amount_filter').val();
+    const start_date = $('#start_date').val();
+    const end_date = $('#end_date').val();
+    
+    // Show loading
+    $('#tx_body').html('<tr><td colspan="7" style="text-align: center; padding: 20px;">Applying filters...</td></tr>');
+
+    $.ajax({
+        url: "/filter_transactions",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            type_filter: type_filter,
+            amount_filter: amount_filter,
+            start_date: start_date,
+            end_date: end_date
+        }),
+        success: function(data){
+            const tbody = $('#tx_body');
+            tbody.empty();
+            
+            if(data.transactions && data.transactions.length > 0) {
+                data.transactions.forEach(t => {
+                    const badge = t.category === "charge" ? '<span class="badge badge-charge">Charge</span>' :
+                                  t.category === "income" ? '<span class="badge badge-income">Income</span>' :
+                                  t.category === "expense" ? '<span class="badge badge-expense">Expense</span>' :
+                                  '<span class="badge">-</span>';
+                    
+                    const paidIn = t.category === "income" ? t.amount : 0;
+                    const paidOut = t.category === "expense" ? t.amount : 0;
+                    const charges = t.category === "charge" ? t.amount : 0;
+                    const balance = t.balance ? t.balance : '-';
+                    
+                    tbody.append(`
+                        <tr>
+                            <td>${t.date}</td>
+                            <td>${t.details}</td>
+                            <td>${badge}</td>
+                            <td>${paidIn}</td>
+                            <td>${paidOut}</td>
+                            <td>${charges}</td>
+                            <td>${balance}</td>
+                        </tr>
+                    `);
+                });
+            } else {
+                tbody.append('<tr><td colspan="7" style="text-align: center; padding: 40px;">No transactions match your filters.</td></tr>');
+            }
+        },
+        error: function(){
+            alert("Failed to apply filters. Please try again.");
+            location.reload(); // Reload to show original data
         }
     });
+});
+
+// -----------------------------
+// Download PDF functionality
+// -----------------------------
+$('#download_pdf').click(function(){
+    $.ajax({
+        url: "/download_pdf",
+        type: "GET",
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function(data){
+            const url = window.URL.createObjectURL(data);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'M-Ledger_Report.pdf';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        },
+        error: function(){
+            alert("Failed to generate PDF report. Please try again.");
+        }
+    });
+});
+
+// -----------------------------
+// Pagination functionality
+// -----------------------------
+let currentPage = 1;
+const transactionsPerPage = 20;
+
+function updatePagination() {
+    const totalRows = $('#tx_body tr').length;
+    const totalPages = Math.ceil(totalRows / transactionsPerPage);
+    
+    $('#page_info').text(`Page ${currentPage} of ${totalPages}`);
+    $('#prev_page').prop('disabled', currentPage === 1);
+    $('#next_page').prop('disabled', currentPage === totalPages || totalPages === 0);
+    
+    // Show/hide rows based on current page
+    $('#tx_body tr').each(function(index) {
+        $(this).toggle(index >= (currentPage - 1) * transactionsPerPage && index < currentPage * transactionsPerPage);
+    });
+}
+
+$('#prev_page').click(function() {
+    if(currentPage > 1) {
+        currentPage--;
+        updatePagination();
+    }
+});
+
+$('#next_page').click(function() {
+    const totalRows = $('#tx_body tr').length;
+    const totalPages = Math.ceil(totalRows / transactionsPerPage);
+    
+    if(currentPage < totalPages) {
+        currentPage++;
+        updatePagination();
+    }
+});
+
+// Initialize pagination on page load
+$(document).ready(function() {
+    updatePagination();
 });
 </script>
 
