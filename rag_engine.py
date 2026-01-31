@@ -1,72 +1,33 @@
-import os
-from pdf_parser import parse_mpesa_pdf
+from pdf_parser import parse_pdf
 
-def load_statements(statements_folder="mpesa_statements", passwords_folder="passwords"):
-    """
-    Load all PDF statements and parse transactions.
-    Automatically detects and applies passwords from the passwords folder.
-    """
-    statements = []
-
-    # Load all passwords into a dict
-    pw_dict = {}
-    for pw_file in os.listdir(passwords_folder):
-        if pw_file.endswith(".txt"):
-            base_name = os.path.splitext(pw_file)[0]
-            with open(os.path.join(passwords_folder, pw_file), "r", encoding="utf-8") as f:
-                pw_dict[base_name] = f.read().strip()  # remove whitespace/newlines
-
-    # Process each PDF
-    for pdf_file in os.listdir(statements_folder):
-        if not pdf_file.lower().endswith(".pdf"):
-            continue
-
-        pdf_path = os.path.join(statements_folder, pdf_file)
-        base_name = os.path.splitext(pdf_file)[0]
-
-        # Automatically detect password
-        password = pw_dict.get(base_name, None)
-
-        try:
-            transactions = parse_mpesa_pdf(pdf_path, password=password)
-        except ValueError as e:
-            # PDF still not readable
-            msg = str(e).lower()
-            if "password protected" in msg:
-                print(f"PDF {pdf_file} is password protected but password not found. Skipping.")
-            else:
-                print(f"Error parsing {pdf_file}: {str(e)}")
-            transactions = []
-
-        statements.append({
-            "filename": pdf_file,
-            "transactions": transactions
-        })
-
-    return statements
-
+def ingest_statement(pdf_path, password=None):
+    """RAG ingestion: parse PDF into transactions"""
+    return parse_pdf(pdf_path, password=password)["transactions"]
 
 def answer_question(transactions, question):
-    """
-    Basic RAG replacement: returns simple stats based on user's question
-    """
+    """RAG reasoning: answer questions from transactions"""
     question = question.lower()
-    category = None
+    if not transactions:
+        return "No transactions available."
 
     if "income" in question:
-        category = "income"
-    elif "expenditure" in question or "expense" in question:
-        category = "expense"
-    elif "charge" in question or "transaction cost" in question:
-        category = "charge"
+        total = sum(t["amount"] for t in transactions if t["category"]=="income")
+        return f"Total income: KES {total:,.2f}"
 
-    numbers = [tx["amount"] for tx in transactions if tx["category"] == category] if category else []
+    if "expense" in question or "spending" in question:
+        total = sum(t["amount"] for t in transactions if t["category"]=="expense")
+        return f"Total expenses: KES {total:,.2f}"
 
-    if "sum" in question or "total" in question or "totals" in question:
-        return f"Total {category}: KES {sum(numbers):,.2f}" if numbers else "No data"
-    if "min" in question:
-        return f"Minimum {category}: KES {min(numbers):,.2f}" if numbers else "No data"
-    if "max" in question:
-        return f"Maximum {category}: KES {max(numbers):,.2f}" if numbers else "No data"
+    if "charge" in question or "fee" in question:
+        total = sum(t["amount"] for t in transactions if t["category"]=="charge")
+        return f"Total charges: KES {total:,.2f}"
 
-    return "Sorry, I cannot answer that question."
+    if "balance" in question:
+        bal = transactions[-1].get("balance", "Unknown")
+        return f"Your latest balance is KES {bal}"
+
+    if "largest" in question or "maximum" in question:
+        tx = max(transactions, key=lambda x: x["amount"])
+        return f"Largest transaction: KES {tx['amount']:,.2f} on {tx['date']}"
+
+    return "I can answer questions about income, expenses, charges, and balance."

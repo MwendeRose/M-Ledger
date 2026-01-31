@@ -1,42 +1,65 @@
 import pdfplumber
+import re
 from datetime import datetime
 
-def parse_pdf(pdf_path, password=None):
+def parse_pdf(file_path, password=None):
+    """
+    Parses an MPESA PDF statement, optionally using a password.
+    Returns transactions and summary info.
+    """
     transactions = []
+    total_income = 0
+    total_expense = 0
+    total_charges = 0
 
-    with pdfplumber.open(pdf_path, password=password) as pdf:
-        for page in pdf.pages:
-            table = page.extract_table()
-            if not table:
+    try:
+        with pdfplumber.open(file_path, password=password) as pdf:
+            text = ""
+            for page in pdf.pages:
+                page_text = page.extract_text()
+                if page_text:
+                    text += page_text + "\n"
+
+        lines = text.splitlines()
+        for line in lines:
+            line = line.strip()
+            if not line:
                 continue
+            # Regex for date and KES amount
+            pattern = r'(\d{1,2}/\d{1,2}/\d{4}).*?(?:KES\s*([\d,]+\.?\d*))'
+            match = re.search(pattern, line)
+            if match:
+                date_str = match.group(1)
+                amount = float(match.group(2).replace(',', ''))
 
-            for row in table[1:]:
-                if not row or len(row) < 4:
-                    continue
-
-                date_str, details, amount_str, balance_str = row[:4]
-
-                try:
-                    date_obj = datetime.strptime(date_str.strip(), "%d/%m/%Y")
-                    amount = float(amount_str.replace(",", ""))
-                    balance = float(balance_str.replace(",", ""))
-                except:
-                    continue
-
-                text = details.lower()
-                if "received" in text:
+                if "received" in line.lower() or "deposit" in line.lower():
                     category = "income"
-                elif "charge" in text or "fee" in text:
-                    category = "charge"
-                else:
+                    total_income += amount
+                elif "sent" in line.lower() or "withdraw" in line.lower():
                     category = "expense"
+                    total_expense += amount
+                elif "charge" in line.lower() or "fee" in line.lower():
+                    category = "charge"
+                    total_charges += amount
+                else:
+                    category = "other"
 
                 transactions.append({
-                    "date": date_obj.strftime("%Y-%m-%d"),
-                    "details": details.strip(),
-                    "amount": round(amount, 2),
-                    "balance": round(balance, 2),
-                    "category": category
+                    "date": datetime.strptime(date_str, "%d/%m/%Y").strftime("%Y-%m-%d"),
+                    "details": line[:100],
+                    "amount": amount,
+                    "category": category,
+                    "balance": None
                 })
 
-    return transactions
+    except Exception as e:
+        raise e
+
+    balance = total_income - total_expense - total_charges
+    return {
+        "transactions": transactions,
+        "total_income": total_income,
+        "total_expense": total_expense,
+        "total_charges": total_charges,
+        "balance": balance
+    }
