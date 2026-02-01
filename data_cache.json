@@ -1,0 +1,3410 @@
+{
+  "transactions": [
+    {
+      "date": "2026-02-01",
+      "amount": 0.0,
+      "category": "unknown",
+      "details": "Cash Out 0.00 3,087.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "Cash Out 0.00 3,087.00",
+      "processed_at": "2026-02-01T21:47:47.786186",
+      "balance": 34866.5
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 21168.49,
+      "category": "unknown",
+      "details": "Send Money 21,168.49 14,364.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "Send Money 21,168.49 14,364.00",
+      "processed_at": "2026-02-01T21:47:47.786222",
+      "balance": 34866.5
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 3250.0,
+      "category": "unknown",
+      "details": "Transaction Reversal 3,250.00 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "Transaction Reversal 3,250.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.786242",
+      "balance": 34866.5
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 15262.5,
+      "category": "unknown",
+      "details": "B2C Payment 15,262.50 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "B2C Payment 15,262.50 0.00",
+      "processed_at": "2026-02-01T21:47:47.786258",
+      "balance": 34866.5
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 235.57,
+      "category": "unknown",
+      "details": "Pay Bill 235.57 10,775.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "Pay Bill 235.57 10,775.00",
+      "processed_at": "2026-02-01T21:47:47.786273",
+      "balance": 34866.5
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 10000.0,
+      "category": "unknown",
+      "details": "FSI Withdraw 10,000.00 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "FSI Withdraw 10,000.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.786288",
+      "balance": 34866.5
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 0.0,
+      "category": "unknown",
+      "details": "FSI Deposit 0.00 6,000.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "FSI Deposit 0.00 6,000.00",
+      "processed_at": "2026-02-01T21:47:47.786301",
+      "balance": 34866.5
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 0.0,
+      "category": "unknown",
+      "details": "ODRepayment 0.00 2,702.92",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "ODRepayment 0.00 2,702.92",
+      "processed_at": "2026-02-01T21:47:47.786315",
+      "balance": 34866.5
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 876.06,
+      "category": "expense",
+      "details": "Customer Merchant Payment 876.06 7,141.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "Customer Merchant Payment 876.06 7,141.00",
+      "processed_at": "2026-02-01T21:47:47.786330",
+      "balance": 33990.44
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "Customer Bundle Purchase 0.00 305.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "Customer Bundle Purchase 0.00 305.00",
+      "processed_at": "2026-02-01T21:47:47.786345",
+      "balance": 33990.44
+    },
+    {
+      "date": "2026-02-01",
+      "amount": 50792.62,
+      "category": "expense",
+      "details": "TOTAL: 50,792.62 44,374.92",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TOTAL: 50,792.62 44,374.92",
+      "processed_at": "2026-02-01T21:47:47.786359",
+      "balance": -16802.18
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLV082K96E 2025-12-31 19:31:16 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLV082K96E 2025-12-31 19:31:16 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 7,147.73",
+      "processed_at": "2026-02-01T21:47:47.786395",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLV082K464 2025-12-31 19:22:54 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLV082K464 2025-12-31 19:22:54 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 7,167.73",
+      "processed_at": "2026-02-01T21:47:47.786433",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLV082K464 2025-12-31 19:22:54 Customer Transfer to 254114***285 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLV082K464 2025-12-31 19:22:54 Customer Transfer to 254114***285 - COMPLETED 0.00 230.00 7,174.73",
+      "processed_at": "2026-02-01T21:47:47.786463",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLV082JJZN 2025-12-31 17:04:44 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLV082JJZN 2025-12-31 17:04:44 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 22.00 7,404.73",
+      "processed_at": "2026-02-01T21:47:47.786494",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLV082JDSC 2025-12-31 16:57:30 Merchant Payment to 194083 - Lifestyle COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLV082JDSC 2025-12-31 16:57:30 Merchant Payment to 194083 - Lifestyle COMPLETED 0.00 80.00 7,426.73",
+      "processed_at": "2026-02-01T21:47:47.786522",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLV082JAJO 2025-12-31 15:42:59 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLV082JAJO 2025-12-31 15:42:59 Customer Payment to Small Business to COMPLETED 0.00 50.00 7,506.73",
+      "processed_at": "2026-02-01T21:47:47.786550",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLV082J6PE 2025-12-31 14:41:04 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLV082J6PE 2025-12-31 14:41:04 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 7,556.73",
+      "processed_at": "2026-02-01T21:47:47.786584",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLV082J6PE 2025-12-31 14:41:04 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLV082J6PE 2025-12-31 14:41:04 Customer Payment to Small Business to COMPLETED 0.00 150.00 7,563.73",
+      "processed_at": "2026-02-01T21:47:47.786610",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082GZVA 2025-12-30 19:22:36 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082GZVA 2025-12-30 19:22:36 Customer Payment to Small Business to COMPLETED 0.00 50.00 7,713.73",
+      "processed_at": "2026-02-01T21:47:47.786642",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082GUR0 2025-12-30 19:11:49 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082GUR0 2025-12-30 19:11:49 Customer Payment to Small Business to COMPLETED 0.00 60.00 7,763.73",
+      "processed_at": "2026-02-01T21:47:47.786673",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082GUJE 2025-12-30 19:04:20 Merchant Payment to 7100454 - NICCO COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082GUJE 2025-12-30 19:04:20 Merchant Payment to 7100454 - NICCO COMPLETED 0.00 20.00 7,823.73",
+      "processed_at": "2026-02-01T21:47:47.786707",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082GSPO 2025-12-30 18:50:35 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082GSPO 2025-12-30 18:50:35 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 7,843.73",
+      "processed_at": "2026-02-01T21:47:47.786736",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082GSPO 2025-12-30 18:50:35 Customer Transfer to 254704***129 - JEAN COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082GSPO 2025-12-30 18:50:35 Customer Transfer to 254704***129 - JEAN COMPLETED 0.00 500.00 7,850.73",
+      "processed_at": "2026-02-01T21:47:47.786764",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082G2WY 2025-12-30 16:20:17 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082G2WY 2025-12-30 16:20:17 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 22.00 8,350.73",
+      "processed_at": "2026-02-01T21:47:47.786858",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082G458 2025-12-30 16:00:50 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082G458 2025-12-30 16:00:50 Customer Payment to Small Business to COMPLETED 0.00 20.00 8,372.73",
+      "processed_at": "2026-02-01T21:47:47.786884",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082G6SO 2025-12-30 15:46:14 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082G6SO 2025-12-30 15:46:14 Customer Payment to Small Business to COMPLETED 0.00 30.00 8,392.73",
+      "processed_at": "2026-02-01T21:47:47.786916",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082G03W 2025-12-30 15:38:31 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082G03W 2025-12-30 15:38:31 Customer Payment to Small Business to COMPLETED 0.00 30.00 8,422.73",
+      "processed_at": "2026-02-01T21:47:47.786949",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082G83Z 2025-12-30 15:32:53 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082G83Z 2025-12-30 15:32:53 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 8,452.73",
+      "processed_at": "2026-02-01T21:47:47.786984",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082FSH0 2025-12-30 15:03:02 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082FSH0 2025-12-30 15:03:02 Customer Payment to Small Business to COMPLETED 0.00 20.00 8,472.73",
+      "processed_at": "2026-02-01T21:47:47.787018",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-30",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLU082FY17 2025-12-30 14:39:59 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLU082FY17 2025-12-30 14:39:59 Customer Payment to Small Business to COMPLETED 0.00 50.00 8,492.73",
+      "processed_at": "2026-02-01T21:47:47.787050",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082EBEH 2025-12-29 21:38:08 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082EBEH 2025-12-29 21:38:08 Customer Payment to Small Business to COMPLETED 0.00 20.00 8,542.73",
+      "processed_at": "2026-02-01T21:47:47.787081",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082EASJ 2025-12-29 20:56:06 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082EASJ 2025-12-29 20:56:06 Customer Payment to Small Business to COMPLETED 0.00 100.00 8,562.73",
+      "processed_at": "2026-02-01T21:47:47.787113",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082E12P 2025-12-29 20:32:01 Pay Bill to 522533 - Lipa na KCB Acc. COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082E12P 2025-12-29 20:32:01 Pay Bill to 522533 - Lipa na KCB Acc. COMPLETED 0.00 1,900.00 8,682.73",
+      "processed_at": "2026-02-01T21:47:47.787146",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLT082E12P 2025-12-29 20:32:01 Pay Bill Charge COMPLETED 0.00 20.00 8,662.73",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082E12P 2025-12-29 20:32:01 Pay Bill Charge COMPLETED 0.00 20.00 8,662.73",
+      "processed_at": "2026-02-01T21:47:47.787171",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082DU01 2025-12-29 18:55:29 Customer Transfer to 0703***987 - DENNIS COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082DU01 2025-12-29 18:55:29 Customer Transfer to 0703***987 - DENNIS COMPLETED 0.00 50.00 10,582.73",
+      "processed_at": "2026-02-01T21:47:47.787198",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082DJ9Z 2025-12-29 17:45:23 Customer Transfer to 254114***285 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082DJ9Z 2025-12-29 17:45:23 Customer Transfer to 254114***285 - COMPLETED 0.00 50.00 10,632.73",
+      "processed_at": "2026-02-01T21:47:47.787226",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082DAZI 2025-12-29 17:20:30 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082DAZI 2025-12-29 17:20:30 Customer Payment to Small Business to COMPLETED 0.00 70.00 10,682.73",
+      "processed_at": "2026-02-01T21:47:47.787253",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082D9EC 2025-12-29 17:12:02 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082D9EC 2025-12-29 17:12:02 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 10,752.73",
+      "processed_at": "2026-02-01T21:47:47.787285",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082D9EC 2025-12-29 17:12:02 Customer Transfer to 0111***063 - Erick COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082D9EC 2025-12-29 17:12:02 Customer Transfer to 0111***063 - Erick COMPLETED 0.00 150.00 10,759.73",
+      "processed_at": "2026-02-01T21:47:47.787319",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082D2WD 2025-12-29 16:27:42 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082D2WD 2025-12-29 16:27:42 Customer Payment to Small Business to COMPLETED 0.00 50.00 10,909.73",
+      "processed_at": "2026-02-01T21:47:47.787348",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082D1OJ 2025-12-29 16:16:53 Customer Transfer to 254725***472 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082D1OJ 2025-12-29 16:16:53 Customer Transfer to 254725***472 - COMPLETED 0.00 40.00 10,959.73",
+      "processed_at": "2026-02-01T21:47:47.787382",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082CXJ2 2025-12-29 14:25:10 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082CXJ2 2025-12-29 14:25:10 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 22.00 10,999.73",
+      "processed_at": "2026-02-01T21:47:47.787412",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082CUBV 2025-12-29 14:10:44 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082CUBV 2025-12-29 14:10:44 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 11,021.73",
+      "processed_at": "2026-02-01T21:47:47.787440",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082CR3G 2025-12-29 13:34:55 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082CR3G 2025-12-29 13:34:55 Customer Payment to Small Business to COMPLETED 0.00 30.00 11,041.73",
+      "processed_at": "2026-02-01T21:47:47.787476",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082CL5A 2025-12-29 12:38:30 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082CL5A 2025-12-29 12:38:30 Customer Payment to Small Business to COMPLETED 0.00 20.00 11,071.73",
+      "processed_at": "2026-02-01T21:47:47.787508",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-29",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLT082CFCA 2025-12-29 12:05:55 Offnet C2B Transfer to 585555 - AIRTEL COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLT082CFCA 2025-12-29 12:05:55 Offnet C2B Transfer to 585555 - AIRTEL COMPLETED 0.00 50.00 11,091.73",
+      "processed_at": "2026-02-01T21:47:47.787544",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-27",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLR0828TAC 2025-12-27 23:33:54 Merchant Payment to 5282938 - WALTER COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLR0828TAC 2025-12-27 23:33:54 Merchant Payment to 5282938 - WALTER COMPLETED 0.00 100.00 11,141.73",
+      "processed_at": "2026-02-01T21:47:47.787580",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-27",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLR0828A6P 2025-12-27 20:40:19 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLR0828A6P 2025-12-27 20:40:19 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 11,241.73",
+      "processed_at": "2026-02-01T21:47:47.787651",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-27",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLR0828A6P 2025-12-27 20:40:19 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLR0828A6P 2025-12-27 20:40:19 Customer Payment to Small Business to COMPLETED 0.00 190.00 11,248.73",
+      "processed_at": "2026-02-01T21:47:47.787700",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-27",
+      "amount": 200.0,
+      "category": "income",
+      "details": "TLRRA270RR 2025-12-27 20:19:29 Funds received from 254743***727 - COMPLETED 200.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLRRA270RR 2025-12-27 20:19:29 Funds received from 254743***727 - COMPLETED 200.00 0.00 11,438.73",
+      "processed_at": "2026-02-01T21:47:47.787739",
+      "balance": 34866.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP08222SN 2025-12-25 18:24:59 Pay Bill to 400200 - Co-operative Bank COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP08222SN 2025-12-25 18:24:59 Pay Bill to 400200 - Co-operative Bank COMPLETED 0.00 50.00 11,238.73",
+      "processed_at": "2026-02-01T21:47:47.787774",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0821W5T 2025-12-25 18:02:53 Merchant Payment Online to 515036 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0821W5T 2025-12-25 18:02:53 Merchant Payment Online to 515036 - COMPLETED 0.00 90.00 11,288.73",
+      "processed_at": "2026-02-01T21:47:47.787812",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0821UAZ 2025-12-25 17:47:09 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0821UAZ 2025-12-25 17:47:09 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 11,378.73",
+      "processed_at": "2026-02-01T21:47:47.787845",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLP0821STU 2025-12-25 17:43:58 Pay Bill Charge COMPLETED 0.00 10.00 11,398.73",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0821STU 2025-12-25 17:43:58 Pay Bill Charge COMPLETED 0.00 10.00 11,398.73",
+      "processed_at": "2026-02-01T21:47:47.787883",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0821STU 2025-12-25 17:43:58 Pay Bill to 714888 - LOOP BIZ Acc. 307705 COMPLET",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0821STU 2025-12-25 17:43:58 Pay Bill to 714888 - LOOP BIZ Acc. 307705 COMPLETED 0.00 800.00 11,408.73",
+      "processed_at": "2026-02-01T21:47:47.787984",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0821KOQ 2025-12-25 15:46:27 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0821KOQ 2025-12-25 15:46:27 Customer Payment to Small Business to COMPLETED 0.00 30.00 12,208.73",
+      "processed_at": "2026-02-01T21:47:47.788012",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0821EUC 2025-12-25 15:39:23 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0821EUC 2025-12-25 15:39:23 Customer Payment to Small Business to COMPLETED 0.00 20.00 12,238.73",
+      "processed_at": "2026-02-01T21:47:47.788048",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0820JMH 2025-12-25 10:40:22 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0820JMH 2025-12-25 10:40:22 Customer Payment to Small Business to COMPLETED 0.00 10.00 12,258.73",
+      "processed_at": "2026-02-01T21:47:47.788421",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0820NU8 2025-12-25 10:39:18 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0820NU8 2025-12-25 10:39:18 Customer Payment to Small Business to COMPLETED 0.00 30.00 12,268.73",
+      "processed_at": "2026-02-01T21:47:47.788458",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0820B02 2025-12-25 10:01:21 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0820B02 2025-12-25 10:01:21 Customer Payment to Small Business to COMPLETED 0.00 80.00 12,298.73",
+      "processed_at": "2026-02-01T21:47:47.788496",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0820F5B 2025-12-25 09:59:02 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0820F5B 2025-12-25 09:59:02 Customer Payment to Small Business to COMPLETED 0.00 35.00 12,378.73",
+      "processed_at": "2026-02-01T21:47:47.788531",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-25",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLP0820CAV 2025-12-25 09:53:36 Merchant Payment to 7258988 - FRANCIS COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLP0820CAV 2025-12-25 09:53:36 Merchant Payment to 7258988 - FRANCIS COMPLETED 0.00 150.00 12,413.73",
+      "processed_at": "2026-02-01T21:47:47.788723",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-24",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLO081YUIT 2025-12-24 19:55:37 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLO081YUIT 2025-12-24 19:55:37 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 12,563.73",
+      "processed_at": "2026-02-01T21:47:47.788770",
+      "balance": 32866.5
+    },
+    {
+      "date": "2025-12-24",
+      "amount": 1800.0,
+      "category": "income",
+      "details": "TLO081YP0U 2025-12-24 19:10:44 Business Payment from 300600 - Equity COMPLETED 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLO081YP0U 2025-12-24 19:10:44 Business Payment from 300600 - Equity COMPLETED 1,800.00 0.00 12,583.73",
+      "processed_at": "2026-02-01T21:47:47.788995",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-24",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLO081XNJ0 2025-12-24 15:48:11 Customer Transfer to 254728***920 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLO081XNJ0 2025-12-24 15:48:11 Customer Transfer to 254728***920 - COMPLETED 0.00 20.00 10,783.73",
+      "processed_at": "2026-02-01T21:47:47.789055",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-24",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLO081XOMN 2025-12-24 15:32:41 Customer Transfer to 0748***343 - PAUL COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLO081XOMN 2025-12-24 15:32:41 Customer Transfer to 0748***343 - PAUL COMPLETED 0.00 50.00 10,803.73",
+      "processed_at": "2026-02-01T21:47:47.789105",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-24",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLO081XHWL 2025-12-24 14:35:08 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLO081XHWL 2025-12-24 14:35:08 Customer Payment to Small Business to COMPLETED 0.00 50.00 10,853.73",
+      "processed_at": "2026-02-01T21:47:47.789131",
+      "balance": 34666.5
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081VBDR 2025-12-23 20:19:55 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081VBDR 2025-12-23 20:19:55 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 10,903.73",
+      "processed_at": "2026-02-01T21:47:47.789311",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081UWP6 2025-12-23 19:24:32 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081UWP6 2025-12-23 19:24:32 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 10,923.73",
+      "processed_at": "2026-02-01T21:47:47.789360",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081URFU 2025-12-23 18:33:36 Customer Transfer to 254722***074 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081URFU 2025-12-23 18:33:36 Customer Transfer to 254722***074 - COMPLETED 0.00 100.00 10,943.73",
+      "processed_at": "2026-02-01T21:47:47.789426",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081UK5V 2025-12-23 18:03:05 Merchant Payment Online to 779959 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081UK5V 2025-12-23 18:03:05 Merchant Payment Online to 779959 - COMPLETED 0.00 165.00 11,043.73",
+      "processed_at": "2026-02-01T21:47:47.789479",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081UGEN 2025-12-23 17:10:59 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081UGEN 2025-12-23 17:10:59 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 11,208.73",
+      "processed_at": "2026-02-01T21:47:47.789511",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081UGEN 2025-12-23 17:10:59 Customer Transfer to 254722***751 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081UGEN 2025-12-23 17:10:59 Customer Transfer to 254722***751 - COMPLETED 0.00 150.00 11,215.73",
+      "processed_at": "2026-02-01T21:47:47.789539",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081UDOP 2025-12-23 16:56:22 Merchant Payment to 7230850 - COMPLETED 0.00 950.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081UDOP 2025-12-23 16:56:22 Merchant Payment to 7230850 - COMPLETED 0.00 950.00 11,365.73",
+      "processed_at": "2026-02-01T21:47:47.789570",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081U3WY 2025-12-23 15:26:44 Merchant Payment to 119497 - Quick Mart COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081U3WY 2025-12-23 15:26:44 Merchant Payment to 119497 - Quick Mart COMPLETED 0.00 140.00 12,315.73",
+      "processed_at": "2026-02-01T21:47:47.789605",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081TZG3 2025-12-23 14:55:25 Merchant Payment to 799564 - Pizza Inn COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081TZG3 2025-12-23 14:55:25 Merchant Payment to 799564 - Pizza Inn COMPLETED 0.00 1,290.00 12,455.73",
+      "processed_at": "2026-02-01T21:47:47.789632",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081TN4A 2025-12-23 13:21:07 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081TN4A 2025-12-23 13:21:07 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 13,745.73",
+      "processed_at": "2026-02-01T21:47:47.789663",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLN081TN4A 2025-12-23 13:21:07 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081TN4A 2025-12-23 13:21:07 Customer Payment to Small Business to COMPLETED 0.00 200.00 13,752.73",
+      "processed_at": "2026-02-01T21:47:47.789689",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-23",
+      "amount": 13462.5,
+      "category": "income",
+      "details": "TLN081T2VR 2025-12-23 10:13:27 Salary Payment from 875093 - SHINING COMPLETED 13",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLN081T2VR 2025-12-23 10:13:27 Salary Payment from 875093 - SHINING COMPLETED 13,462.50 0.00 13,952.73",
+      "processed_at": "2026-02-01T21:47:47.789728",
+      "balance": 32866.5
+    },
+    {
+      "date": "2025-12-22",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLM081RVKQ 2025-12-22 20:23:18 Pay Bill to 400200 - Co-operative Bank COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLM081RVKQ 2025-12-22 20:23:18 Pay Bill to 400200 - Co-operative Bank COMPLETED 0.00 20.00 490.23",
+      "processed_at": "2026-02-01T21:47:47.789758",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-22",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLM081RQ3T 2025-12-22 20:18:38 Customer Transfer to 254726***188 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLM081RQ3T 2025-12-22 20:18:38 Customer Transfer to 254726***188 - COMPLETED 0.00 60.00 510.23",
+      "processed_at": "2026-02-01T21:47:47.789796",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-22",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLM081RRC0 2025-12-22 20:15:58 Customer Transfer to 254720***256 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLM081RRC0 2025-12-22 20:15:58 Customer Transfer to 254720***256 - COMPLETED 0.00 55.00 570.23",
+      "processed_at": "2026-02-01T21:47:47.790468",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-22",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLM081ROWK 2025-12-22 20:07:25 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLM081ROWK 2025-12-22 20:07:25 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 625.23",
+      "processed_at": "2026-02-01T21:47:47.790590",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-22",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLM081ROWK 2025-12-22 20:07:25 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLM081ROWK 2025-12-22 20:07:25 Customer Payment to Small Business to COMPLETED 0.00 140.00 632.23",
+      "processed_at": "2026-02-01T21:47:47.790661",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-22",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLM081RASP 2025-12-22 18:56:28 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLM081RASP 2025-12-22 18:56:28 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 772.23",
+      "processed_at": "2026-02-01T21:47:47.790858",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-22",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLM081QVQF 2025-12-22 17:42:50 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLM081QVQF 2025-12-22 17:42:50 Customer Bundle Purchase to 244441 - COMPLETED 0.00 15.00 792.23",
+      "processed_at": "2026-02-01T21:47:47.790919",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-22",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLM081QN7E 2025-12-22 15:47:48 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLM081QN7E 2025-12-22 15:47:48 Customer Bundle Purchase to 244441 - COMPLETED 0.00 15.00 807.23",
+      "processed_at": "2026-02-01T21:47:47.790969",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-21",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLL081OBML 2025-12-21 19:26:57 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLL081OBML 2025-12-21 19:26:57 Customer Bundle Purchase to 244441 - COMPLETED 0.00 15.00 822.23",
+      "processed_at": "2026-02-01T21:47:47.791030",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-21",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLL081MI53 2025-12-21 10:56:10 Pay Bill to 247247 - Equity Paybill Account COMPL",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLL081MI53 2025-12-21 10:56:10 Pay Bill to 247247 - Equity Paybill Account COMPLETED 0.00 550.00 847.23",
+      "processed_at": "2026-02-01T21:47:47.791110",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-21",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLL081MI53 2025-12-21 10:56:10 Pay Bill Charge COMPLETED 0.00 10.00 837.23",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLL081MI53 2025-12-21 10:56:10 Pay Bill Charge COMPLETED 0.00 10.00 837.23",
+      "processed_at": "2026-02-01T21:47:47.791987",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-21",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLL081MLM7 2025-12-21 10:00:42 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLL081MLM7 2025-12-21 10:00:42 Customer Bundle Purchase to 244441 - COMPLETED 0.00 15.00 1,397.23",
+      "processed_at": "2026-02-01T21:47:47.792233",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-20",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLK081KBVY 2025-12-20 16:27:50 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLK081KBVY 2025-12-20 16:27:50 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 1,412.23",
+      "processed_at": "2026-02-01T21:47:47.792501",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-20",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLK081KBVY 2025-12-20 16:27:50 Customer Transfer to 0707***015 - COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLK081KBVY 2025-12-20 16:27:50 Customer Transfer to 0707***015 - COMPLETED 0.00 500.00 1,419.23",
+      "processed_at": "2026-02-01T21:47:47.792552",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-20",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLK081JU79 2025-12-20 14:20:32 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLK081JU79 2025-12-20 14:20:32 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 1,919.23",
+      "processed_at": "2026-02-01T21:47:47.792589",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-20",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLK081J0IW 2025-12-20 09:28:25 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLK081J0IW 2025-12-20 09:28:25 Customer Bundle Purchase to 244441 - COMPLETED 0.00 15.00 1,939.23",
+      "processed_at": "2026-02-01T21:47:47.792625",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-20",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLK081IHIY 2025-12-20 01:35:28 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLK081IHIY 2025-12-20 01:35:28 Customer Bundle Purchase to 244441 - COMPLETED 0.00 15.00 1,954.23",
+      "processed_at": "2026-02-01T21:47:47.792658",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 1000.0,
+      "category": "income",
+      "details": "TLJHY1L2VW 2025-12-19 23:56:17 Funds received from 254710***935 - COMPLETED 1,00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJHY1L2VW 2025-12-19 23:56:17 Funds received from 254710***935 - COMPLETED 1,000.00 0.00 1,969.23",
+      "processed_at": "2026-02-01T21:47:47.792691",
+      "balance": 17404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081H9CV 2025-12-19 18:37:36 Merchant Payment Online to 7865723 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081H9CV 2025-12-19 18:37:36 Merchant Payment Online to 7865723 - COMPLETED 0.00 85.00 969.23",
+      "processed_at": "2026-02-01T21:47:47.792720",
+      "balance": 17404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081H0EA 2025-12-19 17:50:05 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081H0EA 2025-12-19 17:50:05 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 1,054.23",
+      "processed_at": "2026-02-01T21:47:47.792747",
+      "balance": 17404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081H0EA 2025-12-19 17:50:05 Customer Transfer to 254769***061 - ALEX COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081H0EA 2025-12-19 17:50:05 Customer Transfer to 254769***061 - ALEX COMPLETED 0.00 160.00 1,061.23",
+      "processed_at": "2026-02-01T21:47:47.792773",
+      "balance": 17404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081GYNF 2025-12-19 17:29:53 Customer Transfer to 254728***349 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081GYNF 2025-12-19 17:29:53 Customer Transfer to 254728***349 - COMPLETED 0.00 100.00 1,221.23",
+      "processed_at": "2026-02-01T21:47:47.792799",
+      "balance": 17404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081GN0C 2025-12-19 15:45:36 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081GN0C 2025-12-19 15:45:36 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 19.00 1,321.23",
+      "processed_at": "2026-02-01T21:47:47.792827",
+      "balance": 17404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081GC8T 2025-12-19 14:12:57 Customer Transfer to 254711***235 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081GC8T 2025-12-19 14:12:57 Customer Transfer to 254711***235 - COMPLETED 0.00 50.00 1,340.23",
+      "processed_at": "2026-02-01T21:47:47.792853",
+      "balance": 17404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081GBVH 2025-12-19 13:50:41 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081GBVH 2025-12-19 13:50:41 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 109.77 1,390.23",
+      "processed_at": "2026-02-01T21:47:47.792897",
+      "balance": 17404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 1500.0,
+      "category": "income",
+      "details": "TLJ2V1KAYF 2025-12-19 13:50:41 Funds received from 254711***106 - LILIAN COMPLET",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ2V1KAYF 2025-12-19 13:50:41 Funds received from 254711***106 - LILIAN COMPLETED 1,500.00 0.00 1,500.00",
+      "processed_at": "2026-02-01T21:47:47.792927",
+      "balance": 18904.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081G4HU 2025-12-19 13:43:04 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081G4HU 2025-12-19 13:43:04 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 10.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.792952",
+      "balance": 18904.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 10.0,
+      "category": "unknown",
+      "details": "TLJ081G4HU 2025-12-19 13:43:04 OverDraft of Credit Party COMPLETED 10.00 0.00 10",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081G4HU 2025-12-19 13:43:04 OverDraft of Credit Party COMPLETED 10.00 0.00 10.00",
+      "processed_at": "2026-02-01T21:47:47.792986",
+      "balance": 18904.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081G7GE 2025-12-19 13:41:27 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081G7GE 2025-12-19 13:41:27 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 22.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.793008",
+      "balance": 18904.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 22.0,
+      "category": "unknown",
+      "details": "TLJ081G7GE 2025-12-19 13:41:27 OverDraft of Credit Party COMPLETED 22.00 0.00 22",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081G7GE 2025-12-19 13:41:27 OverDraft of Credit Party COMPLETED 22.00 0.00 22.00",
+      "processed_at": "2026-02-01T21:47:47.793042",
+      "balance": 18904.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081FS4Y 2025-12-19 12:03:46 Customer Send Money to Micro SME COMPLETED 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081FS4Y 2025-12-19 12:03:46 Customer Send Money to Micro SME COMPLETED 0.00 100.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.793074",
+      "balance": 18904.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 76.68,
+      "category": "unknown",
+      "details": "TLJ081FS4Y 2025-12-19 12:03:46 OverDraft of Credit Party COMPLETED 76.68 0.00 10",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081FS4Y 2025-12-19 12:03:46 OverDraft of Credit Party COMPLETED 76.68 0.00 100.00",
+      "processed_at": "2026-02-01T21:47:47.793111",
+      "balance": 18904.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081FZGH 2025-12-19 11:55:52 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081FZGH 2025-12-19 11:55:52 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 476.68 23.32",
+      "processed_at": "2026-02-01T21:47:47.793161",
+      "balance": 18904.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 500.0,
+      "category": "income",
+      "details": "TLJ991D08G 2025-12-19 11:55:51 Funds received from 0700***020 - Stellah COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ991D08G 2025-12-19 11:55:51 Funds received from 0700***020 - Stellah COMPLETED 500.00 0.00 500.00",
+      "processed_at": "2026-02-01T21:47:47.793189",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081FQFO 2025-12-19 10:44:26 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081FQFO 2025-12-19 10:44:26 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 22.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.793367",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 22.0,
+      "category": "unknown",
+      "details": "TLJ081FQFO 2025-12-19 10:44:26 OverDraft of Credit Party COMPLETED 22.00 0.00 22",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081FQFO 2025-12-19 10:44:26 OverDraft of Credit Party COMPLETED 22.00 0.00 22.00",
+      "processed_at": "2026-02-01T21:47:47.793402",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLJ081FLRS 2025-12-19 10:15:46 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081FLRS 2025-12-19 10:15:46 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 100.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.793424",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-19",
+      "amount": 100.0,
+      "category": "unknown",
+      "details": "TLJ081FLRS 2025-12-19 10:15:46 OverDraft of Credit Party COMPLETED 100.00 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLJ081FLRS 2025-12-19 10:15:46 OverDraft of Credit Party COMPLETED 100.00 0.00 100.00",
+      "processed_at": "2026-02-01T21:47:47.793453",
+      "balance": 19404.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081E9QM 2025-12-18 20:07:37 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081E9QM 2025-12-18 20:07:37 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 30.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.793474",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 30.0,
+      "category": "unknown",
+      "details": "TLI081E9QM 2025-12-18 20:07:37 OverDraft of Credit Party COMPLETED 30.00 0.00 30",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081E9QM 2025-12-18 20:07:37 OverDraft of Credit Party COMPLETED 30.00 0.00 30.00",
+      "processed_at": "2026-02-01T21:47:47.793506",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081E5JW 2025-12-18 19:32:51 Customer Send Money to Micro SME COMPLETED 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081E5JW 2025-12-18 19:32:51 Customer Send Money to Micro SME COMPLETED 0.00 100.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.793530",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 100.0,
+      "category": "unknown",
+      "details": "TLI081E5JW 2025-12-18 19:32:51 OverDraft of Credit Party COMPLETED 100.00 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081E5JW 2025-12-18 19:32:51 OverDraft of Credit Party COMPLETED 100.00 0.00 100.00",
+      "processed_at": "2026-02-01T21:47:47.793572",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081DO9I 2025-12-18 18:06:22 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DO9I 2025-12-18 18:06:22 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 500.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.793597",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 219.96,
+      "category": "unknown",
+      "details": "TLI081DO9I 2025-12-18 18:06:22 OverDraft of Credit Party COMPLETED 219.96 0.00 5",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DO9I 2025-12-18 18:06:22 OverDraft of Credit Party COMPLETED 219.96 0.00 500.00",
+      "processed_at": "2026-02-01T21:47:47.793649",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081DSQU 2025-12-18 18:05:05 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DSQU 2025-12-18 18:05:05 Customer Payment to Small Business to COMPLETED 0.00 100.00 280.04",
+      "processed_at": "2026-02-01T21:47:47.793674",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081DVD7 2025-12-18 17:54:42 Merchant Payment to 7789932 - MICHAEL COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DVD7 2025-12-18 17:54:42 Merchant Payment to 7789932 - MICHAEL COMPLETED 0.00 15.00 380.04",
+      "processed_at": "2026-02-01T21:47:47.793706",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081DLGO 2025-12-18 17:23:21 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DLGO 2025-12-18 17:23:21 Customer Bundle Purchase to 244441 - COMPLETED 0.00 15.00 395.04",
+      "processed_at": "2026-02-01T21:47:47.793731",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081DJX4 2025-12-18 17:18:42 Customer Transfer to 254741***560 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DJX4 2025-12-18 17:18:42 Customer Transfer to 254741***560 - COMPLETED 0.00 50.00 410.04",
+      "processed_at": "2026-02-01T21:47:47.793766",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081DIU6 2025-12-18 16:14:20 Customer Bundle Purchase to 244441 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DIU6 2025-12-18 16:14:20 Customer Bundle Purchase to 244441 - COMPLETED 0.00 20.00 460.04",
+      "processed_at": "2026-02-01T21:47:47.793794",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLI081DE1N 2025-12-18 15:50:16 Pay Bill Charge COMPLETED 0.00 5.00 630.04",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DE1N 2025-12-18 15:50:16 Pay Bill Charge COMPLETED 0.00 5.00 630.04",
+      "processed_at": "2026-02-01T21:47:47.793849",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081DE1N 2025-12-18 15:50:16 Pay Bill to 400200 - Co-operative Bank COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081DE1N 2025-12-18 15:50:16 Pay Bill to 400200 - Co-operative Bank COMPLETED 0.00 150.00 480.04",
+      "processed_at": "2026-02-01T21:47:47.793877",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081D863 2025-12-18 14:46:48 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081D863 2025-12-18 14:46:48 Customer Payment to Small Business to COMPLETED 0.00 100.00 635.04",
+      "processed_at": "2026-02-01T21:47:47.793911",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081CW9I 2025-12-18 13:33:53 Merchant Payment to 5970296 - SHOP COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081CW9I 2025-12-18 13:33:53 Merchant Payment to 5970296 - SHOP COMPLETED 0.00 50.00 735.04",
+      "processed_at": "2026-02-01T21:47:47.793946",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081CX6K 2025-12-18 12:59:20 Merchant Payment to 6625891 - Lazaro COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081CX6K 2025-12-18 12:59:20 Merchant Payment to 6625891 - Lazaro COMPLETED 0.00 19.00 785.04",
+      "processed_at": "2026-02-01T21:47:47.793977",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081CSG0 2025-12-18 12:37:45 Merchant Payment to 5970296 - SHOP COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081CSG0 2025-12-18 12:37:45 Merchant Payment to 5970296 - SHOP COMPLETED 0.00 120.00 804.04",
+      "processed_at": "2026-02-01T21:47:47.794008",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081CE7P 2025-12-18 10:53:59 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081CE7P 2025-12-18 10:53:59 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 75.96 924.04",
+      "processed_at": "2026-02-01T21:47:47.794039",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 1000.0,
+      "category": "income",
+      "details": "TLI9919HQB 2025-12-18 10:53:58 Funds received from 0700***020 - Stellah COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI9919HQB 2025-12-18 10:53:58 Funds received from 0700***020 - Stellah COMPLETED 1,000.00 0.00 1,000.00",
+      "processed_at": "2026-02-01T21:47:47.794074",
+      "balance": 16304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081BNRS 2025-12-18 03:33:37 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081BNRS 2025-12-18 03:33:37 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 100.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.794123",
+      "balance": 16304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 75.2,
+      "category": "unknown",
+      "details": "TLI081BNRS 2025-12-18 03:33:37 OverDraft of Credit Party COMPLETED 75.20 0.00 10",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081BNRS 2025-12-18 03:33:37 OverDraft of Credit Party COMPLETED 75.20 0.00 100.00",
+      "processed_at": "2026-02-01T21:47:47.794163",
+      "balance": 16304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081BKU0 2025-12-18 02:48:42 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081BKU0 2025-12-18 02:48:42 Customer Payment to Small Business to COMPLETED 0.00 90.00 24.80",
+      "processed_at": "2026-02-01T21:47:47.794190",
+      "balance": 16304.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 100.0,
+      "category": "income",
+      "details": "TLICT1BVIS 2025-12-18 02:08:48 Funds received from 254746***954 - COMPLETED 100.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLICT1BVIS 2025-12-18 02:08:48 Funds received from 254746***954 - COMPLETED 100.00 0.00 114.80",
+      "processed_at": "2026-02-01T21:47:47.794229",
+      "balance": 16404.0
+    },
+    {
+      "date": "2025-12-18",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLI081BS18 2025-12-18 01:56:56 Customer Transfer to 254746***954 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLI081BS18 2025-12-18 01:56:56 Customer Transfer to 254746***954 - COMPLETED 0.00 100.00 14.80",
+      "processed_at": "2026-02-01T21:47:47.794269",
+      "balance": 16404.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH081BLV0 2025-12-17 23:47:37 Customer Transfer to 254114***285 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH081BLV0 2025-12-17 23:47:37 Customer Transfer to 254114***285 - COMPLETED 0.00 25.00 114.80",
+      "processed_at": "2026-02-01T21:47:47.794304",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH081BD6Q 2025-12-17 21:57:25 Merchant Payment to 6230441 - FARMERS COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH081BD6Q 2025-12-17 21:57:25 Merchant Payment to 6230441 - FARMERS COMPLETED 0.00 190.00 139.80",
+      "processed_at": "2026-02-01T21:47:47.794339",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH081B0LB 2025-12-17 20:18:25 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH081B0LB 2025-12-17 20:18:25 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 19.00 329.80",
+      "processed_at": "2026-02-01T21:47:47.794369",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH081AYT8 2025-12-17 20:05:22 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH081AYT8 2025-12-17 20:05:22 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 22.00 348.80",
+      "processed_at": "2026-02-01T21:47:47.794399",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH081A9BO 2025-12-17 16:17:03 Merchant Payment to 6139553 - DENNIS COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH081A9BO 2025-12-17 16:17:03 Merchant Payment to 6139553 - DENNIS COMPLETED 0.00 30.00 370.80",
+      "processed_at": "2026-02-01T21:47:47.794513",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH0819H4A 2025-12-17 13:47:53 Merchant Payment to 7808793 - JACOB COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH0819H4A 2025-12-17 13:47:53 Merchant Payment to 7808793 - JACOB COMPLETED 0.00 165.00 400.80",
+      "processed_at": "2026-02-01T21:47:47.794550",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH0819AMG 2025-12-17 12:00:22 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH0819AMG 2025-12-17 12:00:22 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 565.80",
+      "processed_at": "2026-02-01T21:47:47.794588",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH0819AMG 2025-12-17 12:00:22 Customer Transfer to 254759***564 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH0819AMG 2025-12-17 12:00:22 Customer Transfer to 254759***564 - COMPLETED 0.00 300.00 572.80",
+      "processed_at": "2026-02-01T21:47:47.794644",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH08194KU 2025-12-17 10:55:52 Merchant Payment to 9758978 - VICTOR COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH08194KU 2025-12-17 10:55:52 Merchant Payment to 9758978 - VICTOR COMPLETED 0.00 65.00 872.80",
+      "processed_at": "2026-02-01T21:47:47.794685",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH0818TSI 2025-12-17 09:11:06 Customer Transfer to 254758***248 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH0818TSI 2025-12-17 09:11:06 Customer Transfer to 254758***248 - COMPLETED 0.00 50.00 937.80",
+      "processed_at": "2026-02-01T21:47:47.794722",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH0818S0Q 2025-12-17 08:30:04 Pay Bill Online to 714777 - LOOP C2B Acc. COMPLET",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH0818S0Q 2025-12-17 08:30:04 Pay Bill Online to 714777 - LOOP C2B Acc. COMPLETED 0.00 5.00 987.80",
+      "processed_at": "2026-02-01T21:47:47.794760",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 125.0,
+      "category": "income",
+      "details": "TLH0C18Q0Q 2025-12-17 02:11:50 Funds received from 0714***107 - Mary COMPLETED 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH0C18Q0Q 2025-12-17 02:11:50 Funds received from 0714***107 - Mary COMPLETED 125.00 0.00 992.80",
+      "processed_at": "2026-02-01T21:47:47.794802",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH0818H5T 2025-12-17 02:10:34 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH0818H5T 2025-12-17 02:10:34 Customer Transfer of Funds Charge COMPLETED 0.00 13.00 867.80",
+      "processed_at": "2026-02-01T21:47:47.794836",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-17",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLH0818H5T 2025-12-17 02:10:34 Customer Transfer to 254720***899 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLH0818H5T 2025-12-17 02:10:34 Customer Transfer to 254720***899 - COMPLETED 0.00 600.00 880.80",
+      "processed_at": "2026-02-01T21:47:47.794869",
+      "balance": 15304.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG08188SR 2025-12-16 22:20:06 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG08188SR 2025-12-16 22:20:06 Customer Payment to Small Business to COMPLETED 0.00 50.00 1,480.80",
+      "processed_at": "2026-02-01T21:47:47.794901",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLG081859T 2025-12-16 22:06:21 Pay Bill Charge COMPLETED 0.00 5.00 1,530.80",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG081859T 2025-12-16 22:06:21 Pay Bill Charge COMPLETED 0.00 5.00 1,530.80",
+      "processed_at": "2026-02-01T21:47:47.794938",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG081859T 2025-12-16 22:06:21 Pay Bill to 391702 - 2NK SACCO MAIN COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG081859T 2025-12-16 22:06:21 Pay Bill to 391702 - 2NK SACCO MAIN COMPLETED 0.00 500.00 1,535.80",
+      "processed_at": "2026-02-01T21:47:47.794969",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG081874G 2025-12-16 21:05:00 Merchant Payment to 959420 - UNION COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG081874G 2025-12-16 21:05:00 Merchant Payment to 959420 - UNION COMPLETED 0.00 490.00 2,035.80",
+      "processed_at": "2026-02-01T21:47:47.794995",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG0817ZDU 2025-12-16 20:40:07 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0817ZDU 2025-12-16 20:40:07 Customer Transfer of Funds Charge COMPLETED 0.00 53.00 2,525.80",
+      "processed_at": "2026-02-01T21:47:47.795024",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG0817ZDU 2025-12-16 20:40:07 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0817ZDU 2025-12-16 20:40:07 Customer Payment to Small Business to COMPLETED 0.00 3,000.00 2,578.80",
+      "processed_at": "2026-02-01T21:47:47.795052",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG0817BY0 2025-12-16 18:44:03 Customer Transfer to 0702***438 - COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0817BY0 2025-12-16 18:44:03 Customer Transfer to 0702***438 - COMPLETED 0.00 50.00 5,578.80",
+      "processed_at": "2026-02-01T21:47:47.795088",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG08171L6 2025-12-16 17:28:29 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG08171L6 2025-12-16 17:28:29 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 371.20 5,628.80",
+      "processed_at": "2026-02-01T21:47:47.795119",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 6000.0,
+      "category": "income",
+      "details": "TLGB917N20 2025-12-16 17:28:28 Funds received from 0707***015 - YVONNE COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLGB917N20 2025-12-16 17:28:28 Funds received from 0707***015 - YVONNE COMPLETED 6,000.00 0.00 6,000.00",
+      "processed_at": "2026-02-01T21:47:47.795149",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG0816OK4 2025-12-16 15:32:10 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0816OK4 2025-12-16 15:32:10 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 100.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.795187",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 100.0,
+      "category": "unknown",
+      "details": "TLG0816OK4 2025-12-16 15:32:10 OverDraft of Credit Party COMPLETED 100.00 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0816OK4 2025-12-16 15:32:10 OverDraft of Credit Party COMPLETED 100.00 0.00 100.00",
+      "processed_at": "2026-02-01T21:47:47.795223",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG0816MFM 2025-12-16 14:50:09 Customer Send Money to Micro SME COMPLETED 0.00 2",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0816MFM 2025-12-16 14:50:09 Customer Send Money to Micro SME COMPLETED 0.00 20.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.795246",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 20.0,
+      "category": "unknown",
+      "details": "TLG0816MFM 2025-12-16 14:50:09 OverDraft of Credit Party COMPLETED 20.00 0.00 20",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0816MFM 2025-12-16 14:50:09 OverDraft of Credit Party COMPLETED 20.00 0.00 20.00",
+      "processed_at": "2026-02-01T21:47:47.795291",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG0816J0U 2025-12-16 14:25:23 Merchant Payment Fuliza M-Pesa Online to COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0816J0U 2025-12-16 14:25:23 Merchant Payment Fuliza M-Pesa Online to COMPLETED 0.00 19.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.795315",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 19.0,
+      "category": "unknown",
+      "details": "TLG0816J0U 2025-12-16 14:25:23 OverDraft of Credit Party COMPLETED 19.00 0.00 19",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0816J0U 2025-12-16 14:25:23 OverDraft of Credit Party COMPLETED 19.00 0.00 19.00",
+      "processed_at": "2026-02-01T21:47:47.795349",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG08166WR 2025-12-16 13:02:30 Customer Send Money to Micro SME COMPLETED 0.00 3",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG08166WR 2025-12-16 13:02:30 Customer Send Money to Micro SME COMPLETED 0.00 350.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.795375",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG08166WR 2025-12-16 13:02:30 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG08166WR 2025-12-16 13:02:30 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 350.00",
+      "processed_at": "2026-02-01T21:47:47.795412",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 228.52,
+      "category": "unknown",
+      "details": "TLG08166WR 2025-12-16 13:02:30 OverDraft of Credit Party COMPLETED 228.52 0.00 3",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG08166WR 2025-12-16 13:02:30 OverDraft of Credit Party COMPLETED 228.52 0.00 357.00",
+      "processed_at": "2026-02-01T21:47:47.795440",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLG0815N3V 2025-12-16 10:02:19 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLG0815N3V 2025-12-16 10:02:19 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 371.52 128.48",
+      "processed_at": "2026-02-01T21:47:47.795471",
+      "balance": 14679.0
+    },
+    {
+      "date": "2025-12-16",
+      "amount": 500.0,
+      "category": "income",
+      "details": "TLGB916A06 2025-12-16 10:02:18 Funds received from 0707***015 - YVONNE COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLGB916A06 2025-12-16 10:02:18 Funds received from 0707***015 - YVONNE COMPLETED 500.00 0.00 500.00",
+      "processed_at": "2026-02-01T21:47:47.795498",
+      "balance": 15179.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0815769 2025-12-15 23:28:35 Customer Send Money to Micro SME COMPLETED 0.00 5",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0815769 2025-12-15 23:28:35 Customer Send Money to Micro SME COMPLETED 0.00 50.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.795524",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 50.0,
+      "category": "unknown",
+      "details": "TLF0815769 2025-12-15 23:28:35 OverDraft of Credit Party COMPLETED 50.00 0.00 50",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0815769 2025-12-15 23:28:35 OverDraft of Credit Party COMPLETED 50.00 0.00 50.00",
+      "processed_at": "2026-02-01T21:47:47.795561",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0814ZQJ 2025-12-15 23:10:11 Pay Bill Fuliza M-Pesa to 400200 - Co- COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814ZQJ 2025-12-15 23:10:11 Pay Bill Fuliza M-Pesa to 400200 - Co- COMPLETED 0.00 10.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.795586",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 10.0,
+      "category": "unknown",
+      "details": "TLF0814ZQJ 2025-12-15 23:10:11 OverDraft of Credit Party COMPLETED 10.00 0.00 10",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814ZQJ 2025-12-15 23:10:11 OverDraft of Credit Party COMPLETED 10.00 0.00 10.00",
+      "processed_at": "2026-02-01T21:47:47.795720",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0814XMP 2025-12-15 22:46:26 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814XMP 2025-12-15 22:46:26 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 50.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.795866",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 50.0,
+      "category": "unknown",
+      "details": "TLF0814XMP 2025-12-15 22:46:26 OverDraft of Credit Party COMPLETED 50.00 0.00 50",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814XMP 2025-12-15 22:46:26 OverDraft of Credit Party COMPLETED 50.00 0.00 50.00",
+      "processed_at": "2026-02-01T21:47:47.795903",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0814U6Z 2025-12-15 21:58:03 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814U6Z 2025-12-15 21:58:03 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 400.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.795930",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 257.84,
+      "category": "unknown",
+      "details": "TLF0814U6Z 2025-12-15 21:58:03 OverDraft of Credit Party COMPLETED 257.84 0.00 4",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814U6Z 2025-12-15 21:58:03 OverDraft of Credit Party COMPLETED 257.84 0.00 400.00",
+      "processed_at": "2026-02-01T21:47:47.795966",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0814PR3 2025-12-15 21:57:49 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814PR3 2025-12-15 21:57:49 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 57.84 142.16",
+      "processed_at": "2026-02-01T21:47:47.795997",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 200.0,
+      "category": "income",
+      "details": "TLF0C154I1 2025-12-15 21:57:48 Funds received from 0714***107 - Mary COMPLETED 2",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0C154I1 2025-12-15 21:57:48 Funds received from 0714***107 - Mary COMPLETED 200.00 0.00 200.00",
+      "processed_at": "2026-02-01T21:47:47.796028",
+      "balance": 8599.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0814NKO 2025-12-15 21:13:40 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814NKO 2025-12-15 21:13:40 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 400.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.796060",
+      "balance": 8599.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 57.26,
+      "category": "unknown",
+      "details": "TLF0814NKO 2025-12-15 21:13:40 OverDraft of Credit Party COMPLETED 57.26 0.00 40",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0814NKO 2025-12-15 21:13:40 OverDraft of Credit Party COMPLETED 57.26 0.00 400.00",
+      "processed_at": "2026-02-01T21:47:47.796107",
+      "balance": 8599.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0813GNH 2025-12-15 17:01:47 Merchant Payment to 7021390 - GODFREY COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0813GNH 2025-12-15 17:01:47 Merchant Payment to 7021390 - GODFREY COMPLETED 0.00 80.00 342.74",
+      "processed_at": "2026-02-01T21:47:47.796157",
+      "balance": 8599.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0813NSB 2025-12-15 16:44:19 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0813NSB 2025-12-15 16:44:19 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 22.00 422.74",
+      "processed_at": "2026-02-01T21:47:47.796191",
+      "balance": 8599.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 80.0,
+      "category": "income",
+      "details": "TLF0C13Q23 2025-12-15 16:39:39 Funds received from 0714***107 - Mary COMPLETED 8",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0C13Q23 2025-12-15 16:39:39 Funds received from 0714***107 - Mary COMPLETED 80.00 0.00 444.74",
+      "processed_at": "2026-02-01T21:47:47.796225",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0813FT1 2025-12-15 16:11:34 Customer Transfer to 254114***285 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0813FT1 2025-12-15 16:11:34 Customer Transfer to 254114***285 - COMPLETED 0.00 25.00 364.74",
+      "processed_at": "2026-02-01T21:47:47.796268",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF08136JS 2025-12-15 14:37:53 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF08136JS 2025-12-15 14:37:53 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 389.74",
+      "processed_at": "2026-02-01T21:47:47.796316",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF08136JS 2025-12-15 14:37:53 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF08136JS 2025-12-15 14:37:53 Customer Payment to Small Business to COMPLETED 0.00 150.00 396.74",
+      "processed_at": "2026-02-01T21:47:47.796362",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF08120CY 2025-12-15 09:03:39 Customer Transfer to 0742***936 - Martin COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF08120CY 2025-12-15 09:03:39 Customer Transfer to 0742***936 - Martin COMPLETED 0.00 50.00 546.74",
+      "processed_at": "2026-02-01T21:47:47.796419",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0811YH3 2025-12-15 08:37:21 Merchant Payment to 5738196 - COMPLETED 0.00 40.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0811YH3 2025-12-15 08:37:21 Merchant Payment to 5738196 - COMPLETED 0.00 40.00 596.74",
+      "processed_at": "2026-02-01T21:47:47.796485",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-15",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLF0811XY5 2025-12-15 07:52:45 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLF0811XY5 2025-12-15 07:52:45 Customer Payment to Small Business to COMPLETED 0.00 100.00 636.74",
+      "processed_at": "2026-02-01T21:47:47.796556",
+      "balance": 8679.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0811OUB 2025-12-14 23:38:26 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0811OUB 2025-12-14 23:38:26 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 736.74",
+      "processed_at": "2026-02-01T21:47:47.796626",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0811OUB 2025-12-14 23:38:26 Customer Transfer to 0799***382 - NELLY COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0811OUB 2025-12-14 23:38:26 Customer Transfer to 0799***382 - NELLY COMPLETED 0.00 400.00 743.74",
+      "processed_at": "2026-02-01T21:47:47.796701",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE081149F 2025-12-14 20:35:29 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE081149F 2025-12-14 20:35:29 Customer Payment to Small Business to COMPLETED 0.00 100.00 1,143.74",
+      "processed_at": "2026-02-01T21:47:47.796782",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0811AWW 2025-12-14 19:58:29 Merchant Payment to 7598138 - SAFI COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0811AWW 2025-12-14 19:58:29 Merchant Payment to 7598138 - SAFI COMPLETED 0.00 10.00 1,243.74",
+      "processed_at": "2026-02-01T21:47:47.796869",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE08113BU 2025-12-14 19:51:16 Customer Transfer to 0714***107 - Mary COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE08113BU 2025-12-14 19:51:16 Customer Transfer to 0714***107 - Mary COMPLETED 0.00 80.00 1,253.74",
+      "processed_at": "2026-02-01T21:47:47.797087",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 300.0,
+      "category": "income",
+      "details": "TLENQ124UE 2025-12-14 19:18:46 Funds received from 254746***870 - Sarah COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLENQ124UE 2025-12-14 19:18:46 Funds received from 254746***870 - Sarah COMPLETED 300.00 0.00 1,333.74",
+      "processed_at": "2026-02-01T21:47:47.797183",
+      "balance": 4099.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0810SZK 2025-12-14 19:06:45 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810SZK 2025-12-14 19:06:45 Customer Payment to Small Business to COMPLETED 0.00 50.00 1,033.74",
+      "processed_at": "2026-02-01T21:47:47.797235",
+      "balance": 4099.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLE0810ZW5 2025-12-14 18:46:58 Pay Bill Charge COMPLETED 0.00 15.00 2,583.74",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810ZW5 2025-12-14 18:46:58 Pay Bill Charge COMPLETED 0.00 15.00 2,583.74",
+      "processed_at": "2026-02-01T21:47:47.797300",
+      "balance": 4099.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0810ZW5 2025-12-14 18:46:58 Pay Bill to 247247 - Equity Paybill Account COMPL",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810ZW5 2025-12-14 18:46:58 Pay Bill to 247247 - Equity Paybill Account COMPLETED 0.00 1,500.00 1,083.74",
+      "processed_at": "2026-02-01T21:47:47.797350",
+      "balance": 4099.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 1700.0,
+      "category": "income",
+      "details": "TLEIH11JDF 2025-12-14 18:22:56 Funds received from 0702***983 - COMPLETED 1,700.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLEIH11JDF 2025-12-14 18:22:56 Funds received from 0702***983 - COMPLETED 1,700.00 0.00 2,598.74",
+      "processed_at": "2026-02-01T21:47:47.797394",
+      "balance": 5799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLE0810OJQ 2025-12-14 18:22:17 Withdrawal Charge COMPLETED 0.00 29.00 898.74",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810OJQ 2025-12-14 18:22:17 Withdrawal Charge COMPLETED 0.00 29.00 898.74",
+      "processed_at": "2026-02-01T21:47:47.797465",
+      "balance": 5799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0810OJQ 2025-12-14 18:22:17 Customer Withdrawal At Agent Till 327046 - COMPLE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810OJQ 2025-12-14 18:22:17 Customer Withdrawal At Agent Till 327046 - COMPLETED 0.00 200.00 927.74",
+      "processed_at": "2026-02-01T21:47:47.797498",
+      "balance": 5799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0810KTE 2025-12-14 17:39:50 Customer Transfer to 254729***352 - Isaac COMPLET",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810KTE 2025-12-14 17:39:50 Customer Transfer to 254729***352 - Isaac COMPLETED 0.00 50.00 1,127.74",
+      "processed_at": "2026-02-01T21:47:47.797538",
+      "balance": 5799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLE0810G5A 2025-12-14 17:27:12 Withdrawal Charge COMPLETED 0.00 29.00 1,177.74",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810G5A 2025-12-14 17:27:12 Withdrawal Charge COMPLETED 0.00 29.00 1,177.74",
+      "processed_at": "2026-02-01T21:47:47.797566",
+      "balance": 5799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0810G5A 2025-12-14 17:27:12 Customer Withdrawal At Agent Till 427830 - COMPLE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810G5A 2025-12-14 17:27:12 Customer Withdrawal At Agent Till 427830 - COMPLETED 0.00 1,600.00 1,206.74",
+      "processed_at": "2026-02-01T21:47:47.797596",
+      "balance": 5799.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 1800.0,
+      "category": "income",
+      "details": "TLE990XCE0 2025-12-14 16:49:44 Funds received from 0700***020 - Stellah COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE990XCE0 2025-12-14 16:49:44 Funds received from 0700***020 - Stellah COMPLETED 1,800.00 0.00 2,806.74",
+      "processed_at": "2026-02-01T21:47:47.797704",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLE0810EZU 2025-12-14 16:40:57 Withdrawal Charge COMPLETED 0.00 29.00 1,006.74",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810EZU 2025-12-14 16:40:57 Withdrawal Charge COMPLETED 0.00 29.00 1,006.74",
+      "processed_at": "2026-02-01T21:47:47.797732",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE0810EZU 2025-12-14 16:40:57 Customer Withdrawal At Agent Till 163007 - COMPLE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE0810EZU 2025-12-14 16:40:57 Customer Withdrawal At Agent Till 163007 - COMPLETED 0.00 1,200.00 1,035.74",
+      "processed_at": "2026-02-01T21:47:47.797763",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLE08109W1 2025-12-14 16:03:16 Pay Bill Charge COMPLETED 0.00 20.00 3,835.74",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE08109W1 2025-12-14 16:03:16 Pay Bill Charge COMPLETED 0.00 20.00 3,835.74",
+      "processed_at": "2026-02-01T21:47:47.797793",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE08109W1 2025-12-14 16:03:16 Pay Bill to 400200 - Co-operative Bank COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE08109W1 2025-12-14 16:03:16 Pay Bill to 400200 - Co-operative Bank COMPLETED 0.00 1,600.00 2,235.74",
+      "processed_at": "2026-02-01T21:47:47.797835",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080ZYI7 2025-12-14 15:24:45 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZYI7 2025-12-14 15:24:45 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 19.00 3,855.74",
+      "processed_at": "2026-02-01T21:47:47.797870",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080ZYHR 2025-12-14 15:24:15 Customer Transfer to 254114***285 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZYHR 2025-12-14 15:24:15 Customer Transfer to 254114***285 - COMPLETED 0.00 10.00 3,874.74",
+      "processed_at": "2026-02-01T21:47:47.797898",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080ZYH7 2025-12-14 15:23:06 Customer Transfer to 254114***285 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZYH7 2025-12-14 15:23:06 Customer Transfer to 254114***285 - COMPLETED 0.00 22.00 3,884.74",
+      "processed_at": "2026-02-01T21:47:47.797931",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080ZQII 2025-12-14 13:41:22 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZQII 2025-12-14 13:41:22 Customer Payment to Small Business to COMPLETED 0.00 60.00 3,906.74",
+      "processed_at": "2026-02-01T21:47:47.797960",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 3500.0,
+      "category": "unknown",
+      "details": "TLE080ZPQB 2025-12-14 12:52:01 M-Shwari Withdraw COMPLETED 3,500.00 0.00 3,966.7",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZPQB 2025-12-14 12:52:01 M-Shwari Withdraw COMPLETED 3,500.00 0.00 3,966.74",
+      "processed_at": "2026-02-01T21:47:47.797992",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080ZL39 2025-12-14 12:38:38 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZL39 2025-12-14 12:38:38 Customer Payment to Small Business to COMPLETED 0.00 70.00 466.74",
+      "processed_at": "2026-02-01T21:47:47.798018",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080ZBI7 2025-12-14 12:16:34 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZBI7 2025-12-14 12:16:34 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 263.26 536.74",
+      "processed_at": "2026-02-01T21:47:47.798052",
+      "balance": 7599.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 800.0,
+      "category": "income",
+      "details": "TLEAA0ZX9U 2025-12-14 12:16:33 Funds received from 254706***095 - IRENE COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLEAA0ZX9U 2025-12-14 12:16:33 Funds received from 254706***095 - IRENE COMPLETED 800.00 0.00 800.00",
+      "processed_at": "2026-02-01T21:47:47.798080",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080ZHBD 2025-12-14 12:11:27 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZHBD 2025-12-14 12:11:27 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 20.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.798108",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 20.0,
+      "category": "unknown",
+      "details": "TLE080ZHBD 2025-12-14 12:11:27 OverDraft of Credit Party COMPLETED 20.00 0.00 20",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZHBD 2025-12-14 12:11:27 OverDraft of Credit Party COMPLETED 20.00 0.00 20.00",
+      "processed_at": "2026-02-01T21:47:47.798142",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080ZEBD 2025-12-14 12:05:44 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZEBD 2025-12-14 12:05:44 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 22.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.798171",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 22.0,
+      "category": "unknown",
+      "details": "TLE080ZEBD 2025-12-14 12:05:44 OverDraft of Credit Party COMPLETED 22.00 0.00 22",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080ZEBD 2025-12-14 12:05:44 OverDraft of Credit Party COMPLETED 22.00 0.00 22.00",
+      "processed_at": "2026-02-01T21:47:47.798202",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLE080YXO6 2025-12-14 09:00:45 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080YXO6 2025-12-14 09:00:45 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 19.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.798228",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-14",
+      "amount": 19.0,
+      "category": "unknown",
+      "details": "TLE080YXO6 2025-12-14 09:00:45 OverDraft of Credit Party COMPLETED 19.00 0.00 19",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLE080YXO6 2025-12-14 09:00:45 OverDraft of Credit Party COMPLETED 19.00 0.00 19.00",
+      "processed_at": "2026-02-01T21:47:47.798259",
+      "balance": 8399.0
+    },
+    {
+      "date": "2025-12-13",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLD080WHBH 2025-12-13 13:30:35 Customer Send Money to Micro SME COMPLETED 0.00 5",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLD080WHBH 2025-12-13 13:30:35 Customer Send Money to Micro SME COMPLETED 0.00 50.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.798284",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-13",
+      "amount": 50.0,
+      "category": "unknown",
+      "details": "TLD080WHBH 2025-12-13 13:30:35 OverDraft of Credit Party COMPLETED 50.00 0.00 50",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLD080WHBH 2025-12-13 13:30:35 OverDraft of Credit Party COMPLETED 50.00 0.00 50.00",
+      "processed_at": "2026-02-01T21:47:47.798321",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-13",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLD080WH2B 2025-12-13 13:14:37 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLD080WH2B 2025-12-13 13:14:37 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 60.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.798349",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-13",
+      "amount": 60.0,
+      "category": "unknown",
+      "details": "TLD080WH2B 2025-12-13 13:14:37 OverDraft of Credit Party COMPLETED 60.00 0.00 60",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLD080WH2B 2025-12-13 13:14:37 OverDraft of Credit Party COMPLETED 60.00 0.00 60.00",
+      "processed_at": "2026-02-01T21:47:47.798380",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080VBFI 2025-12-12 23:13:40 Customer Send Money to Micro SME COMPLETED 0.00 9",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080VBFI 2025-12-12 23:13:40 Customer Send Money to Micro SME COMPLETED 0.00 95.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.798405",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 89.65,
+      "category": "unknown",
+      "details": "TLC080VBFI 2025-12-12 23:13:40 OverDraft of Credit Party COMPLETED 89.65 0.00 95",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080VBFI 2025-12-12 23:13:40 OverDraft of Credit Party COMPLETED 89.65 0.00 95.00",
+      "processed_at": "2026-02-01T21:47:47.798441",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "unknown",
+      "details": "TLC080V11Z 2025-12-12 21:31:11 M-Shwari Deposit COMPLETED 0.00 2,500.00 5.35",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080V11Z 2025-12-12 21:31:11 M-Shwari Deposit COMPLETED 0.00 2,500.00 5.35",
+      "processed_at": "2026-02-01T21:47:47.798468",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080URV8 2025-12-12 21:20:41 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080URV8 2025-12-12 21:20:41 Customer Payment to Small Business to COMPLETED 0.00 20.00 2,505.35",
+      "processed_at": "2026-02-01T21:47:47.798494",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080URSB 2025-12-12 21:15:48 Customer Transfer to 254742***279 - grolia COMPLE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080URSB 2025-12-12 21:15:48 Customer Transfer to 254742***279 - grolia COMPLETED 0.00 40.00 2,525.35",
+      "processed_at": "2026-02-01T21:47:47.798531",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080UWR4 2025-12-12 20:23:39 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080UWR4 2025-12-12 20:23:39 Customer Payment to Small Business to COMPLETED 0.00 100.00 2,565.35",
+      "processed_at": "2026-02-01T21:47:47.798560",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080UGMH 2025-12-12 19:48:18 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080UGMH 2025-12-12 19:48:18 Customer Payment to Small Business to COMPLETED 0.00 30.00 2,665.35",
+      "processed_at": "2026-02-01T21:47:47.798592",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080U6N7 2025-12-12 18:20:55 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080U6N7 2025-12-12 18:20:55 Customer Payment to Small Business to COMPLETED 0.00 30.00 2,695.35",
+      "processed_at": "2026-02-01T21:47:47.798623",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080U81L 2025-12-12 18:18:44 Merchant Payment to 5215032 - Dimples COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080U81L 2025-12-12 18:18:44 Merchant Payment to 5215032 - Dimples COMPLETED 0.00 50.00 2,725.35",
+      "processed_at": "2026-02-01T21:47:47.798658",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080U6KE 2025-12-12 18:17:47 Merchant Payment to 657759 - Dimples COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080U6KE 2025-12-12 18:17:47 Merchant Payment to 657759 - Dimples COMPLETED 0.00 40.00 2,775.35",
+      "processed_at": "2026-02-01T21:47:47.798689",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080U00Z 2025-12-12 18:05:17 Customer Transfer to 254712***181 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080U00Z 2025-12-12 18:05:17 Customer Transfer to 254712***181 - COMPLETED 0.00 40.00 2,815.35",
+      "processed_at": "2026-02-01T21:47:47.798719",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080U099 2025-12-12 16:57:52 Merchant Payment Online to 5086386 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080U099 2025-12-12 16:57:52 Merchant Payment Online to 5086386 - COMPLETED 0.00 50.00 2,855.35",
+      "processed_at": "2026-02-01T21:47:47.798821",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080TBGH 2025-12-12 15:13:26 Merchant Payment to 8234817 - SALEM COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080TBGH 2025-12-12 15:13:26 Merchant Payment to 8234817 - SALEM COMPLETED 0.00 22.00 2,905.35",
+      "processed_at": "2026-02-01T21:47:47.798852",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080TCJM 2025-12-12 14:49:30 Merchant Payment to 6127357 - NICCO COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080TCJM 2025-12-12 14:49:30 Merchant Payment to 6127357 - NICCO COMPLETED 0.00 50.00 2,927.35",
+      "processed_at": "2026-02-01T21:47:47.798880",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080TGPX 2025-12-12 14:22:24 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080TGPX 2025-12-12 14:22:24 Customer Payment to Small Business to COMPLETED 0.00 50.00 2,977.35",
+      "processed_at": "2026-02-01T21:47:47.798909",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080THYU 2025-12-12 14:08:14 Customer Transfer to 0743***473 - eliud COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080THYU 2025-12-12 14:08:14 Customer Transfer to 0743***473 - eliud COMPLETED 0.00 100.00 3,027.35",
+      "processed_at": "2026-02-01T21:47:47.798944",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080TABC 2025-12-12 14:05:44 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080TABC 2025-12-12 14:05:44 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 172.65 3,127.35",
+      "processed_at": "2026-02-01T21:47:47.798975",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 3300.0,
+      "category": "income",
+      "details": "TLCBP0RZW5 2025-12-12 14:05:43 Funds received from 0703***525 - GERALD COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLCBP0RZW5 2025-12-12 14:05:43 Funds received from 0703***525 - GERALD COMPLETED 3,300.00 0.00 3,300.00",
+      "processed_at": "2026-02-01T21:47:47.799003",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLC080SVW7 2025-12-12 12:00:00 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080SVW7 2025-12-12 12:00:00 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 19.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.799031",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-12",
+      "amount": 19.0,
+      "category": "unknown",
+      "details": "TLC080SVW7 2025-12-12 12:00:00 OverDraft of Credit Party COMPLETED 19.00 0.00 19",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLC080SVW7 2025-12-12 12:00:00 OverDraft of Credit Party COMPLETED 19.00 0.00 19.00",
+      "processed_at": "2026-02-01T21:47:47.799062",
+      "balance": 3799.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080RD4G 2025-12-11 20:04:11 Customer Send Money to Micro SME COMPLETED 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080RD4G 2025-12-11 20:04:11 Customer Send Money to Micro SME COMPLETED 0.00 100.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.799088",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 100.0,
+      "category": "unknown",
+      "details": "TLB080RD4G 2025-12-11 20:04:11 OverDraft of Credit Party COMPLETED 100.00 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080RD4G 2025-12-11 20:04:11 OverDraft of Credit Party COMPLETED 100.00 0.00 100.00",
+      "processed_at": "2026-02-01T21:47:47.799125",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080R45Q 2025-12-11 19:19:18 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080R45Q 2025-12-11 19:19:18 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.799151",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080R45Q 2025-12-11 19:19:18 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080R45Q 2025-12-11 19:19:18 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 200.00 7.00",
+      "processed_at": "2026-02-01T21:47:47.799176",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 51.94,
+      "category": "unknown",
+      "details": "TLB080R45Q 2025-12-11 19:19:18 OverDraft of Credit Party COMPLETED 51.94 0.00 20",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080R45Q 2025-12-11 19:19:18 OverDraft of Credit Party COMPLETED 51.94 0.00 207.00",
+      "processed_at": "2026-02-01T21:47:47.799210",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080R29S 2025-12-11 19:08:42 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080R29S 2025-12-11 19:08:42 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 144.94 155.06",
+      "processed_at": "2026-02-01T21:47:47.799238",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 300.0,
+      "category": "income",
+      "details": "TLBIW0RSJL 2025-12-11 19:08:41 Funds received from 0728***736 - ANTONY COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLBIW0RSJL 2025-12-11 19:08:41 Funds received from 0728***736 - ANTONY COMPLETED 300.00 0.00 300.00",
+      "processed_at": "2026-02-01T21:47:47.799265",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080QCO2 2025-12-11 17:19:57 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080QCO2 2025-12-11 17:19:57 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 100.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.799294",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 100.0,
+      "category": "unknown",
+      "details": "TLB080QCO2 2025-12-11 17:19:57 OverDraft of Credit Party COMPLETED 100.00 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080QCO2 2025-12-11 17:19:57 OverDraft of Credit Party COMPLETED 100.00 0.00 100.00",
+      "processed_at": "2026-02-01T21:47:47.799325",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080Q7DC 2025-12-11 15:18:02 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080Q7DC 2025-12-11 15:18:02 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.799350",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080Q7DC 2025-12-11 15:18:02 Customer Send Money to Micro SME COMPLETED 0.00 1",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080Q7DC 2025-12-11 15:18:02 Customer Send Money to Micro SME COMPLETED 0.00 150.00 7.00",
+      "processed_at": "2026-02-01T21:47:47.799375",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 43.5,
+      "category": "unknown",
+      "details": "TLB080Q7DC 2025-12-11 15:18:02 OverDraft of Credit Party COMPLETED 43.50 0.00 15",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080Q7DC 2025-12-11 15:18:02 OverDraft of Credit Party COMPLETED 43.50 0.00 157.00",
+      "processed_at": "2026-02-01T21:47:47.799416",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080OSX9 2025-12-11 09:18:10 Customer Transfer to 254741***850 - COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080OSX9 2025-12-11 09:18:10 Customer Transfer to 254741***850 - COMPLETED 0.00 50.00 113.50",
+      "processed_at": "2026-02-01T21:47:47.799480",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080OVV4 2025-12-11 09:13:01 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080OVV4 2025-12-11 09:13:01 Customer Payment to Small Business to COMPLETED 0.00 10.00 163.50",
+      "processed_at": "2026-02-01T21:47:47.799520",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080OYPB 2025-12-11 08:55:17 Merchant Payment to 5129878 - RAJ KDQ COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080OYPB 2025-12-11 08:55:17 Merchant Payment to 5129878 - RAJ KDQ COMPLETED 0.00 30.00 173.50",
+      "processed_at": "2026-02-01T21:47:47.799559",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080ON7P 2025-12-11 08:06:05 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080ON7P 2025-12-11 08:06:05 Customer Payment to Small Business to COMPLETED 0.00 100.00 203.50",
+      "processed_at": "2026-02-01T21:47:47.799585",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-11",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLB080OJGL 2025-12-11 07:10:11 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLB080OJGL 2025-12-11 07:10:11 Customer Payment to Small Business to COMPLETED 0.00 20.00 303.50",
+      "processed_at": "2026-02-01T21:47:47.799621",
+      "balance": 499.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080OD71 2025-12-10 23:42:08 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080OD71 2025-12-10 23:42:08 Customer Payment to Small Business to COMPLETED 0.00 20.00 323.50",
+      "processed_at": "2026-02-01T21:47:47.799655",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080OBP2 2025-12-10 23:21:13 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080OBP2 2025-12-10 23:21:13 Customer Transfer of Funds Charge COMPLETED 0.00 23.00 343.50",
+      "processed_at": "2026-02-01T21:47:47.799688",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080OBP2 2025-12-10 23:21:13 Customer Transfer to 0757***101 - Enock COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080OBP2 2025-12-10 23:21:13 Customer Transfer to 0757***101 - Enock COMPLETED 0.00 1,200.00 366.50",
+      "processed_at": "2026-02-01T21:47:47.799713",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 1000.0,
+      "category": "unknown",
+      "details": "TLA080OBOS 2025-12-10 23:20:12 M-Shwari Withdraw COMPLETED 1,000.00 0.00 1,566.5",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080OBOS 2025-12-10 23:20:12 M-Shwari Withdraw COMPLETED 1,000.00 0.00 1,566.50",
+      "processed_at": "2026-02-01T21:47:47.799740",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080NWS4 2025-12-10 21:33:00 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080NWS4 2025-12-10 21:33:00 Customer Payment to Small Business to COMPLETED 0.00 50.00 566.50",
+      "processed_at": "2026-02-01T21:47:47.799767",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080O2F8 2025-12-10 21:20:44 Pay Bill Online to 4133903 - FIBERLIT COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080O2F8 2025-12-10 21:20:44 Pay Bill Online to 4133903 - FIBERLIT COMPLETED 0.00 10.00 616.50",
+      "processed_at": "2026-02-01T21:47:47.799802",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080NCPB 2025-12-10 19:22:16 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080NCPB 2025-12-10 19:22:16 Customer Payment to Small Business to COMPLETED 0.00 100.00 626.50",
+      "processed_at": "2026-02-01T21:47:47.799900",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "charge",
+      "details": "TLA080N7ON 2025-12-10 18:24:50 Pay Bill Charge COMPLETED 0.00 5.00 926.50",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080N7ON 2025-12-10 18:24:50 Pay Bill Charge COMPLETED 0.00 5.00 926.50",
+      "processed_at": "2026-02-01T21:47:47.799931",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080N7ON 2025-12-10 18:24:50 Pay Bill to 247247 - Equity Paybill Account COMPL",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080N7ON 2025-12-10 18:24:50 Pay Bill to 247247 - Equity Paybill Account COMPLETED 0.00 200.00 726.50",
+      "processed_at": "2026-02-01T21:47:47.799960",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080N4RS 2025-12-10 18:19:55 Merchant Payment to 583373 - NAIVAS COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080N4RS 2025-12-10 18:19:55 Merchant Payment to 583373 - NAIVAS COMPLETED 0.00 478.00 931.50",
+      "processed_at": "2026-02-01T21:47:47.799993",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080N4LO 2025-12-10 18:12:36 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080N4LO 2025-12-10 18:12:36 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 90.50 1,409.50",
+      "processed_at": "2026-02-01T21:47:47.800023",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 1500.0,
+      "category": "unknown",
+      "details": "TLA080N32L 2025-12-10 18:12:35 M-Shwari Withdraw COMPLETED 1,500.00 0.00 1,500.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080N32L 2025-12-10 18:12:35 M-Shwari Withdraw COMPLETED 1,500.00 0.00 1,500.00",
+      "processed_at": "2026-02-01T21:47:47.800048",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080MZAC 2025-12-10 17:29:06 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080MZAC 2025-12-10 17:29:06 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 40.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.800074",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 40.0,
+      "category": "unknown",
+      "details": "TLA080MZAC 2025-12-10 17:29:06 OverDraft of Credit Party COMPLETED 40.00 0.00 40",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080MZAC 2025-12-10 17:29:06 OverDraft of Credit Party COMPLETED 40.00 0.00 40.00",
+      "processed_at": "2026-02-01T21:47:47.800111",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080M5A6 2025-12-10 13:53:39 Pay Bill Fuliza M-Pesa to 247247 - Equity COMPLET",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080M5A6 2025-12-10 13:53:39 Pay Bill Fuliza M-Pesa to 247247 - Equity COMPLETED 0.00 50.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.800140",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 49.6,
+      "category": "unknown",
+      "details": "TLA080M5A6 2025-12-10 13:53:39 OverDraft of Credit Party COMPLETED 49.60 0.00 50",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080M5A6 2025-12-10 13:53:39 OverDraft of Credit Party COMPLETED 49.60 0.00 50.00",
+      "processed_at": "2026-02-01T21:47:47.800172",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080L6Y1 2025-12-10 08:26:21 Pay Bill to 400200 - Co-operative Bank COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080L6Y1 2025-12-10 08:26:21 Pay Bill to 400200 - Co-operative Bank COMPLETED 0.00 30.00 0.40",
+      "processed_at": "2026-02-01T21:47:47.800199",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080KVCE 2025-12-10 07:17:43 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080KVCE 2025-12-10 07:17:43 Customer Payment to Small Business to COMPLETED 0.00 70.00 30.40",
+      "processed_at": "2026-02-01T21:47:47.800232",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-10",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TLA080KWNU 2025-12-10 06:58:18 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TLA080KWNU 2025-12-10 06:58:18 Customer Payment to Small Business to COMPLETED 0.00 50.00 100.40",
+      "processed_at": "2026-02-01T21:47:47.800268",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080KPPF 2025-12-09 21:39:01 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080KPPF 2025-12-09 21:39:01 Customer Payment to Small Business to COMPLETED 0.00 50.00 150.40",
+      "processed_at": "2026-02-01T21:47:47.800303",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080KGSB 2025-12-09 20:44:55 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080KGSB 2025-12-09 20:44:55 Customer Payment to Small Business to COMPLETED 0.00 80.00 200.40",
+      "processed_at": "2026-02-01T21:47:47.800340",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 99.0,
+      "category": "income",
+      "details": "TL9RA0I3KV 2025-12-09 15:50:24 Funds received from 254743***727 - COMPLETED 99.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9RA0I3KV 2025-12-09 15:50:24 Funds received from 254743***727 - COMPLETED 99.00 0.00 280.40",
+      "processed_at": "2026-02-01T21:47:47.800378",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "unknown",
+      "details": "TL9080J61K 2025-12-09 15:48:02 M-Shwari Deposit COMPLETED 0.00 3,500.00 181.40",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080J61K 2025-12-09 15:48:02 M-Shwari Deposit COMPLETED 0.00 3,500.00 181.40",
+      "processed_at": "2026-02-01T21:47:47.800408",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 3250.0,
+      "category": "unknown",
+      "details": "TL908FPB1M 2025-12-09 15:47:10 Pay Utility Reversal by HFM COMPLETED 3,250.00 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL908FPB1M 2025-12-09 15:47:10 Pay Utility Reversal by HFM COMPLETED 3,250.00 0.00 3,681.40",
+      "processed_at": "2026-02-01T21:47:47.800436",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080I72B 2025-12-09 11:28:22 Customer Transfer to 254701***457 - Eric COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080I72B 2025-12-09 11:28:22 Customer Transfer to 254701***457 - Eric COMPLETED 0.00 50.00 431.40",
+      "processed_at": "2026-02-01T21:47:47.800472",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080I9J3 2025-12-09 10:48:41 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080I9J3 2025-12-09 10:48:41 Customer Payment to Small Business to COMPLETED 0.00 50.00 481.40",
+      "processed_at": "2026-02-01T21:47:47.800501",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080I7VJ 2025-12-09 10:41:48 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080I7VJ 2025-12-09 10:41:48 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 468.60 531.40",
+      "processed_at": "2026-02-01T21:47:47.800548",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 1000.0,
+      "category": "unknown",
+      "details": "TL9080I37H 2025-12-09 10:41:47 M-Shwari Withdraw COMPLETED 1,000.00 0.00 1,000.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080I37H 2025-12-09 10:41:47 M-Shwari Withdraw COMPLETED 1,000.00 0.00 1,000.00",
+      "processed_at": "2026-02-01T21:47:47.800574",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080I2SC 2025-12-09 10:14:17 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080I2SC 2025-12-09 10:14:17 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 50.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.800602",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 50.0,
+      "category": "unknown",
+      "details": "TL9080I2SC 2025-12-09 10:14:17 OverDraft of Credit Party COMPLETED 50.00 0.00 50",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080I2SC 2025-12-09 10:14:17 OverDraft of Credit Party COMPLETED 50.00 0.00 50.00",
+      "processed_at": "2026-02-01T21:47:47.801081",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080I2QE 2025-12-09 10:11:05 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080I2QE 2025-12-09 10:11:05 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 19.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.801169",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 19.0,
+      "category": "unknown",
+      "details": "TL9080I2QE 2025-12-09 10:11:05 OverDraft of Credit Party COMPLETED 19.00 0.00 19",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080I2QE 2025-12-09 10:11:05 OverDraft of Credit Party COMPLETED 19.00 0.00 19.00",
+      "processed_at": "2026-02-01T21:47:47.801211",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080HXNF 2025-12-09 09:37:24 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HXNF 2025-12-09 09:37:24 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 200.00",
+      "processed_at": "2026-02-01T21:47:47.801236",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080HXNF 2025-12-09 09:37:24 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HXNF 2025-12-09 09:37:24 Customer Transfer Fuliza M-Pesa to COMPLETED 0.00 200.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.801285",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 207.0,
+      "category": "unknown",
+      "details": "TL9080HXNF 2025-12-09 09:37:24 OverDraft of Credit Party COMPLETED 207.00 0.00 2",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HXNF 2025-12-09 09:37:24 OverDraft of Credit Party COMPLETED 207.00 0.00 207.00",
+      "processed_at": "2026-02-01T21:47:47.801318",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080HTQR 2025-12-09 08:53:59 Customer Send Money to Micro SME COMPLETED 0.00 5",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HTQR 2025-12-09 08:53:59 Customer Send Money to Micro SME COMPLETED 0.00 50.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.801342",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 50.0,
+      "category": "unknown",
+      "details": "TL9080HTQR 2025-12-09 08:53:59 OverDraft of Credit Party COMPLETED 50.00 0.00 50",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HTQR 2025-12-09 08:53:59 OverDraft of Credit Party COMPLETED 50.00 0.00 50.00",
+      "processed_at": "2026-02-01T21:47:47.801374",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080HQQL 2025-12-09 08:50:25 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HQQL 2025-12-09 08:50:25 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 19.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.801404",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 19.0,
+      "category": "unknown",
+      "details": "TL9080HQQL 2025-12-09 08:50:25 OverDraft of Credit Party COMPLETED 19.00 0.00 19",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HQQL 2025-12-09 08:50:25 OverDraft of Credit Party COMPLETED 19.00 0.00 19.00",
+      "processed_at": "2026-02-01T21:47:47.801477",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080HS54 2025-12-09 08:41:15 Customer Send Money to Micro SME COMPLETED 0.00 2",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HS54 2025-12-09 08:41:15 Customer Send Money to Micro SME COMPLETED 0.00 20.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.801506",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 20.0,
+      "category": "unknown",
+      "details": "TL9080HS54 2025-12-09 08:41:15 OverDraft of Credit Party COMPLETED 20.00 0.00 20",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HS54 2025-12-09 08:41:15 OverDraft of Credit Party COMPLETED 20.00 0.00 20.00",
+      "processed_at": "2026-02-01T21:47:47.801540",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL9080HHAN 2025-12-09 06:11:16 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9080HHAN 2025-12-09 06:11:16 OD Loan Repayment to 232323 - M-PESA COMPLETED 0.00 100.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.801626",
+      "balance": 99.0
+    },
+    {
+      "date": "2025-12-09",
+      "amount": 100.0,
+      "category": "income",
+      "details": "TL9530LALH 2025-12-09 06:11:15 Funds received from 254114***285 - COMPLETED 100.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL9530LALH 2025-12-09 06:11:15 Funds received from 254114***285 - COMPLETED 100.00 0.00 100.00",
+      "processed_at": "2026-02-01T21:47:47.801651",
+      "balance": 199.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080H06G 2025-12-08 21:47:01 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080H06G 2025-12-08 21:47:01 Merchant Payment Fuliza M-Pesa to COMPLETED 0.00 22.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.801677",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 22.0,
+      "category": "unknown",
+      "details": "TL8080H06G 2025-12-08 21:47:01 OverDraft of Credit Party COMPLETED 22.00 0.00 22",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080H06G 2025-12-08 21:47:01 OverDraft of Credit Party COMPLETED 22.00 0.00 22.00",
+      "processed_at": "2026-02-01T21:47:47.801703",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080H1B5 2025-12-08 21:18:35 Pay Bill Online Fuliza M-Pesa to 4135035 - COMPLE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080H1B5 2025-12-08 21:18:35 Pay Bill Online Fuliza M-Pesa to 4135035 - COMPLETED 0.00 3,250.00 0.00",
+      "processed_at": "2026-02-01T21:47:47.801729",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 175.97,
+      "category": "unknown",
+      "details": "TL8080H1B5 2025-12-08 21:18:35 OverDraft of Credit Party COMPLETED 175.97 0.00 3",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080H1B5 2025-12-08 21:18:35 OverDraft of Credit Party COMPLETED 175.97 0.00 3,250.00",
+      "processed_at": "2026-02-01T21:47:47.801764",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 3000.0,
+      "category": "unknown",
+      "details": "TL8080GZQ3 2025-12-08 21:17:51 M-Shwari Withdraw COMPLETED 3,000.00 0.00 3,074.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080GZQ3 2025-12-08 21:17:51 M-Shwari Withdraw COMPLETED 3,000.00 0.00 3,074.03",
+      "processed_at": "2026-02-01T21:47:47.801786",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080GQ0J 2025-12-08 19:47:30 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080GQ0J 2025-12-08 19:47:30 Customer Payment to Small Business to COMPLETED 0.00 50.00 74.03",
+      "processed_at": "2026-02-01T21:47:47.801810",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080GKW9 2025-12-08 19:36:33 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080GKW9 2025-12-08 19:36:33 Customer Payment to Small Business to COMPLETED 0.00 20.00 124.03",
+      "processed_at": "2026-02-01T21:47:47.801841",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080GEU6 2025-12-08 19:32:18 Pay Bill to 400200 - Co-operative Bank COMPLETED ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080GEU6 2025-12-08 19:32:18 Pay Bill to 400200 - Co-operative Bank COMPLETED 0.00 10.00 144.03",
+      "processed_at": "2026-02-01T21:47:47.801872",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080G2MW 2025-12-08 18:35:05 Merchant Payment to 7100504 - NICCO COMPLETED 0.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080G2MW 2025-12-08 18:35:05 Merchant Payment to 7100504 - NICCO COMPLETED 0.00 70.00 154.03",
+      "processed_at": "2026-02-01T21:47:47.801964",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080G4B7 2025-12-08 17:44:36 Merchant Payment Online to 8282231 - COMPLETED 0.",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080G4B7 2025-12-08 17:44:36 Merchant Payment Online to 8282231 - COMPLETED 0.00 40.00 224.03",
+      "processed_at": "2026-02-01T21:47:47.802008",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080F64R 2025-12-08 14:17:39 Customer Transfer of Funds Charge COMPLETED 0.00 ",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080F64R 2025-12-08 14:17:39 Customer Transfer of Funds Charge COMPLETED 0.00 7.00 264.03",
+      "processed_at": "2026-02-01T21:47:47.802037",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080F64R 2025-12-08 14:17:39 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080F64R 2025-12-08 14:17:39 Customer Payment to Small Business to COMPLETED 0.00 150.00 271.03",
+      "processed_at": "2026-02-01T21:47:47.802061",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080EAEA 2025-12-08 08:48:03 Customer Transfer to 0742***936 - Martin COMPLETE",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080EAEA 2025-12-08 08:48:03 Customer Transfer to 0742***936 - Martin COMPLETED 0.00 50.00 421.03",
+      "processed_at": "2026-02-01T21:47:47.802097",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080E8SN 2025-12-08 08:24:01 Merchant Payment to 6789939 - COMPLETED 0.00 40.0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080E8SN 2025-12-08 08:24:01 Merchant Payment to 6789939 - COMPLETED 0.00 40.00 471.03",
+      "processed_at": "2026-02-01T21:47:47.802129",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080E3JQ 2025-12-08 07:58:53 Merchant Payment to 119497 - Quick Mart COMPLETED",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080E3JQ 2025-12-08 07:58:53 Merchant Payment to 119497 - Quick Mart COMPLETED 0.00 119.00 511.03",
+      "processed_at": "2026-02-01T21:47:47.802160",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080E7LR 2025-12-08 07:38:26 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080E7LR 2025-12-08 07:38:26 Customer Payment to Small Business to COMPLETED 0.00 20.00 630.03",
+      "processed_at": "2026-02-01T21:47:47.802187",
+      "balance": 0.0
+    },
+    {
+      "date": "2025-12-08",
+      "amount": 0.0,
+      "category": "expense",
+      "details": "TL8080E7KK 2025-12-08 07:35:18 Customer Payment to Small Business to COMPLETED 0",
+      "filename": "Statement_All_Transactions_20251201_20251231.pdf",
+      "raw_line": "TL8080E7KK 2025-12-08 07:35:18 Customer Payment to Small Business to COMPLETED 0.00 80.00 650.03",
+      "processed_at": "2026-02-01T21:47:47.802219",
+      "balance": 0.0
+    }
+  ],
+  "processed_files": [
+    "Statement_All_Transactions_20251201_20251231.pdf"
+  ],
+  "scan_results": [
+    {
+      "file": "MPESA_Statement_2026-01-29_to_2026-01-01_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:47:42.346584"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-30_to_2025-10-30_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:47:42.360162"
+    },
+    {
+      "file": "Statement_All_Transactions_20251201_20251231.pdf",
+      "status": "success",
+      "message": "Processed 332 transactions",
+      "transactions": 332,
+      "timestamp": "2026-02-01T21:47:47.803709"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-29_to_2026-01-01_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:47:47.816587"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-30_to_2025-10-30_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:47:47.833687"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-29_to_2026-01-01_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:48:31.661927"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-30_to_2025-10-30_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:48:31.676947"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-29_to_2026-01-01_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:48:31.707946"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-30_to_2025-10-30_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:48:31.726473"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-29_to_2026-01-01_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:48:32.841265"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-30_to_2025-10-30_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:48:32.850046"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-29_to_2026-01-01_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:48:32.861526"
+    },
+    {
+      "file": "MPESA_Statement_2026-01-30_to_2025-10-30_2547xxxxxx963.pdf",
+      "status": "failed",
+      "message": "Failed to open PDF: ",
+      "timestamp": "2026-02-01T21:48:32.875228"
+    }
+  ],
+  "last_updated": "2026-02-01T21:48:32.899821",
+  "total_transactions": 332
+}

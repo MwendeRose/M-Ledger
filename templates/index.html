@@ -185,6 +185,99 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Upload form handling
+$('#upload_form').submit(function(e){
+    e.preventDefault();
+    
+    const form = $(this);
+    const formData = new FormData(form[0]);
+    const fileInput = $('#statement')[0];
+    
+    if (!fileInput.files[0]) {
+        $('#upload_message').html('<div class="alert alert-warning">Please select a PDF file.</div>');
+        return;
+    }
+    
+    $('#upload_message').html('<div class="alert alert-info">Uploading and processing PDF... Please wait.</div>');
+    
+    $.ajax({
+        url: '/',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            // Create a temporary div to parse the response
+            const tempDiv = $('<div>').html(response);
+            const newContent = tempDiv.find('.container').html();
+            
+            // Update the page content
+            $('.container').html(newContent);
+            
+            // Re-initialize event handlers
+            initializeEventHandlers();
+            
+            // Show success message
+            $('#upload_message').html('<div class="alert alert-success">Statement processed successfully! Reloading data...</div>');
+            
+            // Force page reload after 2 seconds to ensure all data is fresh
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        },
+        error: function(xhr) {
+            let errorMsg = 'Upload failed. ';
+            if (xhr.responseText) {
+                const tempDiv = $('<div>').html(xhr.responseText);
+                const error = tempDiv.find('.alert, #upload_message').text() || xhr.responseText;
+                errorMsg += error.substring(0, 200);
+            }
+            $('#upload_message').html('<div class="alert alert-danger">' + errorMsg + '</div>');
+        }
+    });
+});
+
+// Initialize all event handlers
+function initializeEventHandlers() {
+    // Re-attach all event handlers here
+    $('#ai_chat_form').off('submit').on('submit', function(e){
+        e.preventDefault();
+        const msg = $('#ai_chat_input').val().trim();
+        if(!msg) return;
+        
+        $('#ai_chat_messages').append('<div class="ai-chat-message user">' + msg + '</div>');
+        $('#ai_chat_input').val('');
+        
+        $('#ai_chat_messages').append('<div class="ai-chat-message bot loading">Thinking...</div>');
+        $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+        
+        $.post("/ai_chat", { question: msg }, function(data){
+            $('.ai-chat-message.bot.loading').last().remove();
+            $('#ai_chat_messages').append('<div class="ai-chat-message bot">' + (data.answer || "No response from AI") + '</div>');
+            $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+        }).fail(function(){
+            $('.ai-chat-message.bot.loading').last().remove();
+            $('#ai_chat_messages').append('<div class="ai-chat-message bot">Failed to get AI response. Please try again.</div>');
+            $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+        });
+    });
+    
+    // Re-attach other handlers...
+    $('#apply_filters').off('click').on('click', applyFilters);
+    $('#download_pdf').off('click').on('click', downloadPDF);
+}
+
+// Initialize on page load
+$(document).ready(function() {
+    initializeEventHandlers();
+    updatePagination();
+    
+    // File input change handler
+    $('#statement').on('change', function(e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'Choose File';
+        $('#file_text').text(fileName);
+    });
+});
 
 $('#ai_chat_form').submit(function(e){
     e.preventDefault();
