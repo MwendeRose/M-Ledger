@@ -11,7 +11,6 @@
 
 <div class="container">
 
-    <!-- Header -->
     <header>
         <h1>
             <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -26,23 +25,23 @@
         </button>
     </header>
 
-    <!-- Upload Statement -->
-    <section class="upload-section">
-        <h2>Upload Statement</h2>
-        <form method="POST" enctype="multipart/form-data" action="/" id="upload_form" class="upload-form">
-            <div class="file-input-wrapper">
-                <input type="file" name="statement" id="statement" required accept=".pdf,.csv,.txt,.xlsx,.xls">
-                <label for="statement" class="file-label">
-                    <span class="file-icon">📄</span>
-                    <span class="file-text" id="file_text">Choose File</span>
-                </label>
-                <input type="password" name="pdf_password" placeholder="Password (if any)" class="password-input">
-            </div>
-            <button type="submit" class="btn btn-primary">Upload Statement</button>
-        </form>
-    </section>
+   <section class="upload-section">
+    <h2>Upload Statement</h2>
+    <form id="upload_form" class="upload-form">
+        <div class="file-input-wrapper">
+            <input type="file" name="statement" id="statement" required accept=".pdf">
+            <label for="statement" class="file-label">
+                <span class="file-icon"></span>
+                <span class="file-text" id="file_text">Choose File</span>
+            </label>
+            <input type="password" name="pdf_password" placeholder="Password (if any)" class="password-input">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload Statement</button>
+    </form>
+    <p id="upload_message" style="margin-top:10px;"></p>
+</section>
 
-    <!-- Financial Summary -->
+
     <section class="summary-section">
         <h2>Financial Summary</h2>
         <div class="summary-grid">
@@ -65,7 +64,7 @@
         </div>
     </section>
 
-    <!-- Transaction Filters -->
+  
     <section class="filter-section">
         <h2>Filter Transactions</h2>
         <div class="filter-controls">
@@ -102,7 +101,7 @@
         </div>
     </section>
 
-    <!-- Transactions Table -->
+
     <section class="table-section">
         <h2>Transaction History</h2>
         <div class="table-wrapper">
@@ -153,7 +152,6 @@
         </div>
     </section>
 
-    <!-- AI Chat Section -->
     <section class="ai-chat-section">
         <h2>Ask AI about your finances</h2>
         <div class="ai-chat-messages" id="ai_chat_messages">
@@ -168,9 +166,6 @@
 </div>
 
 <script>
-// -----------------------------
-// Theme toggle
-// -----------------------------
 const themeToggle = document.getElementById('theme_toggle');
 themeToggle.addEventListener('click', () => {
     const html = document.documentElement;
@@ -184,29 +179,24 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     
-    // Update file name display
     document.getElementById('statement').addEventListener('change', function(e) {
         const fileName = e.target.files[0] ? e.target.files[0].name : 'Choose File';
         document.getElementById('file_text').textContent = fileName;
     });
 });
 
-// -----------------------------
-// AI Chat functionality
-// -----------------------------
+
 $('#ai_chat_form').submit(function(e){
     e.preventDefault();
     const msg = $('#ai_chat_input').val().trim();
     if(!msg) return;
     
-    // Add user message
+   
     $('#ai_chat_messages').append('<div class="ai-chat-message user">' + msg + '</div>');
     $('#ai_chat_input').val('');
     
-    // Add loading indicator
     $('#ai_chat_messages').append('<div class="ai-chat-message bot loading">Thinking...</div>');
-    
-    // Scroll to bottom
+  
     $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
     
     $.post("/ai_chat", { question: msg }, function(data){
@@ -220,16 +210,14 @@ $('#ai_chat_form').submit(function(e){
     });
 });
 
-// -----------------------------
-// Apply Filters functionality
-// -----------------------------
+-
 $('#apply_filters').click(function(){
     const type_filter = $('#type_filter').val();
     const amount_filter = $('#amount_filter').val();
     const start_date = $('#start_date').val();
     const end_date = $('#end_date').val();
     
-    // Show loading
+  
     $('#tx_body').html('<tr><td colspan="7" style="text-align: center; padding: 20px;">Applying filters...</td></tr>');
 
     $.ajax({
@@ -276,14 +264,12 @@ $('#apply_filters').click(function(){
         },
         error: function(){
             alert("Failed to apply filters. Please try again.");
-            location.reload(); // Reload to show original data
+            location.reload(); 
         }
     });
 });
 
-// -----------------------------
-// Download PDF functionality
-// -----------------------------
+
 $('#download_pdf').click(function(){
     $.ajax({
         url: "/download_pdf",
@@ -307,9 +293,7 @@ $('#download_pdf').click(function(){
     });
 });
 
-// -----------------------------
-// Pagination functionality
-// -----------------------------
+
 let currentPage = 1;
 const transactionsPerPage = 20;
 
@@ -320,8 +304,7 @@ function updatePagination() {
     $('#page_info').text(`Page ${currentPage} of ${totalPages}`);
     $('#prev_page').prop('disabled', currentPage === 1);
     $('#next_page').prop('disabled', currentPage === totalPages || totalPages === 0);
-    
-    // Show/hide rows based on current page
+
     $('#tx_body tr').each(function(index) {
         $(this).toggle(index >= (currentPage - 1) * transactionsPerPage && index < currentPage * transactionsPerPage);
     });
@@ -344,7 +327,7 @@ $('#next_page').click(function() {
     }
 });
 
-// Initialize pagination on page load
+
 $(document).ready(function() {
     updatePagination();
 });

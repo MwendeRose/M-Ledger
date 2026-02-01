@@ -15,17 +15,19 @@ from rag_engine import ingest_statement, answer_question
 app = Flask(__name__)
 CORS(app)
 
-
+# ----------------- CONFIG -----------------
 PDF_DIR = "mpesa_statements"
 PASSWORD_DIR = "passwords"
 
 os.makedirs(PDF_DIR, exist_ok=True)
 os.makedirs(PASSWORD_DIR, exist_ok=True)
 
+# Allow large uploads (50MB)
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+
 transactions_cache = []
 scan_results = []
 processed_files = set()
-
 
 CATEGORY_MAP = {
     "paid_in": "income",
@@ -36,6 +38,7 @@ CATEGORY_MAP = {
     "expense": "expense"
 }
 
+# ----------------- HELPERS -----------------
 @app.template_filter("format_number")
 def format_number(value):
     try:
@@ -62,7 +65,6 @@ def get_all_passwords():
                 pass
     return passwords
 
-
 def try_all_passwords(pdf_path):
     try:
         with pdfplumber.open(pdf_path):
@@ -78,7 +80,6 @@ def try_all_passwords(pdf_path):
             continue
 
     return None
-
 
 def get_password(filename):
     base = os.path.splitext(filename)[0]
@@ -115,23 +116,19 @@ def auto_scan_pdfs():
     for file in os.listdir(PDF_DIR):
         if not file.lower().endswith(".pdf"):
             continue
-
         if file in processed_files:
             continue
 
         path = os.path.join(PDF_DIR, file)
-
         try:
             password = get_password(file) or try_all_passwords(path)
             result = ingest_statement(path, password=password)
-
             tx = result if isinstance(result, list) else result.get("transactions", [])
 
             clean_tx = []
             for t in tx:
                 if not {"date", "amount", "category"}.issubset(t):
                     continue
-
                 t["category"] = CATEGORY_MAP.get(t["category"], t["category"])
                 clean_tx.append(t)
 
@@ -152,6 +149,7 @@ def auto_scan_pdfs():
                 "message": str(e)
             })
 
+# ----------------- ROUTES -----------------
 @app.route("/", methods=["GET", "POST"])
 def index():
     upload_success = False
@@ -162,30 +160,45 @@ def index():
         pdf_password = request.form.get("pdf_password", "").strip()
 
         if uploaded_file:
-            safe_name = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{uploaded_file.filename}"
-            save_path = os.path.join(PDF_DIR, safe_name)
-            uploaded_file.save(save_path)
+            filename = uploaded_file.filename
+            # Only allow PDFs
+            if not filename.lower().endswith(".pdf"):
+                upload_message = "Only PDF files are allowed."
+            else:
+                safe_name = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{filename}"
+                save_path = os.path.join(PDF_DIR, safe_name)
 
-            try:
-                if not pdf_password:
-                    pdf_password = try_all_passwords(save_path)
+                try:
+                    uploaded_file.save(save_path)
+                    print(f"File saved: {save_path}")
 
-                result = ingest_statement(save_path, password=pdf_password)
-                tx = result if isinstance(result, list) else result.get("transactions", [])
+                    # Use provided password or try all
+                    if not pdf_password:
+                        pdf_password = try_all_passwords(save_path)
+                    print(f"Using password: {pdf_password}")
 
-                for t in tx:
-                    if {"date", "amount", "category"}.issubset(t):
-                        t["category"] = CATEGORY_MAP.get(t["category"], t["category"])
-                        transactions_cache.append(t)
+                    result = ingest_statement(save_path, password=pdf_password)
+                    tx = result if isinstance(result, list) else result.get("transactions", [])
 
-                processed_files.add(safe_name)
+                    clean_tx = []
+                    for t in tx:
+                        if {"date", "amount", "category"}.issubset(t):
+                            t["category"] = CATEGORY_MAP.get(t["category"], t["category"])
+                            clean_tx.append(t)
 
-                upload_success = True
-                upload_message = f"{safe_name} uploaded successfully ({len(tx)} transactions)"
+                    transactions_cache.extend(clean_tx)
+                    processed_files.add(safe_name)
 
-            except Exception as e:
-                upload_message = str(e)
+                    upload_success = True
+                    upload_message = f"{safe_name} uploaded successfully ({len(clean_tx)} transactions)"
 
+                except Exception as e:
+                    upload_message = f"Failed to process PDF: {str(e)}"
+                    print("Upload error:", e)
+        else:
+            upload_message = "No file was selected."
+
+    # Compute summary
     income = sum(t["amount"] for t in transactions_cache if t["category"] == "income")
     expenses = sum(t["amount"] for t in transactions_cache if t["category"] == "expense")
     charges = sum(t["amount"] for t in transactions_cache if t["category"] == "charge")
@@ -206,13 +219,11 @@ def index():
 @app.route("/filter_transactions", methods=["POST"])
 def filter_transactions():
     data = request.get_json()
-
     ttype = data.get("type_filter", "all")
     start = parse_date(data.get("start_date")) if data.get("start_date") else None
     end = parse_date(data.get("end_date")) if data.get("end_date") else None
 
     filtered = transactions_cache
-
     if ttype != "all":
         filtered = [t for t in filtered if t["category"] == ttype]
 
@@ -222,8 +233,7 @@ def filter_transactions():
     if end:
         filtered = [t for t in filtered if parse_date(t["date"]) and parse_date(t["date"]) <= end]
 
-    return jsonify(filtered)
-
+    return jsonify({"transactions": filtered})
 
 @app.route("/ai_chat", methods=["POST"])
 def ai_chat():
@@ -236,15 +246,14 @@ def download_pdf():
     buffer = io.BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
     text = c.beginText(40, 750)
-
     y = 750
+
     for t in transactions_cache:
         if y < 50:
             c.drawText(text)
             c.showPage()
             text = c.beginText(40, 750)
             y = 750
-
         line = f"{t['date']} | {t['category']} | {t['amount']} | {t.get('details','')}"
         text.textLine(line)
         y -= 14
@@ -268,6 +277,7 @@ def rescan():
         "total_transactions": len(transactions_cache)
     })
 
+# ----------------- START -----------------
 if __name__ == "__main__":
     auto_scan_pdfs()
     app.run(debug=True)
