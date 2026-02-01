@@ -1,219 +1,362 @@
-from flask import Flask, render_template, request, jsonify, send_file
 import os
-import io
-import re
-import pdfplumber
+from flask import Flask, render_template, request, jsonify, send_file
+from flask_cors import CORS
+from rag_engine import ingest_statement, answer_question
 from datetime import datetime
-from reportlab.lib.pagesizes import letter
+import io
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+import json
+import pdfplumber
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-here'
+CORS(app)
+
+PDF_DIR = "mpesa_statements"
+PASSWORD_DIR = "passwords"
+
+transactions_cache = []
+scan_results = []  # Track each PDF processing result
 
 
-STATEMENTS_DIR = 'mpesa_statements'
-PASSWORD_DIR = 'passwords'
-os.makedirs(STATEMENTS_DIR, exist_ok=True)
-os.makedirs(PASSWORD_DIR, exist_ok=True)
-
-
-@app.template_filter('format_number')
+# ---------------- FILTER ----------------
+@app.template_filter("format_number")
 def format_number(value):
     try:
-        if isinstance(value, (int, float)):
-            return f"{value:,.2f}"
-        return value
+        return "{:,.2f}".format(float(value))
     except:
         return value
 
 
-def parse_pdf(file_path, password=None):
-    transactions = []
-    total_income = 0
-    total_expense = 0
-    total_charges = 0
-
-    try:
-        with pdfplumber.open(file_path, password=password) as pdf:
-            text = ""
-            for page in pdf.pages:
-                txt = page.extract_text()
-                if txt:
-                    text += txt + "\n"
-
-        lines = text.splitlines()
-        for line in lines:
-            line = line.strip()
-            if not line:
-                continue
-
-        
-            pattern = r'(\d{1,2}/\d{1,2}/\d{4}).*?(?:KES\s*([\d,]+\.?\d*))'
-            match = re.search(pattern, line)
-            if match:
-                date_str = match.group(1)
-                amount = float(match.group(2).replace(',', ''))
-
-            
-                lc = line.lower()
-                if 'received' in lc or 'deposit' in lc:
-                    category = 'income'
-                    total_income += amount
-                elif 'sent' in lc or 'withdraw' in lc:
-                    category = 'expense'
-                    total_expense += amount
-                elif 'charge' in lc or 'fee' in lc:
-                    category = 'charge'
-                    total_charges += amount
-                else:
-                    category = 'other'
-
-                transactions.append({
-                    'date': date_str,
-                    'details': line[:100],
-                    'amount': amount,
-                    'category': category,
-                    'balance': None
-                })
-    except Exception as e:
-        raise e
-
-    balance = total_income - total_expense - total_charges
+# ---------------- AUTO PASSWORD TESTER ----------------
+def get_all_passwords():
+    """Get all passwords from password directory"""
+    passwords = []
     
-    running_balance = 0
-    for t in transactions:
-        if t['category'] == 'income':
-            running_balance += t['amount']
-        elif t['category'] == 'expense' or t['category'] == 'charge':
-            running_balance -= t['amount']
-        t['balance'] = running_balance
-
-    return {
-        'transactions': transactions,
-        'total_income': total_income,
-        'total_expense': total_expense,
-        'total_charges': total_charges,
-        'balance': balance
-    }
-
-def try_passwords(file_path):
+    if not os.path.exists(PASSWORD_DIR):
+        os.makedirs(PASSWORD_DIR, exist_ok=True)
+        return passwords
     
-    try:
-        return parse_pdf(file_path), None
-    except Exception as e:
-        if 'password' not in str(e).lower():
-            raise e
-
-    
-    for pw_file in os.listdir(PASSWORD_DIR):
-        if pw_file.lower().endswith('.txt'):
-            with open(os.path.join(PASSWORD_DIR, pw_file), 'r', encoding='utf-8') as f:
-                pw = f.read().strip()
+    for file in os.listdir(PASSWORD_DIR):
+        if file.endswith(".txt") and file != "password_mapping.json":
             try:
-                return parse_pdf(file_path, password=pw), pw
-            except:
-                continue
-    raise ValueError("PDF is password protected and no valid password found.")
-
-
-def auto_load_statements():
-    statements = []
-    for fname in os.listdir(STATEMENTS_DIR):
-        if not fname.lower().endswith('.pdf'):
-            continue
-        fpath = os.path.join(STATEMENTS_DIR, fname)
-        try:
-            result, used_pw = try_passwords(fpath)
-            statements.append({
-                'filename': fname,
-                'transactions': result['transactions'],
-                'income': result['total_income'],
-                'expenses': result['total_expense'],
-                'charges': result['total_charges'],
-                'balance': result['balance'],
-                'password_used': used_pw
-            })
-        except Exception as e:
-            statements.append({
-                'filename': fname,
-                'error': str(e)
-            })
-    return statements
-
-
-@app.route('/', methods=['GET'])
-def index():
-    statements = auto_load_statements()
-
+                with open(os.path.join(PASSWORD_DIR, file)) as f:
+                    password = f.read().strip()
+                    if password:  # Only add non-empty passwords
+                        passwords.append({
+                            'password': password,
+                            'source': file
+                        })
+            except Exception as e:
+                print(f"Warning: Could not read {file}: {e}")
     
-    all_tx = []
-    for s in statements:
-        if 'transactions' in s:
-            all_tx.extend(s['transactions'])
+    return passwords
 
-    total_income = sum(t['amount'] for t in all_tx if t['category']=='income')
-    total_expense = sum(t['amount'] for t in all_tx if t['category']=='expense')
-    total_charges = sum(t['amount'] for t in all_tx if t['category']=='charge')
-    total_balance = total_income - total_expense - total_charges
+
+def try_all_passwords(pdf_path):
+    """
+    Try to open a PDF with all available passwords.
+    Returns the working password or None.
+    """
+    filename = os.path.basename(pdf_path)
+    
+    # Get all available passwords
+    all_passwords = get_all_passwords()
+    
+    print(f"\n🔑 Auto-testing passwords for: {filename}")
+    print(f"   Found {len(all_passwords)} password(s) to try")
+    
+    # First try without password
+    try:
+        with pdfplumber.open(pdf_path, password=None) as pdf:
+            pages = len(pdf.pages)
+            print(f"   ✓ PDF opened WITHOUT password ({pages} pages)")
+            return None
+    except:
+        pass
+    
+    # Try each password
+    for i, pwd_info in enumerate(all_passwords, 1):
+        pwd = pwd_info['password']
+        source = pwd_info['source']
+        
+        try:
+            with pdfplumber.open(pdf_path, password=pwd) as pdf:
+                pages = len(pdf.pages)
+                print(f"   ✓ SUCCESS! Password from '{source}' works ({pages} pages)")
+                return pwd
+        except:
+            pass
+    
+    print(f" None of the {len(all_passwords)} passwords worked!")
+    return None
+
+
+def get_password(filename):
+    """Smart password matching"""
+    base = os.path.splitext(filename)[0]
+    
+  
+    exact_match = base + ".txt"
+    exact_path = os.path.join(PASSWORD_DIR, exact_match)
+    if os.path.exists(exact_path):
+        with open(exact_path) as f:
+            return f.read().strip()
+    
+
+    mapping_file = os.path.join(PASSWORD_DIR, "password_mapping.json")
+    if os.path.exists(mapping_file):
+        try:
+            with open(mapping_file) as f:
+                mapping = json.load(f)
+            
+            for pattern, pwd_file in mapping.items():
+                if pattern.lower() in base.lower():
+                    pwd_path = os.path.join(PASSWORD_DIR, pwd_file)
+                    if os.path.exists(pwd_path):
+                        with open(pwd_path) as f:
+                            return f.read().strip()
+        except:
+            pass
+    
+    
+    default_path = os.path.join(PASSWORD_DIR, "default.txt")
+    if os.path.exists(default_path):
+        with open(default_path) as f:
+            return f.read().strip()
+    
+    return None
+
+def auto_scan_pdfs():
+    global transactions_cache, scan_results
+    transactions_cache = []
+    scan_results = []
+
+    os.makedirs(PDF_DIR, exist_ok=True)
+    os.makedirs(PASSWORD_DIR, exist_ok=True)
+
+    print("\n" + "="*60)
+    print("STARTING PDF SCAN WITH AUTO-PASSWORD DETECTION")
+    print("="*60)
+
+    for file in os.listdir(PDF_DIR):
+        if not file.lower().endswith(".pdf"):
+            continue
+
+        path = os.path.join(PDF_DIR, file)
+
+        try:
+            print(f"\n Processing: {file}")
+            
+            # First try matched password
+            password = get_password(file)
+            
+            # If no match, auto-test all passwords
+            if not password:
+                print(f"   No matched password - auto-testing all available passwords...")
+                password = try_all_passwords(path)
+            
+            if password:
+                print(f" Using password: {'*' * len(password)}")
+            else:
+                print(f" No password needed/found")
+            
+            # Ingest the statement
+            result = ingest_statement(path, password=password)
+            
+            # Handle different return types
+            if isinstance(result, list):
+                tx = result
+            elif isinstance(result, dict):
+                tx = result.get('transactions', [])
+            else:
+                tx = [result] if result else []
+            
+            transactions_cache.extend(tx)
+
+            scan_results.append({
+                "file": file,
+                "status": "success",
+                "message": f"{len(tx)} transactions processed",
+                "password_used": "yes" if password else "no",
+                "transactions": tx
+            })
+            print(f" SUCCESS: {len(tx)} transactions extracted")
+
+        except Exception as e:
+            import traceback
+            error_msg = str(e) if str(e) else f"Unknown error ({type(e).__name__})"
+            
+            print(f" FAILED: {error_msg}")
+            
+            scan_results.append({
+                "file": file,
+                "status": "failed",
+                "message": error_msg,
+                "error_trace": traceback.format_exc(),
+                "transactions": []
+            })
+
+    print("\n" + "="*60)
+    print(f"SCAN COMPLETE: {len(transactions_cache)} total transactions")
+    print("="*60 + "\n")
+
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    global transactions_cache, scan_results
+    
+    if request.method == "POST":
+      
+        uploaded_file = request.files.get("statement")
+        pdf_password = request.form.get("pdf_password", "").strip()
+        
+        if uploaded_file:
+            filename = uploaded_file.filename
+            save_path = os.path.join(PDF_DIR, filename)
+            uploaded_file.save(save_path)
+            
+            try:
+               
+                if not pdf_password:
+                    print(f"\n Auto-detecting password for {filename}...")
+                    pdf_password = try_all_passwords(save_path)
+                
+                result = ingest_statement(save_path, password=pdf_password)
+                
+                if isinstance(result, list):
+                    tx = result
+                elif isinstance(result, dict):
+                    tx = result.get('transactions', [])
+                else:
+                    tx = [result] if result else []
+                
+                transactions_cache.extend(tx)
+                
+                scan_results.append({
+                    "file": filename,
+                    "status": "success",
+                    "message": f"{len(tx)} transactions processed",
+                    "password_used": "yes" if pdf_password else "no",
+                    "transactions": tx
+                })
+                
+            except Exception as e:
+                import traceback
+                scan_results.append({
+                    "file": filename,
+                    "status": "failed",
+                    "message": str(e),
+                    "error_trace": traceback.format_exc(),
+                    "transactions": []
+                })
+
+    income = sum(t.get("amount", 0) for t in transactions_cache if t.get("category") == "income")
+    expenses = sum(t.get("amount", 0) for t in transactions_cache if t.get("category") == "expense")
+    charges = sum(t.get("amount", 0) for t in transactions_cache if t.get("category") == "charge")
+    balance = income - expenses - charges
 
     return render_template(
-        'index.html',
-        transactions=all_tx,
-        income=total_income,
-        expenses=total_expense,
-        charges=total_charges,
-        balance=total_balance
+        "index.html",
+        income=income,
+        expenses=expenses,
+        charges=charges,
+        balance=balance,
+        transactions=transactions_cache,
+        scan_results=scan_results
     )
 
-
-@app.route('/ai_chat', methods=['POST'])
-def ai_chat():
+@app.route("/filter_transactions", methods=["POST"])
+def filter_transactions():
     data = request.get_json()
-    question = data.get('question', '')
+    type_filter = data.get("type_filter", "all")
+    amount_filter = data.get("amount_filter", "none")
+    start_date = data.get("start_date")
+    end_date = data.get("end_date")
 
-    statements = auto_load_statements()
-    all_tx = []
-    for s in statements:
-        if 'transactions' in s:
-            all_tx.extend(s['transactions'])
+    filtered = transactions_cache.copy()
 
-    if not all_tx:
-        return jsonify({'success': False, 'answer': 'No statements available.'})
+    if type_filter != "all":
+        filtered = [t for t in filtered if t.get("category") == type_filter]
 
-    q = question.lower()
-    if 'income' in q:
-        total = sum(t['amount'] for t in all_tx if t['category']=='income')
-        answer = f"Total income: KES {total:,.2f}"
-    elif 'expense' in q or 'spend' in q:
-        total = sum(t['amount'] for t in all_tx if t['category']=='expense')
-        answer = f"Total expenses: KES {total:,.2f}"
-    elif 'balance' in q:
-        total_income = sum(t['amount'] for t in all_tx if t['category']=='income')
-        total_expense = sum(t['amount'] for t in all_tx if t['category']=='expense')
-        total_charges = sum(t['amount'] for t in all_tx if t['category']=='charge')
-        balance = total_income - total_expense - total_charges
-        answer = f"Current balance: KES {balance:,.2f}"
-    else:
-        answer = "Ask about income, expenses, balance, or charges."
+    if start_date:
+        filtered = [t for t in filtered if t.get("date", "") >= start_date]
+    if end_date:
+        filtered = [t for t in filtered if t.get("date", "") <= end_date]
 
-    return jsonify({'success': True, 'answer': answer})
+    if amount_filter == "max" and filtered:
+        max_amount = max(t.get("amount", 0) for t in filtered)
+        filtered = [t for t in filtered if t.get("amount", 0) == max_amount]
+    elif amount_filter == "min" and filtered:
+        min_amount = min(t.get("amount", 0) for t in filtered)
+        filtered = [t for t in filtered if t.get("amount", 0) == min_amount]
+
+    return jsonify({"transactions": filtered})
 
 
-@app.route('/download_pdf')
+@app.route("/ai_chat", methods=["POST"])
+def ai_chat():
+    question = request.form.get("question")
+    answer = answer_question(transactions_cache, question)
+    return jsonify({"answer": answer})
+
+
+@app.route("/download_pdf")
 def download_pdf():
-    try:
-        buffer = io.BytesIO()
-        c = canvas.Canvas(buffer, pagesize=letter)
-        c.drawString(100, 750, "M-Ledger AI Financial Report")
-        c.drawString(100, 730, f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
-        c.drawString(100, 710, "---")
-        c.drawString(100, 690, "Thank you for using M-Ledger AI!")
-        c.save()
-        buffer.seek(0)
-        return send_file(buffer, as_attachment=True, download_name='M-Ledger_Report.pdf', mimetype='application/pdf')
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=letter)
+    textobject = c.beginText(40, 750)
+    textobject.setFont("Helvetica", 12)
+
+    for t in transactions_cache:
+        line = f"{t.get('date', 'N/A')} | {t.get('category', 'N/A')} | {t.get('amount', 0)} | Balance: {t.get('balance', 0)} | {t.get('details', '')[:50]}"
+        textobject.textLine(line)
+
+    c.drawText(textobject)
+    c.showPage()
+    c.save()
+    buffer.seek(0)
+    return send_file(buffer, as_attachment=True, download_name="M-Ledger_Report.pdf", mimetype="application/pdf")
 
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+@app.route("/test_passwords")
+def test_passwords():
+    """Test endpoint to verify password matching"""
+    results = []
+    for file in os.listdir(PDF_DIR):
+        if file.lower().endswith(".pdf"):
+            path = os.path.join(PDF_DIR, file)
+            working_password = try_all_passwords(path)
+            
+            results.append({
+                "pdf": file,
+                "working_password_found": working_password is not None,
+                "status": "✓ Working" if working_password else "✗ No working password"
+            })
+    return jsonify(results)
+
+
+@app.route("/rescan")
+def rescan():
+    """Endpoint to trigger a rescan of PDFs"""
+    auto_scan_pdfs()
+    return jsonify({
+        "status": "success",
+        "total_transactions": len(transactions_cache),
+        "scan_results": scan_results
+    })
+
+
+
+if __name__ == "__main__":
+    print("\n" + "="*60)
+    print(" STARTING M-LEDGER WITH AUTO-PASSWORD DETECTION")
+    print("="*60)
+    print(f" Server: http://127.0.0.1:5000")
+    print(f" PDF Directory: {PDF_DIR}")
+    print(f" Password Directory: {PASSWORD_DIR}")
+    print("="*60 + "\n")
+    
+    auto_scan_pdfs()
+    
+    app.run(debug=True)
