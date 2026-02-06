@@ -9,4 +9,10 @@ google-auth==2.23.4
 google-auth-oauthlib==1.1.0
 oauthlib==3.2.2
 requests==2.31.0
-
+Flask==2.3.3
+Flask-CORS==4.0.0
+pdfplumber==0.10.3
+PyMuPDF==1.23.8
+anthropic==0.18.0
+reportlab==4.0.6
+python-dotenv==1.0.0
