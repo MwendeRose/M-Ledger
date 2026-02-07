@@ -6,6 +6,7 @@
     <title>M-Ledger AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 </head>
 <body>
 
@@ -282,82 +283,113 @@ $(document).ready(function() {
 $('#ai_chat_form').submit(function(e){
     e.preventDefault();
     const msg = $('#ai_chat_input').val().trim();
-    if(!msg) return;
-    
-   
-    $('#ai_chat_messages').append('<div class="ai-chat-message user">' + msg + '</div>');
+    if (!msg) return;
+
+    // User message
+    $('#ai_chat_messages').append(
+        $('<div>').addClass('ai-chat-message user').text(msg)
+    );
     $('#ai_chat_input').val('');
-    
-    $('#ai_chat_messages').append('<div class="ai-chat-message bot loading">Thinking...</div>');
-  
+
+    // Loading
+    const loadingDiv = $('<div>').addClass('ai-chat-message bot loading').text('Thinking...');
+    $('#ai_chat_messages').append(loadingDiv);
     $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
-    
-    $.post("/ai_chat", { question: msg }, function(data){
-        $('.ai-chat-message.bot.loading').last().remove();
-        $('#ai_chat_messages').append('<div class="ai-chat-message bot">' + (data.answer || "No response from AI") + '</div>');
-        $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
-    }).fail(function(){
-        $('.ai-chat-message.bot.loading').last().remove();
-        $('#ai_chat_messages').append('<div class="ai-chat-message bot">Failed to get AI response. Please try again.</div>');
-        $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+
+    // AJAX POST
+    $.ajax({
+        url: "/ai_chat",
+        type: "POST",
+        data: { question: msg },
+        dataType: "json",
+        success: function(data){
+            loadingDiv.remove();
+            const answer = data.answer || "No response from AI";
+
+            const formattedAnswer = $('<div>').addClass('ai-chat-message bot');
+            answer.split('\n').forEach(line => formattedAnswer.append($('<div>').text(line)));
+
+            $('#ai_chat_messages').append(formattedAnswer);
+            $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+        },
+        error: function(xhr){
+            loadingDiv.remove();
+            let msg = "Failed to get AI response. Please try again.";
+            try {
+                const resp = JSON.parse(xhr.responseText);
+                if(resp.answer) msg = resp.answer;
+            } catch {}
+            $('#ai_chat_messages').append(
+                $('<div>').addClass('ai-chat-message bot').text(msg)
+            );
+            $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
+        }
     });
 });
 
--
-$('#apply_filters').click(function(){
-    const type_filter = $('#type_filter').val();
-    const amount_filter = $('#amount_filter').val();
-    const start_date = $('#start_date').val();
-    const end_date = $('#end_date').val();
-    
-  
-    $('#tx_body').html('<tr><td colspan="7" style="text-align: center; padding: 20px;">Applying filters...</td></tr>');
+$(document).on("click", "#apply_filters", function (e) {
+    e.preventDefault();
+
+    const payload = {
+        type_filter: $("#type_filter").val() || "all",
+        start_date: $("#start_date").val() || null,
+        end_date: $("#end_date").val() || null
+    };
+
+    const tbody = $("#tx_body");
+    tbody.html(`
+        <tr>
+            <td colspan="7" style="text-align:center;padding:20px;">
+                Applying filters…
+            </td>
+        </tr>
+    `);
 
     $.ajax({
         url: "/filter_transactions",
-        type: "POST",
+        method: "POST",
         contentType: "application/json",
-        data: JSON.stringify({
-            type_filter: type_filter,
-            amount_filter: amount_filter,
-            start_date: start_date,
-            end_date: end_date
-        }),
-        success: function(data){
-            const tbody = $('#tx_body');
+        dataType: "json",
+        data: JSON.stringify(payload),
+
+        success: function (res) {
             tbody.empty();
-            
-            if(data.transactions && data.transactions.length > 0) {
-                data.transactions.forEach(t => {
-                    const badge = t.category === "charge" ? '<span class="badge badge-charge">Charge</span>' :
-                                  t.category === "income" ? '<span class="badge badge-income">Income</span>' :
-                                  t.category === "expense" ? '<span class="badge badge-expense">Expense</span>' :
-                                  '<span class="badge">-</span>';
-                    
-                    const paidIn = t.category === "income" ? t.amount : 0;
-                    const paidOut = t.category === "expense" ? t.amount : 0;
-                    const charges = t.category === "charge" ? t.amount : 0;
-                    const balance = t.balance ? t.balance : '-';
-                    
-                    tbody.append(`
-                        <tr>
-                            <td>${t.date}</td>
-                            <td>${t.details}</td>
-                            <td>${badge}</td>
-                            <td>${paidIn}</td>
-                            <td>${paidOut}</td>
-                            <td>${charges}</td>
-                            <td>${balance}</td>
-                        </tr>
-                    `);
-                });
-            } else {
-                tbody.append('<tr><td colspan="7" style="text-align: center; padding: 40px;">No transactions match your filters.</td></tr>');
+
+            if (!res.transactions || res.transactions.length === 0) {
+                tbody.append(`
+                    <tr>
+                        <td colspan="7" style="text-align:center;padding:40px;">
+                            No transactions match your filters
+                        </td>
+                    </tr>
+                `);
+                return;
             }
+
+            res.transactions.forEach(t => {
+                const badge =
+                    t.category === "income" ? '<span class="badge badge-income">Income</span>' :
+                    t.category === "expense" ? '<span class="badge badge-expense">Expense</span>' :
+                    t.category === "charge" ? '<span class="badge badge-charge">Charge</span>' :
+                    '<span class="badge">-</span>';
+
+                tbody.append(`
+                    <tr>
+                        <td>${t.date}</td>
+                        <td>${t.details}</td>
+                        <td>${badge}</td>
+                        <td>${t.category === "income" ? t.amount : ""}</td>
+                        <td>${t.category === "expense" ? t.amount : ""}</td>
+                        <td>${t.category === "charge" ? t.amount : ""}</td>
+                        <td>${t.balance ?? "-"}</td>
+                    </tr>
+                `);
+            });
         },
-        error: function(){
-            alert("Failed to apply filters. Please try again.");
-            location.reload(); 
+
+        error: function (xhr) {
+            console.error("Filter error:", xhr.responseText);
+            alert("Failed to apply filters. Check console.");
         }
     });
 });
@@ -424,6 +456,7 @@ $('#next_page').click(function() {
 $(document).ready(function() {
     updatePagination();
 });
+
 </script>
 
 </body>

@@ -21,4 +21,4 @@ for f in os.listdir(MPESA_DIR):
 with open(CACHE_FILE,"w") as out:
     json.dump(data,out,indent=2)
 
-print("✔ Folder scan complete")
+print(" Folder scan complete")
