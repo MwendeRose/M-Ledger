@@ -1,7 +1,7 @@
 import os, json, hashlib
 from pathlib import Path
 from flask import Flask, render_template, request, jsonify, send_file
-from pdf_parser import extract_text
+from pdf_parser import extract_text_from_image_pdf, parse_mpesa_transactions
 import rag_engine
 from analyzer import parse_transactions
 from pdf_generator import generate_pdf
@@ -10,44 +10,87 @@ import os
 import uuid
 from pymongo import MongoClient
 from datetime import datetime
+from pdfplumber import open as pdf_open
+from pathlib import Path
+import traceback
+from PyPDF2 import PdfReader
 
-# ---------------- CONFIG ----------------
 UPLOAD_DIR = "uploads"
 MPESA_DIR = "mpesa_statements"
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(MPESA_DIR, exist_ok=True)
 
-# ---------------- DATABASE ----------------
 client = MongoClient("mongodb://localhost:27017/")
 db = client["Mledger"]
 statements_col = db["statements"]
 
-# ---------------- FLASK APP ----------------
+
 app = Flask(__name__)
 
-# ---------------- TEMPLATE FILTER ----------------
 @app.template_filter("format_number")
 def format_number(value):
     try:
         return "{:,.2f}".format(float(value))
     except:
         return value
-    
 
-# ---------------- AUTOMATIC INGESTION ----------------
+def extract_text_try_all_passwords(pdf_path, passwords_dir="passwords"):
+    # Load all passwords from text files
+    passwords = []
+    for txt_file in Path(passwords_dir).glob("*.txt"):
+        with open(txt_file, "r") as f:
+            passwords.extend([line.strip() for line in f if line.strip()])
+
+    if not passwords:
+        raise ValueError("No passwords found in the passwords directory.")
+
+    print(f"Trying {len(passwords)} passwords for PDF: {pdf_path}")
+
+    for pwd in passwords:
+        try:
+            reader = PdfReader(pdf_path)
+
+            # Decrypt if necessary
+            if reader.is_encrypted:
+                result = reader.decrypt(pwd)
+                if result == 0:  # decryption failed
+                    print(f"Password failed: {pwd}")
+                    continue
+
+            # Extract text
+            text = ""
+            for page in reader.pages:
+                page_text = page.extract_text()
+                if page_text:
+                    text += page_text + "\n"
+
+            print(f"Password succeeded: {pwd}")
+            return text  # stop at first working password
+
+        except Exception as e:
+            print(f"Error with password {pwd}: {e}")
+            continue
+
+    # If we get here, no password worked
+    raise ValueError(f"All passwords failed for PDF: {pdf_path}")
+
 def auto_ingest_mpesa_statements():
     for pdf_file in Path(MPESA_DIR).glob("*.pdf"):
-        # Skip already processed files
+        # Skip already ingested files
         if statements_col.find_one({"filename": pdf_file.name}):
             continue
 
         try:
-            # 🔹 Extract text (handle passwords inside your extract_text if needed)
-            text = extract_text(str(pdf_file))
-            transactions = parse_transactions(text)
+            # OCR extraction
+            text = extract_text_from_image_pdf(str(pdf_file))
+            transactions = parse_mpesa_transactions(text)
 
-            # 🔹 Calculate totals
+            if not transactions:
+                print(f"No transactions found in {pdf_file.name}, skipping.")
+                continue
+
+            # Compute totals
             totals = {"income": 0, "expenses": 0, "charges": 0, "balance": 0}
             for t in transactions:
                 if t["category"] == "income":
@@ -57,45 +100,70 @@ def auto_ingest_mpesa_statements():
                 elif t["category"] == "charge":
                     totals["charges"] += t["amount"]
 
-                totals["balance"] = t.get("balance", totals["balance"])
+            totals["balance"] = transactions[-1]["balance"] if transactions else 0
 
-            # 🔹 Save to MongoDB
+            # Insert into MongoDB
             statements_col.insert_one({
                 "filename": pdf_file.name,
                 "uploaded_at": datetime.utcnow(),
                 "transactions": transactions,
                 "totals": totals
             })
-            print(f"✅ Ingested: {pdf_file.name}")
-        except Exception as e:
-            print(f"❌ Failed to process {pdf_file.name}: {e}")
+            print(f"Ingested: {pdf_file.name}")
 
-# ---------------- GET LATEST STATEMENT ----------------
+        except Exception as e:
+            print(f"Failed to process {pdf_file.name}: {e}")
+            traceback.print_exc()
+            continue
+
+
 def get_latest_statement():
+    """Return the most recently uploaded statement."""
     return statements_col.find_one({}, sort=[("uploaded_at", -1)])
 
-# ---------------- FLASK ROUTES ----------------
+
 @app.route("/", methods=["GET", "POST"])
 def index():
-    latest_txs = []
-    totals = {"income": 0, "expenses": 0, "charges": 0, "balance": 0}
-
-    # ---------------- POST: Handle manual upload ----------------
+   
     if request.method == "POST":
         file = request.files.get("statement")
-        if file:
-            filename = file.filename
-            path = os.path.join(MPESA_DIR, filename)
-            file.save(path)  # save first!
+        if not file:
+            return jsonify({"status": "error", "message": "No file uploaded"}), 400
 
-            # 🔹 Auto-ingest after saving
-            auto_ingest_mpesa_statements()
+        filename = file.filename
+        path = os.path.join(MPESA_DIR, filename)
+        file.save(path)
 
-    # ---------------- GET: Load latest statement from MongoDB ----------------
-    latest = get_latest_statement()
-    if latest:
-        latest_txs = latest["transactions"]
-        totals = latest["totals"]
+        try:
+          
+            text = extract_text_with_passwords(path) # type: ignore
+            transactions = parse_transactions(text)
+
+            totals = {"income": 0, "expenses": 0, "charges": 0, "balance": 0}
+            for t in transactions:
+                if t["category"] == "income":
+                    totals["income"] += t["amount"]
+                elif t["category"] == "expense":
+                    totals["expenses"] += t["amount"]
+                elif t["category"] == "charge":
+                    totals["charges"] += t["amount"]
+                totals["balance"] = t.get("balance", totals["balance"])
+
+            statements_col.insert_one({
+                "filename": filename,
+                "uploaded_at": datetime.utcnow(),
+                "transactions": transactions,
+                "totals": totals
+            })
+
+            return jsonify({"status": "success", "message": "Statement processed", "latest": totals})
+
+        except Exception as e:
+            return jsonify({"status": "error", "message": str(e)}), 400
+
+    latest = statements_col.find_one({}, sort=[("uploaded_at", -1)])
+    latest_txs = latest["transactions"] if latest else []
+    totals = latest["totals"] if latest else {"income":0,"expenses":0,"charges":0,"balance":0}
 
     return render_template(
         "index.html",
@@ -105,7 +173,6 @@ def index():
         charges=totals["charges"],
         balance=totals["balance"]
     )
-
 
 
 @app.route("/ai_chat", methods=["POST"])
@@ -141,17 +208,17 @@ def filter_transactions():
         tx_date = datetime.strptime(t["date"], "%Y-%m-%d")
         tx_amount = float(t.get("amount", 0))
 
-        # --- Category filter ---
+     
         if type_filter != "all" and tx_category != type_filter:
             continue
 
-        # --- Timeline filter ---
+      
         if start_date and tx_date < datetime.strptime(start_date, "%Y-%m-%d"):
             continue
         if end_date and tx_date > datetime.strptime(end_date, "%Y-%m-%d"):
             continue
 
-        # --- Amount filter ---
+
         if amount_filter_type and amount_filter_value:
             filter_val = float(amount_filter_value)
 
@@ -175,10 +242,12 @@ def filter_transactions():
 
 @app.route("/download_pdf")
 def download_pdf():
-    data = load_cache()["transactions"] # type: ignore
+    data = load_cache()["transactions"]  # type: ignore
     out = "report.pdf"
     generate_pdf(data, out)
     return send_file(out, as_attachment=True)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    auto_ingest_mpesa_statements()
+    app.run(debug=True, use_reloader=False)
+   
