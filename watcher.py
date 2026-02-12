@@ -1,6 +1,6 @@
 import os
 from pdf_parser import extract_text
-import rag_engine
+import ai_rag
 from analyzer import parse_transactions
 import json
 
@@ -16,7 +16,7 @@ for f in os.listdir(MPESA_DIR):
         if text:
             txs = parse_transactions(text)
             data["transactions"].extend(txs)
-            rag_engine.ingest_text(text, f)
+            ai_rag.ingest_text(text, f)
 
 with open(CACHE_FILE,"w") as out:
     json.dump(data,out,indent=2)

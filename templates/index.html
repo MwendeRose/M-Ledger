@@ -6,7 +6,6 @@
     <title>M-Ledger AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
 </head>
 <body>
 
@@ -26,147 +25,250 @@
         </button>
     </header>
 
-   <section class="upload-section">
-    <h2>Upload Statement</h2>
-    <form id="upload_form" class="upload-form">
-        <div class="file-input-wrapper">
-            <input type="file" name="statement" id="statement" required accept=".pdf">
-            <label for="statement" class="file-label">
-                <span class="file-icon"></span>
-                <span class="file-text" id="file_text">Choose File</span>
-            </label>
-            <input type="password" name="pdf_password" placeholder="Password (if any)" class="password-input">
+    <!-- Upload Section with Enhanced Feedback -->
+    <section class="upload-section">
+        <h2> Upload M-Pesa Statement</h2>
+        <form id="upload_form" class="upload-form">
+            <div class="file-input-wrapper">
+                <input type="file" name="statement" id="statement" required accept=".pdf">
+                <label for="statement" class="file-label">
+                    <span class="file-icon"></span>
+                    <span class="file-text" id="file_text">Choose PDF File</span>
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="upload_btn">
+                <span id="upload_btn_text">Upload & Process</span>
+                <span id="upload_spinner" class="spinner" style="display:none;">⏳</span>
+            </button>
+        </form>
+        
+        <!-- Upload Status Messages -->
+        <div id="upload_status" class="upload-status"></div>
+        
+        <!-- Last Upload Info -->
+        {% if uploaded_at %}
+        <div class="last-upload-info">
+            <div class="info-card">
+                <div class="info-header"> Last Statement Processed</div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label"> Upload Date:</span>
+                        <span class="info-value">{{ uploaded_at.strftime('%B %d, %Y at %I:%M %p') }}</span>
+                    </div>
+                    {% if filename %}
+                    <div class="info-item">
+                        <span class="info-label"> File:</span>
+                        <span class="info-value">{{ filename }}</span>
+                    </div>
+                    {% endif %}
+                    {% if total_transactions %}
+                    <div class="info-item">
+                        <span class="info-label">Transactions:</span>
+                        <span class="info-value">{{ total_transactions }} records</span>
+                    </div>
+                    {% endif %}
+                    {% if transactions and transactions|length > 0 %}
+                    <div class="info-item">
+                        <span class="info-label"> Date Range:</span>
+                        <span class="info-value">
+                            {{ transactions[-1].date }} to {{ transactions[0].date }}
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Upload Statement</button>
-    </form>
-    <p id="upload_message" style="margin-top:10px;"></p>
-</section>
+        {% endif %}
+    </section>
 
-
+    <!--
     <section class="summary-section">
-        <h2>Financial Summary</h2>
+        <h2> Financial Summary</h2>
         <div class="summary-grid">
             <div class="summary-card income-card">
+                <div class="summary-icon"></div>
                 <p class="summary-label">Total Income</p>
-                <p class="summary-value">KES <span id="income">{{ income|default(0)|format_number }}</span></p>
+                <p class="summary-value">KES <span id="income">{{ totals.income|default(0)|format_number }}</span></p>
             </div>
             <div class="summary-card expense-card">
+                <div class="summary-icon"></div>
                 <p class="summary-label">Total Expenses</p>
-                <p class="summary-value">KES <span id="expenses">{{ expenses|default(0)|format_number }}</span></p>
+                <p class="summary-value">KES <span id="expenses">{{ totals.expenses|default(0)|format_number }}</span></p>
             </div>
             <div class="summary-card charges-card">
+                <div class="summary-icon"></div>
                 <p class="summary-label">Transaction Charges</p>
-                <p class="summary-value">KES <span id="charges">{{ charges|default(0)|format_number }}</span></p>
+                <p class="summary-value">KES <span id="charges">{{ totals.charges|default(0)|format_number }}</span></p>
             </div>
             <div class="summary-card balance-card">
+                <div class="summary-icon"></div>
                 <p class="summary-label">Current Balance</p>
-                <p class="summary-value">KES <span id="balance">{{ balance|default(0)|format_number }}</span></p>
+                <p class="summary-value">KES <span id="balance">{{ totals.balance|default(0)|format_number }}</span></p>
             </div>
         </div>
     </section>
-
-  
+-->
+>
     <section class="filter-section">
-        <h2>Filter Transactions</h2>
+        <h2> Filter Transactions</h2>
         <div class="filter-controls">
             <div class="form-group">
                 <label for="type_filter">Transaction Type</label>
                 <select id="type_filter" class="form-select">
-                    <option value="all">All</option>
+                    <option value="all">All Transactions</option>
                     <option value="income">Income Only</option>
                     <option value="expense">Expense Only</option>
                     <option value="charge">Charges Only</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="amount_filter">Amount Filter</label>
-                <select id="amount_filter" class="form-select">
-                    <option value="none">None</option>
-                    <option value="max">Maximum</option>
-                    <option value="min">Minimum</option>
-                </select>
+                <label for="start_date">Start Date</label>
+                <input type="date" id="start_date" class="form-input">
             </div>
             <div class="form-group">
-                <label for="timeline_filter">Timeline</label>
-                <div>
-                    <input type="date" id="start_date" class="form-input" placeholder="Start Date">
-                    <input type="date" id="end_date" class="form-input" placeholder="End Date">
-                </div>
+                <label for="end_date">End Date</label>
+                <input type="date" id="end_date" class="form-input">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" id="apply_filters">Apply Filters</button>
             </div>
             <div class="form-group">
-                <button class="btn btn-secondary" id="download_pdf">Download PDF</button>
+                <button class="btn btn-secondary" id="reset_filters">Reset</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary" id="download_pdf"> Download PDF</button>
             </div>
         </div>
+        <div id="filter_status" class="filter-status"></div>
     </section>
 
-
+    <!-- Transaction History Table -->
     <section class="table-section">
-        <h2>Transaction History</h2>
+        <h2> Transaction History</h2>
         <div class="table-wrapper">
             <table class="transactions-table">
                 <thead>
                     <tr>
                         <th>Date</th>
+                        <th>Time</th>
+                        <th>Reference</th>
+                        <th>Transaction Type</th>
+                        <th>Party</th>
                         <th>Details</th>
-                        <th>Type</th>
-                        <th>Paid In</th>
-                        <th>Paid Out</th>
-                        <th>Charges</th>
+                        <th>Amount</th>
+                        <th>Category</th>
                         <th>Balance</th>
                     </tr>
                 </thead>
                 <tbody id="tx_body">
                     {% if transactions %}
                         {% for t in transactions %}
-                        <tr>
-                            <td>{{ t.date }}</td>
-                            <td>{{ t.details }}</td>
+                        <tr data-category="{{ t.category }}">
+                            <td><strong>{{ t.date }}</strong></td>
+                            <td class="time-cell">{{ t.time }}</td>
+                            <td><span class="reference-code">{{ t.reference }}</span></td>
+                            <td><strong>{{ t.transaction_type }}</strong></td>
                             <td>
-                                {% if t.category == "charge" %}<span class="badge badge-charge">Charge</span>
-                                {% elif t.category == "income" %}<span class="badge badge-income">Income</span>
-                                {% elif t.category == "expense" %}<span class="badge badge-expense">Expense</span>
-                                {% else %}<span class="badge">-</span>{% endif %}
+                                {% if t.party %}
+                                <span class="party-info {{ t.category }}">
+                                    {% if t.category == 'income' %}
+                                     From: <strong>{{ t.party }}</strong>
+                                    {% else %}
+                                     To: <strong>{{ t.party }}</strong>
+                                    {% endif %}
+                                </span>
+                                {% else %}
+                                <span class="no-party">—</span>
+                                {% endif %}
                             </td>
-                            <td>{% if t.category == "income" %}{{ t.amount|format_number }}{% else %}0{% endif %}</td>
-                            <td>{% if t.category == "expense" %}{{ t.amount|format_number }}{% else %}0{% endif %}</td>
-                            <td>{% if t.category == "charge" %}{{ t.amount|format_number }}{% else %}0{% endif %}</td>
-                            <td>{{ t.balance|format_number if t.balance else '-' }}</td>
+                            <td class="details-cell">{{ t.description }}</td>
+                            <td class="amount-cell {% if t.category == 'income' %}income-amount{% else %}expense-amount{% endif %}">
+                                {% if t.category == 'income' %}+{% else %}-{% endif %}{{ t.amount|format_number }}
+                            </td>
+                            <td>
+                                <span class="badge badge-{{ t.category }}">{{ t.category|upper }}</span>
+                            </td>
+                            <td class="balance-cell"><strong>{{ t.balance|format_number }}</strong></td>
                         </tr>
                         {% endfor %}
                     {% else %}
                         <tr id="no_transactions">
-                            <td colspan="7" style="text-align: center; padding: 40px;">
-                                No transactions to display. Upload an M-Pesa statement to get started.
+                            <td colspan="9" class="empty-state">
+                                <div class="empty-icon"></div>
+                                <div class="empty-text">No transactions to display</div>
+                                <div class="empty-subtext">Upload an M-Pesa statement to get started</div>
                             </td>
                         </tr>
                     {% endif %}
                 </tbody>
             </table>
         </div>
+
+       
         <div class="pagination">
-            <button class="pagination-btn" id="prev_page" disabled>Previous</button>
+            <button class="pagination-btn" id="prev_page" disabled>« Previous</button>
             <span class="pagination-info" id="page_info">Page 1 of 1</span>
-            <button class="pagination-btn" id="next_page" disabled>Next</button>
+            <button class="pagination-btn" id="next_page" disabled>Next »</button>
         </div>
     </section>
 
     <section class="ai-chat-section">
-        <h2>Ask AI about your finances</h2>
+        <h2> Ask AI about your finances</h2>
         <div class="ai-chat-messages" id="ai_chat_messages">
-            <div class="ai-chat-message bot">Hello! I'm your M-Ledger AI assistant. Upload a statement and ask me questions about your finances.</div>
+            <div class="ai-chat-message bot">
+                <div class="bot-avatar"></div>
+                <div class="message-content">
+                    Hello! I'm your M-Ledger AI assistant. Upload a statement and ask me questions about your finances.
+                </div>
+            </div>
         </div>
         <form id="ai_chat_form" class="ai-chat-form">
-            <input type="text" id="ai_chat_input" placeholder="Type your question...">
-            <button type="submit">Send</button>
+            <input type="text" id="ai_chat_input" placeholder="Ask me anything about your finances..." autocomplete="off">
+            <button type="submit">Send </button>
         </form>
     </section>
+
+  
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>M-Ledger AI</h3>
+                <p>Your intelligent M-Pesa statement analyzer</p>
+            </div>
+            <div class="footer-section">
+                <h4>Features</h4>
+                <ul>
+                    <li> Automatic PDF parsing</li>
+                    <li> AI-powered insights</li>
+                    <li>Transaction categorization</li>
+                    <li> Financial summaries</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Status</h4>
+                <p class="status-item">
+                    <span class="status-dot"></span>
+                    System: <strong>Operational</strong>
+                </p>
+                <p class="status-item">
+                    Database: <strong>Connected</strong>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 M-Ledger AI. All rights reserved.</p>
+            <p class="footer-links">
+                <a href="#privacy">Privacy Policy</a> • 
+                <a href="#terms">Terms of Service</a> • 
+                <a href="#contact">Contact</a>
+            </p>
+        </div>
+    </footer>
 
 </div>
 
 <script>
+
 const themeToggle = document.getElementById('theme_toggle');
 themeToggle.addEventListener('click', () => {
     const html = document.documentElement;
@@ -174,6 +276,7 @@ themeToggle.addEventListener('click', () => {
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    showNotification(`Switched to ${newTheme} mode`, 'success');
 });
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -181,25 +284,42 @@ window.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', savedTheme);
     
     document.getElementById('statement').addEventListener('change', function(e) {
-        const fileName = e.target.files[0] ? e.target.files[0].name : 'Choose File';
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'Choose PDF File';
         document.getElementById('file_text').textContent = fileName;
+        showNotification(`File selected: ${fileName}`, 'info');
     });
 });
 
-// Upload form handling
+
+function showNotification(message, type = 'info') {
+    const statusDiv = document.getElementById('upload_status');
+    const icon = type === 'success' ? '' : type === 'error' ? '' : type === 'warning' ? '' : 'ℹ';
+    statusDiv.innerHTML = `<div class="alert alert-${type}">${icon} ${message}</div>`;
+    setTimeout(() => {
+        statusDiv.innerHTML = '';
+    }, 5000);
+}
+
+
 $('#upload_form').submit(function(e){
     e.preventDefault();
     
-    const form = $(this);
-    const formData = new FormData(form[0]);
     const fileInput = $('#statement')[0];
-    
     if (!fileInput.files[0]) {
-        $('#upload_message').html('<div class="alert alert-warning">Please select a PDF file.</div>');
+        showNotification('Please select a PDF file', 'warning');
         return;
     }
     
-    $('#upload_message').html('<div class="alert alert-info">Uploading and processing PDF... Please wait.</div>');
+    const fileName = fileInput.files[0].name;
+    const fileSize = (fileInput.files[0].size / 1024 / 1024).toFixed(2);
+    
+    $('#upload_btn_text').text('Processing...');
+    $('#upload_spinner').show();
+    $('#upload_btn').prop('disabled', true);
+    
+    showNotification(` Uploading ${fileName} (${fileSize} MB)...`, 'info');
+    
+    const formData = new FormData(this);
     
     $.ajax({
         url: '/',
@@ -207,201 +327,179 @@ $('#upload_form').submit(function(e){
         data: formData,
         processData: false,
         contentType: false,
+        xhr: function() {
+            const xhr = new window.XMLHttpRequest();
+            xhr.upload.addEventListener('progress', function(e) {
+                if (e.lengthComputable) {
+                    const percentComplete = Math.round((e.loaded / e.total) * 100);
+                    showNotification(` Uploading... ${percentComplete}%`, 'info');
+                }
+            });
+            return xhr;
+        },
         success: function(response) {
-            // Create a temporary div to parse the response
-            const tempDiv = $('<div>').html(response);
-            const newContent = tempDiv.find('.container').html();
-            
-            // Update the page content
-            $('.container').html(newContent);
-            
-            // Re-initialize event handlers
-            initializeEventHandlers();
-            
-            // Show success message
-            $('#upload_message').html('<div class="alert alert-success">Statement processed successfully! Reloading data...</div>');
-            
-            // Force page reload after 2 seconds to ensure all data is fresh
-            setTimeout(() => {
-                location.reload();
-            }, 2000);
+            showNotification('Statement processed successfully! Reloading...', 'success');
+            setTimeout(() => location.reload(), 1500);
         },
         error: function(xhr) {
-            let errorMsg = 'Upload failed. ';
+            let errorMsg = 'Upload failed';
             if (xhr.responseText) {
-                const tempDiv = $('<div>').html(xhr.responseText);
-                const error = tempDiv.find('.alert, #upload_message').text() || xhr.responseText;
-                errorMsg += error.substring(0, 200);
+                errorMsg += ': ' + xhr.responseText.substring(0, 200);
             }
-            $('#upload_message').html('<div class="alert alert-danger">' + errorMsg + '</div>');
+            showNotification(errorMsg, 'error');
+        },
+        complete: function() {
+            $('#upload_btn_text').text('Upload & Process');
+            $('#upload_spinner').hide();
+            $('#upload_btn').prop('disabled', false);
         }
     });
 });
 
-// Initialize all event handlers
-function initializeEventHandlers() {
-    // Re-attach all event handlers here
-    $('#ai_chat_form').off('submit').on('submit', function(e){
-        e.preventDefault();
-        const msg = $('#ai_chat_input').val().trim();
-        if(!msg) return;
-        
-        $('#ai_chat_messages').append('<div class="ai-chat-message user">' + msg + '</div>');
-        $('#ai_chat_input').val('');
-        
-        $('#ai_chat_messages').append('<div class="ai-chat-message bot loading">Thinking...</div>');
-        $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
-        
-        $.post("/ai_chat", { question: msg }, function(data){
-            $('.ai-chat-message.bot.loading').last().remove();
-            $('#ai_chat_messages').append('<div class="ai-chat-message bot">' + (data.answer || "No response from AI") + '</div>');
-            $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
-        }).fail(function(){
-            $('.ai-chat-message.bot.loading').last().remove();
-            $('#ai_chat_messages').append('<div class="ai-chat-message bot">Failed to get AI response. Please try again.</div>');
-            $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
-        });
-    });
-    
-    // Re-attach other handlers...
-    $('#apply_filters').off('click').on('click', applyFilters);
-    $('#download_pdf').off('click').on('click', downloadPDF);
-}
 
-// Initialize on page load
-$(document).ready(function() {
-    initializeEventHandlers();
-    updatePagination();
+$('#apply_filters').click(function(e) {
+    e.preventDefault();
     
-    // File input change handler
-    $('#statement').on('change', function(e) {
-        const fileName = e.target.files[0] ? e.target.files[0].name : 'Choose File';
-        $('#file_text').text(fileName);
+    const typeFilter = $('#type_filter').val();
+    const startDate = $('#start_date').val();
+    const endDate = $('#end_date').val();
+    
+    showNotification(' Applying filters...', 'info');
+    
+    $.ajax({
+        url: '/filter_transactions',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            type_filter: typeFilter,
+            start_date: startDate,
+            end_date: endDate
+        }),
+        success: function(res) {
+            const tbody = $('#tx_body');
+            tbody.empty();
+            
+            if (!res.transactions || res.transactions.length === 0) {
+                tbody.append(`
+                    <tr>
+                        <td colspan="9" class="empty-state">
+                            <div class="empty-icon"></div>
+                            <div class="empty-text">No transactions match your filters</div>
+                        </td>
+                    </tr>
+                `);
+                showNotification('No transactions found matching filters', 'warning');
+                return;
+            }
+            
+            res.transactions.forEach(t => {
+                const partyDisplay = t.party && t.party !== '-' 
+                    ? `<span class="party-info ${t.category}">
+                        ${t.category === 'income' ? 'From: ' : ' To: '}
+                        <strong>${t.party}</strong>
+                       </span>`
+                    : '<span class="no-party">—</span>';
+                
+                tbody.append(`
+                    <tr data-category="${t.category}">
+                        <td><strong>${t.date}</strong></td>
+                        <td class="time-cell">${t.time || '-'}</td>
+                        <td><span class="reference-code">${t.reference || '-'}</span></td>
+                        <td><strong>${t.type || '-'}</strong></td>
+                        <td>${partyDisplay}</td>
+                        <td class="details-cell">${t.description}</td>
+                        <td class="amount-cell ${t.category === 'income' ? 'income-amount' : 'expense-amount'}">
+                            ${t.category === 'income' ? '+' : '-'}${formatNumber(t.amount)}
+                        </td>
+                        <td><span class="badge badge-${t.category}">${t.category.toUpperCase()}</span></td>
+                        <td class="balance-cell"><strong>${formatNumber(t.balance)}</strong></td>
+                    </tr>
+                `);
+            });
+            
+            showNotification(` Found ${res.transactions.length} transaction(s)`, 'success');
+            updatePagination();
+        },
+        error: function() {
+            showNotification('Failed to apply filters', 'error');
+        }
     });
 });
 
+// Reset Filters
+$('#reset_filters').click(function() {
+    $('#type_filter').val('all');
+    $('#start_date').val('');
+    $('#end_date').val('');
+    showNotification(' Filters reset. Reloading...', 'info');
+    setTimeout(() => location.reload(), 1000);
+});
+
+// AI Chat with Enhanced Feedback
 $('#ai_chat_form').submit(function(e){
     e.preventDefault();
     const msg = $('#ai_chat_input').val().trim();
     if (!msg) return;
 
     // User message
-    $('#ai_chat_messages').append(
-        $('<div>').addClass('ai-chat-message user').text(msg)
-    );
+    $('#ai_chat_messages').append(`
+        <div class="ai-chat-message user">
+            <div class="user-avatar"></div>
+            <div class="message-content">${msg}</div>
+        </div>
+    `);
     $('#ai_chat_input').val('');
 
-    // Loading
-    const loadingDiv = $('<div>').addClass('ai-chat-message bot loading').text('Thinking...');
-    $('#ai_chat_messages').append(loadingDiv);
+    // Loading message
+    $('#ai_chat_messages').append(`
+        <div class="ai-chat-message bot loading">
+            <div class="bot-avatar"></div>
+            <div class="message-content">
+                <div class="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+                Thinking...
+            </div>
+        </div>
+    `);
     $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
 
-    // AJAX POST
     $.ajax({
         url: "/ai_chat",
         type: "POST",
         data: { question: msg },
-        dataType: "json",
         success: function(data){
-            loadingDiv.remove();
-            const answer = data.answer || "No response from AI";
-
-            const formattedAnswer = $('<div>').addClass('ai-chat-message bot');
-            answer.split('\n').forEach(line => formattedAnswer.append($('<div>').text(line)));
-
-            $('#ai_chat_messages').append(formattedAnswer);
+            $('.ai-chat-message.bot.loading').remove();
+            $('#ai_chat_messages').append(`
+                <div class="ai-chat-message bot">
+                    <div class="bot-avatar"></div>
+                    <div class="message-content">${data.answer || 'No response from AI'}</div>
+                </div>
+            `);
             $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
         },
-        error: function(xhr){
-            loadingDiv.remove();
-            let msg = "Failed to get AI response. Please try again.";
-            try {
-                const resp = JSON.parse(xhr.responseText);
-                if(resp.answer) msg = resp.answer;
-            } catch {}
-            $('#ai_chat_messages').append(
-                $('<div>').addClass('ai-chat-message bot').text(msg)
-            );
+        error: function(){
+            $('.ai-chat-message.bot.loading').remove();
+            $('#ai_chat_messages').append(`
+                <div class="ai-chat-message bot error">
+                    <div class="bot-avatar"></div>
+                    <div class="message-content">Failed to get AI response. Please try again.</div>
+                </div>
+            `);
             $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
         }
     });
 });
-
-$(document).on("click", "#apply_filters", function (e) {
-    e.preventDefault();
-
-    const payload = {
-        type_filter: $("#type_filter").val() || "all",
-        start_date: $("#start_date").val() || null,
-        end_date: $("#end_date").val() || null
-    };
-
-    const tbody = $("#tx_body");
-    tbody.html(`
-        <tr>
-            <td colspan="7" style="text-align:center;padding:20px;">
-                Applying filters…
-            </td>
-        </tr>
-    `);
-
-    $.ajax({
-        url: "/filter_transactions",
-        method: "POST",
-        contentType: "application/json",
-        dataType: "json",
-        data: JSON.stringify(payload),
-
-        success: function (res) {
-            tbody.empty();
-
-            if (!res.transactions || res.transactions.length === 0) {
-                tbody.append(`
-                    <tr>
-                        <td colspan="7" style="text-align:center;padding:40px;">
-                            No transactions match your filters
-                        </td>
-                    </tr>
-                `);
-                return;
-            }
-
-            res.transactions.forEach(t => {
-                const badge =
-                    t.category === "income" ? '<span class="badge badge-income">Income</span>' :
-                    t.category === "expense" ? '<span class="badge badge-expense">Expense</span>' :
-                    t.category === "charge" ? '<span class="badge badge-charge">Charge</span>' :
-                    '<span class="badge">-</span>';
-
-                tbody.append(`
-                    <tr>
-                        <td>${t.date}</td>
-                        <td>${t.details}</td>
-                        <td>${badge}</td>
-                        <td>${t.category === "income" ? t.amount : ""}</td>
-                        <td>${t.category === "expense" ? t.amount : ""}</td>
-                        <td>${t.category === "charge" ? t.amount : ""}</td>
-                        <td>${t.balance ?? "-"}</td>
-                    </tr>
-                `);
-            });
-        },
-
-        error: function (xhr) {
-            console.error("Filter error:", xhr.responseText);
-            alert("Failed to apply filters. Check console.");
-        }
-    });
-});
-
 
 $('#download_pdf').click(function(){
+    const $button = $(this);
+    $button.prop('disabled', true);
+    showNotification('Generating PDF report...', 'info');
+    
     $.ajax({
         url: "/download_pdf",
         type: "GET",
-        xhrFields: {
-            responseType: 'blob'
-        },
+        xhrFields: { responseType: 'blob' },
         success: function(data){
             const url = window.URL.createObjectURL(data);
             const a = document.createElement('a');
@@ -411,26 +509,30 @@ $('#download_pdf').click(function(){
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
+            showNotification('PDF downloaded successfully!', 'success');
         },
-        error: function(){
-            alert("Failed to generate PDF report. Please try again.");
+        error: function(xhr){
+            console.error('Error:', xhr);
+            showNotification('Failed to generate PDF', 'error');
+        },
+        complete: function() {
+            $button.prop('disabled', false);
         }
     });
 });
-
 
 let currentPage = 1;
 const transactionsPerPage = 20;
 
 function updatePagination() {
-    const totalRows = $('#tx_body tr').length;
-    const totalPages = Math.ceil(totalRows / transactionsPerPage);
+    const totalRows = $('#tx_body tr').not('#no_transactions').length;
+    const totalPages = Math.ceil(totalRows / transactionsPerPage) || 1;
     
     $('#page_info').text(`Page ${currentPage} of ${totalPages}`);
     $('#prev_page').prop('disabled', currentPage === 1);
-    $('#next_page').prop('disabled', currentPage === totalPages || totalPages === 0);
+    $('#next_page').prop('disabled', currentPage === totalPages);
 
-    $('#tx_body tr').each(function(index) {
+    $('#tx_body tr').not('#no_transactions').each(function(index) {
         $(this).toggle(index >= (currentPage - 1) * transactionsPerPage && index < currentPage * transactionsPerPage);
     });
 }
@@ -439,20 +541,30 @@ $('#prev_page').click(function() {
     if(currentPage > 1) {
         currentPage--;
         updatePagination();
+        showNotification(`Page ${currentPage}`, 'info');
     }
 });
 
 $('#next_page').click(function() {
-    const totalRows = $('#tx_body tr').length;
+    const totalRows = $('#tx_body tr').not('#no_transactions').length;
     const totalPages = Math.ceil(totalRows / transactionsPerPage);
     
     if(currentPage < totalPages) {
         currentPage++;
         updatePagination();
+        showNotification(`Page ${currentPage}`, 'info');
     }
 });
 
+// Format number helper
+function formatNumber(value) {
+    return parseFloat(value).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
 
+// Initialize on page load
 $(document).ready(function() {
     updatePagination();
 });
