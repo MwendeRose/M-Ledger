@@ -6,175 +6,233 @@
     <title>M-Ledger AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-<div class="container">
-
-    <header>
-        <h1>
-            <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="6" fill="currentColor"/>
-                <text x="16" y="22" text-anchor="middle" fill="white" font-size="18" font-weight="bold">M</text>
-            </svg>
-            M-Ledger AI
-        </h1>
-        <button class="theme-toggle" id="theme_toggle">
-            <span class="sun-icon">☀️</span>
-            <span class="moon-icon">🌙</span>
-        </button>
-    </header>
-
-    <!-- Upload Section with Enhanced Feedback -->
-    <section class="upload-section">
-        <h2> Upload M-Pesa Statement</h2>
-        <form id="upload_form" class="upload-form">
-            <div class="file-input-wrapper">
-                <input type="file" name="statement" id="statement" required accept=".pdf">
-                <label for="statement" class="file-label">
-                    <span class="file-icon"></span>
-                    <span class="file-text" id="file_text">Choose PDF File</span>
-                </label>
+<div class="app-container">
+    
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="user-profile">
+                <img src="{{ url_for('static', filename='Assets/Logo.png') }}" alt="Logo" class="profile-avatar" onerror="this.style.display='none'">
+                <span class="user-name">M-Ledger AI</span>
             </div>
-            <button type="submit" class="btn btn-primary" id="upload_btn">
-                <span id="upload_btn_text">Upload & Process</span>
-                <span id="upload_spinner" class="spinner" style="display:none;">⏳</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="home">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                </svg>
+                <span>Home</span>
+            </a>
+            
+            <a href="#" class="nav-item" data-section="reports">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                </svg>
+                <span>Reports</span>
+            </a>
+            
+            <a href="#" class="nav-item" data-section="settings">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                </svg>
+                <span>Settings</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="theme-toggle" id="theme_toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
             </button>
-        </form>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
         
-        <!-- Upload Status Messages -->
-        <div id="upload_status" class="upload-status"></div>
+        <!-- Header -->
+        <header class="content-header">
+            <h1 class="page-title" id="page_title">Home</h1>
+            <button class="btn btn-primary" id="new_expense_btn" aria-label="Upload statement" title="Upload statement">
+                <span>📤 Upload Statement</span>
+            </button>
+        </header>
         
-        <!-- Last Upload Info -->
-        {% if uploaded_at %}
-        <div class="last-upload-info">
-            <div class="info-card">
-                <div class="info-header"> Last Statement Processed</div>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span class="info-label"> Upload Date:</span>
-                        <span class="info-value">{{ uploaded_at.strftime('%B %d, %Y at %I:%M %p') }}</span>
+        <!-- Home Section -->
+        <div class="content-section" id="home-section" style="display: block;">
+        
+        <!-- Upload Section -->
+        <div class="upload-section" id="upload_section">
+            <h2>📤 Upload M-Pesa Statement</h2>
+            <form id="upload_form" class="upload-form" enctype="multipart/form-data">
+                <div class="file-input-wrapper">
+                    <input type="file" name="statement" id="statement" required accept=".pdf">
+                    <label for="statement" class="file-label">
+                        <span class="file-icon">📄</span>
+                        <span class="file-text" id="file_text">Choose PDF File</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" id="upload_btn" aria-label="Upload and process statement" title="Upload and process statement">
+                    <span id="upload_btn_text">Upload & Process</span>
+                    <span id="upload_spinner" class="spinner" style="display:none;">⏳</span>
+                </button>
+            </form>
+            <div id="upload_status" class="upload-status"></div>
+            
+            <!-- Last Upload Info -->
+            {% if uploaded_at %}
+            <div class="last-upload-info">
+                <div class="info-card">
+                    <div class="info-header">📊 Last Statement Processed</div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">📅 Upload Date:</span>
+                            <span class="info-value">{{ uploaded_at.strftime('%B %d, %Y at %I:%M %p') }}</span>
+                        </div>
+                        {% if filename %}
+                        <div class="info-item">
+                            <span class="info-label">📄 File:</span>
+                            <span class="info-value">{{ filename }}</span>
+                        </div>
+                        {% endif %}
+                        {% if total_transactions %}
+                        <div class="info-item">
+                            <span class="info-label">📝 Transactions:</span>
+                            <span class="info-value">{{ total_transactions }} records</span>
+                        </div>
+                        {% endif %}
+                        {% if transactions and transactions|length > 0 %}
+                        <div class="info-item">
+                            <span class="info-label">📆 Date Range:</span>
+                            <span class="info-value">
+                                {{ transactions[-1].date }} to {{ transactions[0].date }}
+                            </span>
+                        </div>
+                        {% endif %}
                     </div>
-                    {% if filename %}
-                    <div class="info-item">
-                        <span class="info-label"> File:</span>
-                        <span class="info-value">{{ filename }}</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters-section">
+            <button class="filter-toggle" id="filter_toggle" aria-label="Toggle filters" title="Show or hide filters">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/>
+                </svg>
+                Hide Filters
+            </button>
+            
+            <div class="filter-controls" id="filter_controls">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label>From</label>
+                        <input type="text" class="filter-input" placeholder="From" id="from_filter">
                     </div>
-                    {% endif %}
-                    {% if total_transactions %}
-                    <div class="info-item">
-                        <span class="info-label">Transactions:</span>
-                        <span class="info-value">{{ total_transactions }} records</span>
+                    
+                    <div class="filter-group">
+                        <label>Start Date</label>
+                        <input type="date" class="filter-input" id="start_date">
                     </div>
-                    {% endif %}
-                    {% if transactions and transactions|length > 0 %}
-                    <div class="info-item">
-                        <span class="info-label"> Date Range:</span>
-                        <span class="info-value">
-                            {{ transactions[-1].date }} to {{ transactions[0].date }}
-                        </span>
+                    
+                    <div class="filter-group">
+                        <label>End Date</label>
+                        <input type="date" class="filter-input" id="end_date">
                     </div>
-                    {% endif %}
+                </div>
+                
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label>Type</label>
+                        <select class="filter-input" id="type_filter" aria-label="Filter by transaction type">
+                            <option value="all">All</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                            <option value="charge">Charges</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <button class="btn btn-primary" id="apply_filters" aria-label="Apply filters" title="Apply filters">Apply</button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <button class="btn btn-secondary" id="reset_filters" aria-label="Reset filters" title="Reset filters">Reset</button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <button class="btn btn-secondary" id="download_pdf" aria-label="Download PDF report" title="Download PDF">📥 PDF</button>
+                    </div>
                 </div>
             </div>
         </div>
-        {% endif %}
-    </section>
-
-    <!--
-    <section class="summary-section">
-        <h2> Financial Summary</h2>
-        <div class="summary-grid">
-            <div class="summary-card income-card">
-                <div class="summary-icon"></div>
-                <p class="summary-label">Total Income</p>
-                <p class="summary-value">KES <span id="income">{{ totals.income|default(0)|format_number }}</span></p>
-            </div>
-            <div class="summary-card expense-card">
-                <div class="summary-icon"></div>
-                <p class="summary-label">Total Expenses</p>
-                <p class="summary-value">KES <span id="expenses">{{ totals.expenses|default(0)|format_number }}</span></p>
-            </div>
-            <div class="summary-card charges-card">
-                <div class="summary-icon"></div>
-                <p class="summary-label">Transaction Charges</p>
-                <p class="summary-value">KES <span id="charges">{{ totals.charges|default(0)|format_number }}</span></p>
-            </div>
-            <div class="summary-card balance-card">
-                <div class="summary-icon"></div>
-                <p class="summary-label">Current Balance</p>
-                <p class="summary-value">KES <span id="balance">{{ totals.balance|default(0)|format_number }}</span></p>
+        
+        <!-- Status Pills -->
+        <div class="status-pills">
+            <button class="status-pill active" data-status="all" aria-label="Show all transactions" title="Show all">All</button>
+            <button class="status-pill" data-status="income" aria-label="Filter by income" title="Filter by income">Income</button>
+            <button class="status-pill" data-status="expense" aria-label="Filter by expenses" title="Filter by expenses">Expenses</button>
+            <button class="status-pill" data-status="charge" aria-label="Filter by charges" title="Filter by charges">Charges</button>
+        </div>
+        
+        <!-- View Options -->
+        <div class="view-options">
+            <span class="view-label">View:</span>
+            <div class="view-buttons">
+                <button class="view-btn active" data-view="table" aria-label="Table view" title="Table view">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
             </div>
         </div>
-    </section>
--->
->
-    <section class="filter-section">
-        <h2> Filter Transactions</h2>
-        <div class="filter-controls">
-            <div class="form-group">
-                <label for="type_filter">Transaction Type</label>
-                <select id="type_filter" class="form-select">
-                    <option value="all">All Transactions</option>
-                    <option value="income">Income Only</option>
-                    <option value="expense">Expense Only</option>
-                    <option value="charge">Charges Only</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="start_date">Start Date</label>
-                <input type="date" id="start_date" class="form-input">
-            </div>
-            <div class="form-group">
-                <label for="end_date">End Date</label>
-                <input type="date" id="end_date" class="form-input">
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" id="apply_filters">Apply Filters</button>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-secondary" id="reset_filters">Reset</button>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-secondary" id="download_pdf"> Download PDF</button>
-            </div>
-        </div>
-        <div id="filter_status" class="filter-status"></div>
-    </section>
-
-    <!-- Transaction History Table -->
-    <section class="table-section">
-        <h2> Transaction History</h2>
-        <div class="table-wrapper">
+        
+        <!-- Transactions Table -->
+        <div class="table-container">
             <table class="transactions-table">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Reference</th>
-                        <th>Transaction Type</th>
-                        <th>Party</th>
-                        <th>Details</th>
-                        <th>Amount</th>
-                        <th>Category</th>
-                        <th>Balance</th>
+                        <th class="checkbox-col">
+                            <input type="checkbox" id="select_all" aria-label="Select all transactions" title="Select all">
+                        </th>
+                        <th class="sortable">DATE</th>
+                        <th class="sortable">TIME</th>
+                        <th class="sortable">REFERENCE</th>
+                        <th class="sortable">TYPE</th>
+                        <th class="sortable">PARTY</th>
+                        <th>DETAILS</th>
+                        <th class="sortable amount-col">AMOUNT</th>
+                        <th>CATEGORY</th>
+                        <th class="sortable">BALANCE</th>
                     </tr>
                 </thead>
-                <tbody id="tx_body">
-                    {% if transactions %}
+                <tbody id="transactions_tbody">
+                    {% if transactions and transactions|length > 0 %}
                         {% for t in transactions %}
                         <tr data-category="{{ t.category }}">
-                            <td><strong>{{ t.date }}</strong></td>
+                            <td class="checkbox-col">
+                                <input type="checkbox" class="transaction-checkbox" aria-label="Select transaction" title="Select">
+                            </td>
+                            <td class="date-col">
+                                <span class="date-icon">📅</span>
+                                {{ t.date }}
+                            </td>
                             <td class="time-cell">{{ t.time }}</td>
                             <td><span class="reference-code">{{ t.reference }}</span></td>
                             <td><strong>{{ t.transaction_type }}</strong></td>
-                            <td>
-                                {% if t.party %}
+                            <td class="party-col">
+                                {% if t.party and t.party != '-' %}
                                 <span class="party-info {{ t.category }}">
                                     {% if t.category == 'income' %}
-                                     From: <strong>{{ t.party }}</strong>
+                                    📥 From: <strong>{{ t.party }}</strong>
                                     {% else %}
-                                     To: <strong>{{ t.party }}</strong>
+                                    📤 To: <strong>{{ t.party }}</strong>
                                     {% endif %}
                                 </span>
                                 {% else %}
@@ -182,7 +240,7 @@
                                 {% endif %}
                             </td>
                             <td class="details-cell">{{ t.description }}</td>
-                            <td class="amount-cell {% if t.category == 'income' %}income-amount{% else %}expense-amount{% endif %}">
+                            <td class="amount-col {% if t.category == 'income' %}income-amount{% else %}expense-amount{% endif %}">
                                 {% if t.category == 'income' %}+{% else %}-{% endif %}{{ t.amount|format_number }}
                             </td>
                             <td>
@@ -193,8 +251,8 @@
                         {% endfor %}
                     {% else %}
                         <tr id="no_transactions">
-                            <td colspan="9" class="empty-state">
-                                <div class="empty-icon"></div>
+                            <td colspan="10" class="empty-state">
+                                <div class="empty-icon">📭</div>
                                 <div class="empty-text">No transactions to display</div>
                                 <div class="empty-subtext">Upload an M-Pesa statement to get started</div>
                             </td>
@@ -203,373 +261,248 @@
                 </tbody>
             </table>
         </div>
-
-       
+        
+        <!-- Pagination -->
         <div class="pagination">
-            <button class="pagination-btn" id="prev_page" disabled>« Previous</button>
+            <button class="pagination-btn" id="prev_page" disabled aria-label="Previous page" title="Go to previous page">← Previous</button>
             <span class="pagination-info" id="page_info">Page 1 of 1</span>
-            <button class="pagination-btn" id="next_page" disabled>Next »</button>
+            <button class="pagination-btn" id="next_page" disabled aria-label="Next page" title="Go to next page">Next →</button>
         </div>
-    </section>
-
-    <section class="ai-chat-section">
-        <h2> Ask AI about your finances</h2>
-        <div class="ai-chat-messages" id="ai_chat_messages">
-            <div class="ai-chat-message bot">
-                <div class="bot-avatar"></div>
-                <div class="message-content">
-                    Hello! I'm your M-Ledger AI assistant. Upload a statement and ask me questions about your finances.
+        
+        </div><!-- End Home Section -->
+        
+        <!-- Reports Section -->
+        <div class="content-section" id="reports-section" style="display: none;">
+            <div class="section-content">
+                <div class="reports-grid">
+                    <h2>📊 Financial Reports</h2>
+                    
+                    <!-- Report Cards -->
+                    <div class="report-cards">
+                        <div class="report-card" data-report="monthly">
+                            <h3>Monthly Summary</h3>
+                            <p>View your monthly income and expense reports</p>
+                            <button class="btn btn-secondary report-btn" data-report="monthly" aria-label="Generate monthly report" title="Generate monthly report">Generate Report</button>
+                        </div>
+                        <div class="report-card" data-report="category">
+                            <h3>Category Analysis</h3>
+                            <p>Breakdown of expenses by category</p>
+                            <button class="btn btn-secondary report-btn" data-report="category" aria-label="View category analysis" title="View category analysis">View Analysis</button>
+                        </div>
+                        <div class="report-card" data-report="yearly">
+                            <h3>Yearly Overview</h3>
+                            <p>Annual financial summary and trends</p>
+                            <button class="btn btn-secondary report-btn" data-report="yearly" aria-label="View yearly overview" title="View yearly overview">View Overview</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Monthly Summary Report -->
+                    <div class="report-detail" id="monthly-report" style="display: none;">
+                        <div class="report-header">
+                            <h3>📅 Monthly Summary Report</h3>
+                            <button class="btn btn-secondary back-to-reports" aria-label="Back to reports" title="Back">← Back</button>
+                        </div>
+                        <div class="report-content">
+                            <div class="summary-cards">
+                                <div class="summary-card income-card">
+                                    <div class="card-icon">💰</div>
+                                    <div class="card-content">
+                                        <h4>Total Income</h4>
+                                        <p class="card-value" id="monthly_income">KES 0.00</p>
+                                        <span class="card-label">This Month</span>
+                                    </div>
+                                </div>
+                                <div class="summary-card expense-card">
+                                    <div class="card-icon">💸</div>
+                                    <div class="card-content">
+                                        <h4>Total Expenses</h4>
+                                        <p class="card-value" id="monthly_expenses">KES 0.00</p>
+                                        <span class="card-label">This Month</span>
+                                    </div>
+                                </div>
+                                <div class="summary-card balance-card">
+                                    <div class="card-icon">📊</div>
+                                    <div class="card-content">
+                                        <h4>Net Balance</h4>
+                                        <p class="card-value" id="monthly_net">KES 0.00</p>
+                                        <span class="card-label">Income - Expenses</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="monthly-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Category Analysis Report -->
+                    <div class="report-detail" id="category-report" style="display: none;">
+                        <div class="report-header">
+                            <h3>📂 Category Analysis</h3>
+                            <button class="btn btn-secondary back-to-reports" aria-label="Back to reports" title="Back">← Back</button>
+                        </div>
+                        <div class="report-content">
+                            <div class="category-list" id="category_breakdown">
+                                <!-- Categories will be populated here -->
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="category-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Yearly Overview Report -->
+                    <div class="report-detail" id="yearly-report" style="display: none;">
+                        <div class="report-header">
+                            <h3>📈 Yearly Overview</h3>
+                            <button class="btn btn-secondary back-to-reports" aria-label="Back to reports" title="Back">← Back</button>
+                        </div>
+                        <div class="report-content">
+                            <div class="summary-cards">
+                                <div class="summary-card income-card">
+                                    <div class="card-icon">💰</div>
+                                    <div class="card-content">
+                                        <h4>Annual Income</h4>
+                                        <p class="card-value" id="yearly_income">KES 0.00</p>
+                                        <span class="card-label">Year to Date</span>
+                                    </div>
+                                </div>
+                                <div class="summary-card expense-card">
+                                    <div class="card-icon">💸</div>
+                                    <div class="card-content">
+                                        <h4>Annual Expenses</h4>
+                                        <p class="card-value" id="yearly_expenses">KES 0.00</p>
+                                        <span class="card-label">Year to Date</span>
+                                    </div>
+                                </div>
+                                <div class="summary-card balance-card">
+                                    <div class="card-icon">📊</div>
+                                    <div class="card-content">
+                                        <h4>Average Monthly</h4>
+                                        <p class="card-value" id="yearly_average">KES 0.00</p>
+                                        <span class="card-label">Monthly Average</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="yearly-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <form id="ai_chat_form" class="ai-chat-form">
-            <input type="text" id="ai_chat_input" placeholder="Ask me anything about your finances..." autocomplete="off">
-            <button type="submit">Send </button>
-        </form>
-    </section>
-
-  
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>M-Ledger AI</h3>
-                <p>Your intelligent M-Pesa statement analyzer</p>
-            </div>
-            <div class="footer-section">
-                <h4>Features</h4>
-                <ul>
-                    <li> Automatic PDF parsing</li>
-                    <li> AI-powered insights</li>
-                    <li>Transaction categorization</li>
-                    <li> Financial summaries</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Status</h4>
-                <p class="status-item">
-                    <span class="status-dot"></span>
-                    System: <strong>Operational</strong>
-                </p>
-                <p class="status-item">
-                    Database: <strong>Connected</strong>
-                </p>
+        
+        <!-- Settings Section -->
+        <div class="content-section" id="settings-section" style="display: none;">
+            <div class="section-content">
+                <div class="settings-container">
+                    <h2>⚙️ Settings</h2>
+                    
+                    <form id="settings_form">
+                        <div class="settings-group">
+                            <h3>Account Settings</h3>
+                            <div class="setting-item">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" class="form-input" placeholder="Enter username" value="M-Ledger User">
+                            </div>
+                            <div class="setting-item">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="Enter email">
+                                <small class="input-hint">Used for notifications and reports</small>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h3>Notification Preferences</h3>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="email_notifications" name="email_notifications" checked>
+                                    Email notifications for new transactions
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="weekly_reports" name="weekly_reports" checked>
+                                    Weekly summary reports via email
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-actions">
+                            <button type="submit" class="btn btn-primary" aria-label="Save settings" title="Save settings">💾 Save Settings</button>
+                            <button type="button" class="btn btn-secondary" id="reset_settings_btn" aria-label="Reset settings" title="Reset to default">🔄 Reset</button>
+                        </div>
+                    </form>
+                    
+                    <div id="settings_status" class="settings-status"></div>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 M-Ledger AI. All rights reserved.</p>
-            <p class="footer-links">
-                <a href="#privacy">Privacy Policy</a> • 
-                <a href="#terms">Terms of Service</a> • 
-                <a href="#contact">Contact</a>
-            </p>
+        
+        <!-- AI Chat Section -->
+        <div class="ai-chat-section">
+            <div class="chat-header">
+                <h2>💬 Ask AI about your finances</h2>
+                <button class="chat-toggle" id="chat_toggle" aria-label="Toggle chat" title="Toggle chat">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path d="M5 8a1 1 0 011.707 0L10 11.293l3.293-3.294a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4A1 1 0 015 8z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="ai-chat-messages" id="ai_chat_messages">
+                <div class="ai-chat-message bot">
+                    <div class="bot-avatar">🤖</div>
+                    <div class="message-content">
+                        Hello! I'm your M-Ledger AI assistant. Upload a statement and ask me questions about your finances.
+                    </div>
+                </div>
+            </div>
+            <form id="ai_chat_form" class="ai-chat-form">
+                <input type="text" id="ai_chat_input" placeholder="Ask me anything..." autocomplete="off" aria-label="Chat input">
+                <button type="submit" aria-label="Send message" title="Send">Send 📤</button>
+            </form>
         </div>
-    </footer>
-
+        
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>M-Ledger AI</h4>
+                    <p>Smart financial management for M-Pesa users</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" data-section="home">Home</a></li>
+                        <li><a href="#" data-section="reports">Reports</a></li>
+                        <li><a href="#" data-section="settings">Settings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><snappafica class="ac ke">Email</snappafica></p>
+                    <p> +254 700 000 000</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 M-Ledger AI. All rights reserved. | snappafica</p>
+            </div>
+        </footer>
+        
+    </main>
+    
 </div>
 
-<script>
-
-const themeToggle = document.getElementById('theme_toggle');
-themeToggle.addEventListener('click', () => {
-    const html = document.documentElement;
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    showNotification(`Switched to ${newTheme} mode`, 'success');
-});
-
-window.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    document.getElementById('statement').addEventListener('change', function(e) {
-        const fileName = e.target.files[0] ? e.target.files[0].name : 'Choose PDF File';
-        document.getElementById('file_text').textContent = fileName;
-        showNotification(`File selected: ${fileName}`, 'info');
-    });
-});
-
-
-function showNotification(message, type = 'info') {
-    const statusDiv = document.getElementById('upload_status');
-    const icon = type === 'success' ? '' : type === 'error' ? '' : type === 'warning' ? '' : 'ℹ';
-    statusDiv.innerHTML = `<div class="alert alert-${type}">${icon} ${message}</div>`;
-    setTimeout(() => {
-        statusDiv.innerHTML = '';
-    }, 5000);
-}
-
-
-$('#upload_form').submit(function(e){
-    e.preventDefault();
-    
-    const fileInput = $('#statement')[0];
-    if (!fileInput.files[0]) {
-        showNotification('Please select a PDF file', 'warning');
-        return;
-    }
-    
-    const fileName = fileInput.files[0].name;
-    const fileSize = (fileInput.files[0].size / 1024 / 1024).toFixed(2);
-    
-    $('#upload_btn_text').text('Processing...');
-    $('#upload_spinner').show();
-    $('#upload_btn').prop('disabled', true);
-    
-    showNotification(` Uploading ${fileName} (${fileSize} MB)...`, 'info');
-    
-    const formData = new FormData(this);
-    
-    $.ajax({
-        url: '/',
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        xhr: function() {
-            const xhr = new window.XMLHttpRequest();
-            xhr.upload.addEventListener('progress', function(e) {
-                if (e.lengthComputable) {
-                    const percentComplete = Math.round((e.loaded / e.total) * 100);
-                    showNotification(` Uploading... ${percentComplete}%`, 'info');
-                }
-            });
-            return xhr;
-        },
-        success: function(response) {
-            showNotification('Statement processed successfully! Reloading...', 'success');
-            setTimeout(() => location.reload(), 1500);
-        },
-        error: function(xhr) {
-            let errorMsg = 'Upload failed';
-            if (xhr.responseText) {
-                errorMsg += ': ' + xhr.responseText.substring(0, 200);
-            }
-            showNotification(errorMsg, 'error');
-        },
-        complete: function() {
-            $('#upload_btn_text').text('Upload & Process');
-            $('#upload_spinner').hide();
-            $('#upload_btn').prop('disabled', false);
-        }
-    });
-});
-
-
-$('#apply_filters').click(function(e) {
-    e.preventDefault();
-    
-    const typeFilter = $('#type_filter').val();
-    const startDate = $('#start_date').val();
-    const endDate = $('#end_date').val();
-    
-    showNotification(' Applying filters...', 'info');
-    
-    $.ajax({
-        url: '/filter_transactions',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            type_filter: typeFilter,
-            start_date: startDate,
-            end_date: endDate
-        }),
-        success: function(res) {
-            const tbody = $('#tx_body');
-            tbody.empty();
-            
-            if (!res.transactions || res.transactions.length === 0) {
-                tbody.append(`
-                    <tr>
-                        <td colspan="9" class="empty-state">
-                            <div class="empty-icon"></div>
-                            <div class="empty-text">No transactions match your filters</div>
-                        </td>
-                    </tr>
-                `);
-                showNotification('No transactions found matching filters', 'warning');
-                return;
-            }
-            
-            res.transactions.forEach(t => {
-                const partyDisplay = t.party && t.party !== '-' 
-                    ? `<span class="party-info ${t.category}">
-                        ${t.category === 'income' ? 'From: ' : ' To: '}
-                        <strong>${t.party}</strong>
-                       </span>`
-                    : '<span class="no-party">—</span>';
-                
-                tbody.append(`
-                    <tr data-category="${t.category}">
-                        <td><strong>${t.date}</strong></td>
-                        <td class="time-cell">${t.time || '-'}</td>
-                        <td><span class="reference-code">${t.reference || '-'}</span></td>
-                        <td><strong>${t.type || '-'}</strong></td>
-                        <td>${partyDisplay}</td>
-                        <td class="details-cell">${t.description}</td>
-                        <td class="amount-cell ${t.category === 'income' ? 'income-amount' : 'expense-amount'}">
-                            ${t.category === 'income' ? '+' : '-'}${formatNumber(t.amount)}
-                        </td>
-                        <td><span class="badge badge-${t.category}">${t.category.toUpperCase()}</span></td>
-                        <td class="balance-cell"><strong>${formatNumber(t.balance)}</strong></td>
-                    </tr>
-                `);
-            });
-            
-            showNotification(` Found ${res.transactions.length} transaction(s)`, 'success');
-            updatePagination();
-        },
-        error: function() {
-            showNotification('Failed to apply filters', 'error');
-        }
-    });
-});
-
-// Reset Filters
-$('#reset_filters').click(function() {
-    $('#type_filter').val('all');
-    $('#start_date').val('');
-    $('#end_date').val('');
-    showNotification(' Filters reset. Reloading...', 'info');
-    setTimeout(() => location.reload(), 1000);
-});
-
-// AI Chat with Enhanced Feedback
-$('#ai_chat_form').submit(function(e){
-    e.preventDefault();
-    const msg = $('#ai_chat_input').val().trim();
-    if (!msg) return;
-
-    // User message
-    $('#ai_chat_messages').append(`
-        <div class="ai-chat-message user">
-            <div class="user-avatar"></div>
-            <div class="message-content">${msg}</div>
-        </div>
-    `);
-    $('#ai_chat_input').val('');
-
-    // Loading message
-    $('#ai_chat_messages').append(`
-        <div class="ai-chat-message bot loading">
-            <div class="bot-avatar"></div>
-            <div class="message-content">
-                <div class="typing-indicator">
-                    <span></span><span></span><span></span>
-                </div>
-                Thinking...
-            </div>
-        </div>
-    `);
-    $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
-
-    $.ajax({
-        url: "/ai_chat",
-        type: "POST",
-        data: { question: msg },
-        success: function(data){
-            $('.ai-chat-message.bot.loading').remove();
-            $('#ai_chat_messages').append(`
-                <div class="ai-chat-message bot">
-                    <div class="bot-avatar"></div>
-                    <div class="message-content">${data.answer || 'No response from AI'}</div>
-                </div>
-            `);
-            $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
-        },
-        error: function(){
-            $('.ai-chat-message.bot.loading').remove();
-            $('#ai_chat_messages').append(`
-                <div class="ai-chat-message bot error">
-                    <div class="bot-avatar"></div>
-                    <div class="message-content">Failed to get AI response. Please try again.</div>
-                </div>
-            `);
-            $('#ai_chat_messages').scrollTop($('#ai_chat_messages')[0].scrollHeight);
-        }
-    });
-});
-
-$('#download_pdf').click(function(){
-    const $button = $(this);
-    $button.prop('disabled', true);
-    showNotification('Generating PDF report...', 'info');
-    
-    $.ajax({
-        url: "/download_pdf",
-        type: "GET",
-        xhrFields: { responseType: 'blob' },
-        success: function(data){
-            const url = window.URL.createObjectURL(data);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'M-Ledger_Report.pdf';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
-            showNotification('PDF downloaded successfully!', 'success');
-        },
-        error: function(xhr){
-            console.error('Error:', xhr);
-            showNotification('Failed to generate PDF', 'error');
-        },
-        complete: function() {
-            $button.prop('disabled', false);
-        }
-    });
-});
-
-let currentPage = 1;
-const transactionsPerPage = 20;
-
-function updatePagination() {
-    const totalRows = $('#tx_body tr').not('#no_transactions').length;
-    const totalPages = Math.ceil(totalRows / transactionsPerPage) || 1;
-    
-    $('#page_info').text(`Page ${currentPage} of ${totalPages}`);
-    $('#prev_page').prop('disabled', currentPage === 1);
-    $('#next_page').prop('disabled', currentPage === totalPages);
-
-    $('#tx_body tr').not('#no_transactions').each(function(index) {
-        $(this).toggle(index >= (currentPage - 1) * transactionsPerPage && index < currentPage * transactionsPerPage);
-    });
-}
-
-$('#prev_page').click(function() {
-    if(currentPage > 1) {
-        currentPage--;
-        updatePagination();
-        showNotification(`Page ${currentPage}`, 'info');
-    }
-});
-
-$('#next_page').click(function() {
-    const totalRows = $('#tx_body tr').not('#no_transactions').length;
-    const totalPages = Math.ceil(totalRows / transactionsPerPage);
-    
-    if(currentPage < totalPages) {
-        currentPage++;
-        updatePagination();
-        showNotification(`Page ${currentPage}`, 'info');
-    }
-});
-
-// Format number helper
-function formatNumber(value) {
-    return parseFloat(value).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-}
-
-// Initialize on page load
-$(document).ready(function() {
-    updatePagination();
-});
-
-</script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
