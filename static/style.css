@@ -1,7 +1,7 @@
 :root {
-    --sidebar-bg: #667eea;
+    --sidebar-bg: #163ef1;
     --sidebar-hover: #5568d3;
-    --sidebar-active: #764ba2;
+    --sidebar-active: #3b20ef;
     --main-bg: #f0f4f8;
     --content-bg: #ffffff;
     --text-primary: #1a202c;
@@ -21,7 +21,7 @@
 }
 
 [data-theme="dark"] {
-    --sidebar-bg: #553c9a;
+    --sidebar-bg: #190455;
     --sidebar-hover: #6b46c1;
     --sidebar-active: #805ad5;
     --main-bg: #1a202c;
@@ -53,9 +53,7 @@ body {
     overflow: hidden;
 }
 
-/* ===========================
-   SIDEBAR
-   =========================== */
+
 .sidebar {
     width: 220px;
     background: linear-gradient(180deg, var(--sidebar-bg) 0%, var(--sidebar-active) 100%);

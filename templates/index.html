@@ -16,7 +16,7 @@
     <aside class="sidebar">
         <div class="sidebar-header">
             <div class="user-profile">
-                <img src="{{ url_for('static', filename='Assets/Logo.png') }}" alt="Logo" class="profile-avatar" onerror="this.style.display='none'">
+                <img src="{{ url_for('static', filename='Assests/Logo.png') }}" alt="Logo" class="profile-avatar" onerror="this.style.display='none'">
                 <span class="user-name">M-Ledger AI</span>
             </div>
         </div>
@@ -58,9 +58,6 @@
         <!-- Header -->
         <header class="content-header">
             <h1 class="page-title" id="page_title">Home</h1>
-            <button class="btn btn-primary" id="new_expense_btn" aria-label="Upload statement" title="Upload statement">
-                <span>📤 Upload Statement</span>
-            </button>
         </header>
         
         <!-- Home Section -->
@@ -68,18 +65,18 @@
         
         <!-- Upload Section -->
         <div class="upload-section" id="upload_section">
-            <h2>📤 Upload M-Pesa Statement</h2>
+            <h2> Upload M-Pesa Statement</h2>
             <form id="upload_form" class="upload-form" enctype="multipart/form-data">
                 <div class="file-input-wrapper">
                     <input type="file" name="statement" id="statement" required accept=".pdf">
                     <label for="statement" class="file-label">
-                        <span class="file-icon">📄</span>
+                        <span class="file-icon"></span>
                         <span class="file-text" id="file_text">Choose PDF File</span>
                     </label>
                 </div>
                 <button type="submit" class="btn btn-primary" id="upload_btn" aria-label="Upload and process statement" title="Upload and process statement">
                     <span id="upload_btn_text">Upload & Process</span>
-                    <span id="upload_spinner" class="spinner" style="display:none;">⏳</span>
+                    <span id="upload_spinner" class="spinner" style="display:none;">..</span>
                 </button>
             </form>
             <div id="upload_status" class="upload-status"></div>
@@ -88,27 +85,27 @@
             {% if uploaded_at %}
             <div class="last-upload-info">
                 <div class="info-card">
-                    <div class="info-header">📊 Last Statement Processed</div>
+                    <div class="info-header"> Last Statement Processed</div>
                     <div class="info-grid">
                         <div class="info-item">
-                            <span class="info-label">📅 Upload Date:</span>
+                            <span class="info-label"> Upload Date:</span>
                             <span class="info-value">{{ uploaded_at.strftime('%B %d, %Y at %I:%M %p') }}</span>
                         </div>
                         {% if filename %}
                         <div class="info-item">
-                            <span class="info-label">📄 File:</span>
+                            <span class="info-label"> File:</span>
                             <span class="info-value">{{ filename }}</span>
                         </div>
                         {% endif %}
                         {% if total_transactions %}
                         <div class="info-item">
-                            <span class="info-label">📝 Transactions:</span>
+                            <span class="info-label"> Transactions:</span>
                             <span class="info-value">{{ total_transactions }} records</span>
                         </div>
                         {% endif %}
                         {% if transactions and transactions|length > 0 %}
                         <div class="info-item">
-                            <span class="info-label">📆 Date Range:</span>
+                            <span class="info-label"> Date Range:</span>
                             <span class="info-value">
                                 {{ transactions[-1].date }} to {{ transactions[0].date }}
                             </span>
@@ -220,7 +217,7 @@
                                 <input type="checkbox" class="transaction-checkbox" aria-label="Select transaction" title="Select">
                             </td>
                             <td class="date-col">
-                                <span class="date-icon">📅</span>
+                                <span class="date-icon"></span>
                                 {{ t.date }}
                             </td>
                             <td class="time-cell">{{ t.time }}</td>
@@ -230,9 +227,9 @@
                                 {% if t.party and t.party != '-' %}
                                 <span class="party-info {{ t.category }}">
                                     {% if t.category == 'income' %}
-                                    📥 From: <strong>{{ t.party }}</strong>
+                                     From: <strong>{{ t.party }}</strong>
                                     {% else %}
-                                    📤 To: <strong>{{ t.party }}</strong>
+                                     To: <strong>{{ t.party }}</strong>
                                     {% endif %}
                                 </span>
                                 {% else %}
@@ -252,7 +249,7 @@
                     {% else %}
                         <tr id="no_transactions">
                             <td colspan="10" class="empty-state">
-                                <div class="empty-icon">📭</div>
+                                <div class="empty-icon"></div>
                                 <div class="empty-text">No transactions to display</div>
                                 <div class="empty-subtext">Upload an M-Pesa statement to get started</div>
                             </td>
@@ -275,7 +272,7 @@
         <div class="content-section" id="reports-section" style="display: none;">
             <div class="section-content">
                 <div class="reports-grid">
-                    <h2>📊 Financial Reports</h2>
+                    <h2>Financial Reports</h2>
                     
                     <!-- Report Cards -->
                     <div class="report-cards">
@@ -299,13 +296,13 @@
                     <!-- Monthly Summary Report -->
                     <div class="report-detail" id="monthly-report" style="display: none;">
                         <div class="report-header">
-                            <h3>📅 Monthly Summary Report</h3>
+                            <h3> Monthly Summary Report</h3>
                             <button class="btn btn-secondary back-to-reports" aria-label="Back to reports" title="Back">← Back</button>
                         </div>
                         <div class="report-content">
                             <div class="summary-cards">
                                 <div class="summary-card income-card">
-                                    <div class="card-icon">💰</div>
+                                    <div class="card-icon"></div>
                                     <div class="card-content">
                                         <h4>Total Income</h4>
                                         <p class="card-value" id="monthly_income">KES 0.00</p>
@@ -313,7 +310,7 @@
                                     </div>
                                 </div>
                                 <div class="summary-card expense-card">
-                                    <div class="card-icon">💸</div>
+                                    <div class="card-icon"></div>
                                     <div class="card-content">
                                         <h4>Total Expenses</h4>
                                         <p class="card-value" id="monthly_expenses">KES 0.00</p>
@@ -321,7 +318,7 @@
                                     </div>
                                 </div>
                                 <div class="summary-card balance-card">
-                                    <div class="card-icon">📊</div>
+                                    <div class="card-icon"></div>
                                     <div class="card-content">
                                         <h4>Net Balance</h4>
                                         <p class="card-value" id="monthly_net">KES 0.00</p>
@@ -338,7 +335,7 @@
                     <!-- Category Analysis Report -->
                     <div class="report-detail" id="category-report" style="display: none;">
                         <div class="report-header">
-                            <h3>📂 Category Analysis</h3>
+                            <h3> Category Analysis</h3>
                             <button class="btn btn-secondary back-to-reports" aria-label="Back to reports" title="Back">← Back</button>
                         </div>
                         <div class="report-content">
@@ -354,13 +351,13 @@
                     <!-- Yearly Overview Report -->
                     <div class="report-detail" id="yearly-report" style="display: none;">
                         <div class="report-header">
-                            <h3>📈 Yearly Overview</h3>
+                            <h3> Yearly Overview</h3>
                             <button class="btn btn-secondary back-to-reports" aria-label="Back to reports" title="Back">← Back</button>
                         </div>
                         <div class="report-content">
                             <div class="summary-cards">
                                 <div class="summary-card income-card">
-                                    <div class="card-icon">💰</div>
+                                    <div class="card-icon"></div>
                                     <div class="card-content">
                                         <h4>Annual Income</h4>
                                         <p class="card-value" id="yearly_income">KES 0.00</p>
@@ -368,7 +365,7 @@
                                     </div>
                                 </div>
                                 <div class="summary-card expense-card">
-                                    <div class="card-icon">💸</div>
+                                    <div class="card-icon"></div>
                                     <div class="card-content">
                                         <h4>Annual Expenses</h4>
                                         <p class="card-value" id="yearly_expenses">KES 0.00</p>
@@ -376,7 +373,7 @@
                                     </div>
                                 </div>
                                 <div class="summary-card balance-card">
-                                    <div class="card-icon">📊</div>
+                                    <div class="card-icon"></div>
                                     <div class="card-content">
                                         <h4>Average Monthly</h4>
                                         <p class="card-value" id="yearly_average">KES 0.00</p>
@@ -397,7 +394,7 @@
         <div class="content-section" id="settings-section" style="display: none;">
             <div class="section-content">
                 <div class="settings-container">
-                    <h2>⚙️ Settings</h2>
+                    <h2> Settings</h2>
                     
                     <form id="settings_form">
                         <div class="settings-group">
@@ -430,7 +427,7 @@
                         </div>
                         
                         <div class="settings-actions">
-                            <button type="submit" class="btn btn-primary" aria-label="Save settings" title="Save settings">💾 Save Settings</button>
+                            <button type="submit" class="btn btn-primary" aria-label="Save settings" title="Save settings">Save Settings</button>
                             <button type="button" class="btn btn-secondary" id="reset_settings_btn" aria-label="Reset settings" title="Reset to default">🔄 Reset</button>
                         </div>
                     </form>
@@ -443,7 +440,7 @@
         <!-- AI Chat Section -->
         <div class="ai-chat-section">
             <div class="chat-header">
-                <h2>💬 Ask AI about your finances</h2>
+                <h2> Ask AI about your finances</h2>
                 <button class="chat-toggle" id="chat_toggle" aria-label="Toggle chat" title="Toggle chat">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path d="M5 8a1 1 0 011.707 0L10 11.293l3.293-3.294a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4A1 1 0 015 8z"/>
@@ -452,7 +449,7 @@
             </div>
             <div class="ai-chat-messages" id="ai_chat_messages">
                 <div class="ai-chat-message bot">
-                    <div class="bot-avatar">🤖</div>
+                    <div class="bot-avatar"></div>
                     <div class="message-content">
                         Hello! I'm your M-Ledger AI assistant. Upload a statement and ask me questions about your finances.
                     </div>
@@ -460,7 +457,7 @@
             </div>
             <form id="ai_chat_form" class="ai-chat-form">
                 <input type="text" id="ai_chat_input" placeholder="Ask me anything..." autocomplete="off" aria-label="Chat input">
-                <button type="submit" aria-label="Send message" title="Send">Send 📤</button>
+                <button type="submit" aria-label="Send message" title="Send">Send </button>
             </form>
         </div>
         

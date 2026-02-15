@@ -1115,7 +1115,7 @@ document.querySelectorAll('.report-btn').forEach(btn => {
         loadTransactionsFromTable();
         
         if (allTransactions.length === 0) {
-            showNotification('⚠️ No transactions. Upload a statement first.', 'warning');
+            showNotification(' No transactions. Upload a statement first.', 'warning');
             return;
         }
         
@@ -1131,7 +1131,7 @@ document.querySelectorAll('.report-btn').forEach(btn => {
             updateYearlyReport(calculateYearlyData());
         }
         
-        showNotification('✅ Report generated', 'success');
+        showNotification(' Report generated', 'success');
     });
 });
 

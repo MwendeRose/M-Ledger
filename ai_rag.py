@@ -1,3 +1,4 @@
+from flask import jsonify, request
 from pymongo import MongoClient
 from langchain_ollama import OllamaLLM
 
@@ -14,6 +15,7 @@ except Exception as e:
     llm = None
 
 def build_statement_context(statement_doc):
+    """Build context from statement document"""
     tx_lines = []
     for t in statement_doc.get("transactions", []):
         line = f"{t.get('date','')} | {t.get('description','')} | {t.get('amount',0)} | {t.get('category','')} | balance {t.get('balance',0)}"
@@ -30,6 +32,7 @@ Balance: {totals.get('balance',0)}
     return "\n".join(tx_lines) + "\n" + totals_text
 
 def ask_latest_statement(question: str):
+    """Query the latest statement using Ollama"""
     if llm is None:
         return "AI service is not available. Please ensure Ollama is running with llama3 model."
     
@@ -52,6 +55,8 @@ Rules:
 - Use ONLY the data above
 - If not found, say: "I could not find that information in the statement."
 - Be concise
+- Format monetary amounts with KES prefix
+- When showing transactions, include date, description, and amount
 """
 
     try:
@@ -59,3 +64,30 @@ Rules:
         return str(response)
     except Exception as e:
         return f"Error getting AI response: {str(e)}"
+
+# Flask route to add to your main app
+def chat_api_route():
+    """
+    Add this route to your Flask app:
+    
+    @app.route('/api/chat', methods=['POST'])
+    def chat():
+        return chat_api_route()
+    """
+    try:
+        data = request.get_json()
+        
+        if not data or 'question' not in data:
+            return jsonify({'error': 'No question provided'}), 400
+        
+        question = data['question'].strip()
+        
+        if not question:
+            return jsonify({'error': 'Question cannot be empty'}), 400
+        
+        answer = ask_latest_statement(question)
+        
+        return jsonify({'answer': answer}), 200
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
